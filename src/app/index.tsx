@@ -1,98 +1,154 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useCallback, useEffect } from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Stack, router } from "expo-router";
+import { requestWidgetUpdate } from "react-native-android-widget";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
-  return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
-}
+import { getJadwalToday } from "@/api/sholat";
+import { ErrorView } from "@/components/error-view";
+import { LoadingView } from "@/components/loading-view";
+import { PrayerCard } from "@/components/prayer-card";
+import { Colors } from "@/constants/theme";
+import { useApi } from "@/hooks/use-api";
+import { useSelectedCity } from "@/hooks/use-selected-city";
+import type { KabKota } from "@/types/sholat";
+import { JadwalSholatWidget, WIDGET_NAME } from "@/widgets/jadwal-sholat-widget";
 
 export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+  const city = useSelectedCity();
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
+  if (!city) {
+    return (
+      <SafeAreaView style={styles.safeArea} edges={["top"]}>
+        <LoadingView message="Memuat kota pilihan..." />
       </SafeAreaView>
-    </ThemedView>
+    );
+  }
+
+  return <HomeContent city={city} />;
+}
+
+function HomeContent({ city }: { city: KabKota }) {
+  const fetcher = useCallback(() => getJadwalToday(city.id), [city.id]);
+  const { data, loading, error, refetch } = useApi(fetcher, [city.id]);
+
+  const jadwal = data?.jadwal;
+  const jadwalToday = jadwal ? Object.values(jadwal)[0] : null;
+
+  // Sinkronkan jadwal terbaru ke widget Android setelah data berhasil dimuat.
+  useEffect(() => {
+    if (!data || !jadwalToday) return;
+
+    requestWidgetUpdate({
+      widgetName: WIDGET_NAME,
+      renderWidget: () => (
+        <JadwalSholatWidget
+          cityName={city.lokasi}
+          tanggal={jadwalToday.tanggal}
+          times={jadwalToday}
+        />
+      ),
+    }).catch(() => {
+      // Widget belum ditambahkan di home screen — tidak perlu ditindaklanjuti.
+    });
+  }, [data, city, jadwalToday]);
+
+  const openCityPicker = () => router.push("/kota");
+  const openMonthlySchedule = () =>
+    router.push({ pathname: "/jadwal", params: { id: city.id, lokasi: city.lokasi } });
+
+  return (
+    <SafeAreaView style={styles.safeArea} edges={["top"]}>
+      <Stack.Screen options={{ headerShown: false }} />
+
+      <View style={styles.header}>
+        <Text style={styles.brand}>Jadwal Sholat</Text>
+        <Pressable style={styles.cityButton} onPress={openCityPicker}>
+          <Text style={styles.cityButtonText} numberOfLines={1}>
+            {city.lokasi}  ▾
+          </Text>
+        </Pressable>
+      </View>
+
+      {loading ? (
+        <LoadingView message="Menyelaraskan jadwal waktu setempat..." />
+      ) : error || !jadwalToday ? (
+        <ErrorView message={error ?? "Jadwal tidak ditemukan."} onRetry={refetch} />
+      ) : (
+        <ScrollView contentContainerStyle={styles.content}>
+          <Text style={styles.date}>{jadwalToday.tanggal}</Text>
+          {data?.prov ? <Text style={styles.prov}>{data.prov}</Text> : null}
+
+          <PrayerCard jadwal={jadwalToday} highlightNext />
+
+          <Pressable style={styles.monthlyButton} onPress={openMonthlySchedule}>
+            <Text style={styles.monthlyButtonText}>Lihat Jadwal Bulanan</Text>
+          </Pressable>
+        </ScrollView>
+      )}
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
   safeArea: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    backgroundColor: Colors.primary,
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  header: {
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 24,
+    gap: 8,
   },
-  title: {
-    textAlign: 'center',
+  brand: {
+    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: "800",
   },
-  code: {
-    textTransform: 'uppercase',
+  cityButton: {
+    alignSelf: "flex-start",
+    maxWidth: "100%",
+    backgroundColor: "rgba(255, 255, 255, 0.18)",
+    borderRadius: 999,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  cityButtonText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: Colors.background,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 20,
+    gap: 12,
+  },
+  date: {
+    color: Colors.text,
+    fontSize: 18,
+    fontWeight: "700",
+    textAlign: "center",
+    marginTop: 8,
+  },
+  prov: {
+    color: Colors.textSecondary,
+    fontSize: 13,
+    textAlign: "center",
+    marginBottom: 8,
+  },
+  monthlyButton: {
+    backgroundColor: Colors.primary,
+    borderRadius: 14,
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  monthlyButtonText: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "700",
   },
 });
