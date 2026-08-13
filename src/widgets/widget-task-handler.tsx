@@ -5,6 +5,7 @@ import type { WidgetRepresentation, WidgetTaskHandlerProps } from 'react-native-
 
 import { getJadwalToday } from '@/api/sholat';
 import { DEFAULT_CITY } from '@/hooks/use-selected-city';
+import { getCachedJadwalToday, saveCachedJadwalToday } from '@/storage/cache';
 import { getSelectedCity } from '@/storage/city';
 import { JadwalSholatWidget, WIDGET_NAME } from '@/widgets/jadwal-sholat-widget';
 
@@ -34,12 +35,24 @@ async function renderWithFreshData(
 ) {
   try {
     const city = await getSelectedCity();
-    const response = await getJadwalToday(city?.id ?? DEFAULT_CITY.id);
+    const cityId = city?.id ?? DEFAULT_CITY.id;
+    const cityName = city?.lokasi ?? DEFAULT_CITY.lokasi;
+    let response;
+
+    try {
+      response = await getJadwalToday(cityId);
+      await saveCachedJadwalToday(cityId, response);
+    } catch (err) {
+      const cached = await getCachedJadwalToday(cityId);
+      if (!cached) throw err;
+      response = cached.data;
+    }
+
     const jadwal = Object.values(response.jadwal)[0];
 
     renderWidget(
       <JadwalSholatWidget
-        cityName={city?.lokasi ?? DEFAULT_CITY.lokasi}
+        cityName={cityName}
         tanggal={jadwal?.tanggal ?? ''}
         times={jadwal ?? EMPTY_TIMES}
       />,

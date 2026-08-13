@@ -120,7 +120,7 @@ Widget diregistrasikan lewat config plugin, termasuk ukuran pita horizontal:
 ```json
 [
   "react-native-android-widget",
-  {
+  { 
     "widgets": [
       {
         "name": "JadwalSholat",

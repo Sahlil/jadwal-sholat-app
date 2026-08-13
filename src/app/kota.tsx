@@ -7,6 +7,7 @@ import { ErrorView } from "@/components/error-view";
 import { LoadingView } from "@/components/loading-view";
 import { Colors } from "@/constants/theme";
 import { useApi } from "@/hooks/use-api";
+import { getCachedKabKota, saveCachedKabKota } from "@/storage/cache";
 import { saveSelectedCity } from "@/storage/city";
 import type { KabKota } from "@/types/sholat";
 
@@ -22,14 +23,36 @@ export default function KotaScreen() {
 
   const isSearching = debouncedQuery.trim().length > 0;
 
-  const allFetcher = useCallback(() => getAllKabKota(), []);
-  const all = useApi(allFetcher, []);
+  const allFetcher = useCallback(async () => {
+    try {
+      const fresh = await getAllKabKota();
+      await saveCachedKabKota(fresh);
+      return fresh;
+    } catch (err) {
+      const cached = await getCachedKabKota();
+      if (cached) return cached.data;
+      throw err;
+    }
+  }, []);
+  const all = useApi(allFetcher);
 
   const searchFetcher = useCallback(
-    () => searchKabKota(debouncedQuery.trim()),
-    [debouncedQuery],
+    async () => {
+      const keyword = debouncedQuery.trim();
+      try {
+        return await searchKabKota(keyword);
+      } catch (err) {
+        const source = all.data ?? (await getCachedKabKota())?.data;
+        if (source) {
+          const normalized = keyword.toLowerCase();
+          return source.filter((city) => city.lokasi.toLowerCase().includes(normalized));
+        }
+        throw err;
+      }
+    },
+    [all.data, debouncedQuery],
   );
-  const search = useApi(searchFetcher, [debouncedQuery]);
+  const search = useApi(searchFetcher);
 
   const data = isSearching ? search.data : all.data;
   const loading = isSearching ? search.loading : all.loading;
@@ -69,7 +92,7 @@ export default function KotaScreen() {
           contentContainerStyle={styles.listContent}
           ListHeaderComponent={
             isSearching && data?.length ? (
-              <Text style={styles.resultCount}>{data.length} hasil untuk "{debouncedQuery}"</Text>
+              <Text style={styles.resultCount}>{data.length} hasil untuk &quot;{debouncedQuery}&quot;</Text>
             ) : null
           }
           ListEmptyComponent={

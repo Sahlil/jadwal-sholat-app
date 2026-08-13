@@ -11,6 +11,7 @@ import { PrayerCard } from "@/components/prayer-card";
 import { Colors } from "@/constants/theme";
 import { useApi } from "@/hooks/use-api";
 import { useSelectedCity } from "@/hooks/use-selected-city";
+import { getCachedJadwalToday, saveCachedJadwalToday } from "@/storage/cache";
 import type { KabKota } from "@/types/sholat";
 import { JadwalSholatWidget, WIDGET_NAME } from "@/widgets/jadwal-sholat-widget";
 
@@ -29,8 +30,18 @@ export default function HomeScreen() {
 }
 
 function HomeContent({ city }: { city: KabKota }) {
-  const fetcher = useCallback(() => getJadwalToday(city.id), [city.id]);
-  const { data, loading, error, refetch } = useApi(fetcher, [city.id]);
+  const fetcher = useCallback(async () => {
+    try {
+      const fresh = await getJadwalToday(city.id);
+      await saveCachedJadwalToday(city.id, fresh);
+      return fresh;
+    } catch (err) {
+      const cached = await getCachedJadwalToday(city.id);
+      if (cached) return cached.data;
+      throw err;
+    }
+  }, [city.id]);
+  const { data, loading, error, refetch } = useApi(fetcher);
 
   const jadwal = data?.jadwal;
   const jadwalToday = jadwal ? Object.values(jadwal)[0] : null;

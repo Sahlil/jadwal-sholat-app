@@ -47,10 +47,9 @@ export function JadwalSholatWidget({ cityName, tanggal, times }: JadwalSholatWid
         height: 'match_parent',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
         backgroundGradient: { from: '#0F766E', to: '#115E59', orientation: 'TOP_BOTTOM' },
         borderRadius: 18,
-        padding: 10,
+        padding: 16,
       }}
     >
       <FlexWidget
@@ -59,7 +58,7 @@ export function JadwalSholatWidget({ cityName, tanggal, times }: JadwalSholatWid
           alignItems: 'flex-start',
           justifyContent: 'center',
           width: 72,
-          marginRight: 4,
+          paddingRight: 12,
         }}
       >
         <TextWidget
@@ -76,9 +75,19 @@ export function JadwalSholatWidget({ cityName, tanggal, times }: JadwalSholatWid
         />
       </FlexWidget>
 
-      {PRAYERS.map(({ label, key }) => (
-        <PrayerCell key={key} label={label} time={times[key]} />
-      ))}
+      <FlexWidget
+        style={{
+          flex: 1,
+          width: 'match_parent',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        {PRAYERS.map(({ label, key }) => (
+          <PrayerCell key={key} label={label} time={times[key]} />
+        ))}
+      </FlexWidget>
     </FlexWidget>
   );
 }
