@@ -36,6 +36,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# local planning notes
+todo.md
+
 example
 
 # generated native folders
