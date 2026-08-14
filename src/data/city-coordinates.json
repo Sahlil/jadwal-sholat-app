@@ -1,0 +1,3104 @@
+[
+  {
+    "id": "c4ca4238a0b923820dcc509a6f75849b",
+    "lokasi": "KAB. ACEH BARAT",
+    "lat": 4.45,
+    "lon": 96.16667
+  },
+  {
+    "id": "c81e728d9d4c2f636f067f89cc14862c",
+    "lokasi": "KAB. ACEH BARAT DAYA",
+    "lat": 3.83333,
+    "lon": 96.88333
+  },
+  {
+    "id": "eccbc87e4b5ce2fe28308fd9f2a7baf3",
+    "lokasi": "KAB. ACEH BESAR",
+    "lat": 5.38333,
+    "lon": 95.51667
+  },
+  {
+    "id": "a87ff679a2f3e71d9181a67b7542122c",
+    "lokasi": "KAB. ACEH JAYA",
+    "lat": 4.86,
+    "lon": 95.64
+  },
+  {
+    "id": "e4da3b7fbbce2345d7772b0674a318d5",
+    "lokasi": "KAB. ACEH SELATAN",
+    "lat": 3.16667,
+    "lon": 97.41667
+  },
+  {
+    "id": "1679091c5a880faf6fb5e6087eb1b2dc",
+    "lokasi": "KAB. ACEH SINGKIL",
+    "lat": 2.41667,
+    "lon": 97.91667
+  },
+  {
+    "id": "8f14e45fceea167a5a36dedd4bea2543",
+    "lokasi": "KAB. ACEH TAMIANG",
+    "lat": 4.25,
+    "lon": 97.96667
+  },
+  {
+    "id": "c9f0f895fb98ab9159f51fd0297e236d",
+    "lokasi": "KAB. ACEH TENGAH",
+    "lat": 4.51,
+    "lon": 96.855
+  },
+  {
+    "id": "45c48cce2e2d7fbdea1afc51c7c6ad26",
+    "lokasi": "KAB. ACEH TENGGARA",
+    "lat": 3.36667,
+    "lon": 97.7
+  },
+  {
+    "id": "d3d9446802a44259755d38e6d163e820",
+    "lokasi": "KAB. ACEH TIMUR",
+    "lat": 4.63333,
+    "lon": 97.63333
+  },
+  {
+    "id": "6512bd43d9caa6e02c990b0a82652dca",
+    "lokasi": "KAB. ACEH UTARA",
+    "lat": 4.97,
+    "lon": 97.14
+  },
+  {
+    "id": "72b32a1f754ba1c09b3695e0cb6cde7f",
+    "lokasi": "KAB. AGAM",
+    "lat": -0.25,
+    "lon": 100.16667
+  },
+  {
+    "id": "53c3bce66e43be4f209556518c2fcb54",
+    "lokasi": "KAB. ALOR",
+    "lat": -8.3,
+    "lon": 124.56667
+  },
+  {
+    "id": "1ff1de774005f8da13f42943881c655f",
+    "lokasi": "KAB. ASAHAN",
+    "lat": 2.78333,
+    "lon": 99.55
+  },
+  {
+    "id": "2050e03ca119580f74cca14cc6e97462",
+    "lokasi": "KAB. ASMAT",
+    "lat": -5.3795,
+    "lon": 138.46344
+  },
+  {
+    "id": "d947bf06a885db0d477d707121934ff8",
+    "lokasi": "KAB. BADUNG",
+    "lat": -8.51667,
+    "lon": 115.2
+  },
+  {
+    "id": "6faa8040da20ef399b63a72d0e4ab575",
+    "lokasi": "KAB. BALANGAN",
+    "lat": -2.32314,
+    "lon": 115.62922
+  },
+  {
+    "id": "0777d5c17d4066b82ab86dff8a46af6f",
+    "lokasi": "KAB. BANDUNG",
+    "lat": -7.1,
+    "lon": 107.6
+  },
+  {
+    "id": "fa7cdfad1a5aaf8370ebeda47a1ff1c3",
+    "lokasi": "KAB. BANDUNG BARAT",
+    "lat": -6.83333,
+    "lon": 107.48333
+  },
+  {
+    "id": "d1f255a373a3cef72e03aa9d980c7eca",
+    "lokasi": "KAB. BANGGAI",
+    "lat": -1.2835,
+    "lon": 122.8892
+  },
+  {
+    "id": "7eacb532570ff6858afd2723755ff790",
+    "lokasi": "KAB. BANGGAI KEPULAUAN",
+    "lat": -1.6424,
+    "lon": 123.54881
+  },
+  {
+    "id": "b6f0479ae87d244975439c6124592772",
+    "lokasi": "KAB. BANGGAI LAUT",
+    "lat": -1.61841,
+    "lon": 123.49388
+  },
+  {
+    "id": "9fc3d7152ba9336a670e36d0ed79bc43",
+    "lokasi": "KAB. BANGKA",
+    "lat": -1.91667,
+    "lon": 105.93333
+  },
+  {
+    "id": "02522a2b2726fb0a03bb19f2d8d9524d",
+    "lokasi": "KAB. BANGKA BARAT",
+    "lat": -1.95839,
+    "lon": 105.53741
+  },
+  {
+    "id": "7f1de29e6da19d22b51c68001e7e0e54",
+    "lokasi": "KAB. BANGKA SELATAN",
+    "lat": -2.66803,
+    "lon": 106.01257
+  },
+  {
+    "id": "42a0e188f5033bc65bf8d78622277c4e",
+    "lokasi": "KAB. BANGKA TENGAH",
+    "lat": -2.33989,
+    "lon": 106.1142
+  },
+  {
+    "id": "01161aaa0b6d1345dd8fe4e481144d84",
+    "lokasi": "KAB. BANGKALAN",
+    "lat": -7.05,
+    "lon": 112.93333
+  },
+  {
+    "id": "63923f49e5241343aa7acb6a06a751e7",
+    "lokasi": "KAB. BANGLI",
+    "lat": -8.28333,
+    "lon": 115.35
+  },
+  {
+    "id": "fe73f687e5bc5280214e0486b273a5f9",
+    "lokasi": "KAB. BANJAR",
+    "lat": -3.31667,
+    "lon": 115.08333
+  },
+  {
+    "id": "084b6fbb10729ed4da8c3d3f5a3ae7c9",
+    "lokasi": "KAB. BANJARNEGARA",
+    "lat": -7.35111,
+    "lon": 109.5875
+  },
+  {
+    "id": "d34ab169b70c9dcd35e62896010cd9ff",
+    "lokasi": "KAB. BANTAENG",
+    "lat": -5.48333,
+    "lon": 119.98333
+  },
+  {
+    "id": "9b04d152845ec0a378394003c96da594",
+    "lokasi": "KAB. BANTUL",
+    "lat": -7.9,
+    "lon": 110.36667
+  },
+  {
+    "id": "c45147dee729311ef5b5c3003946c48f",
+    "lokasi": "KAB. BANYUASIN",
+    "lat": -2.88333,
+    "lon": 104.38306
+  },
+  {
+    "id": "85d8ce590ad8981ca2c8286f79f59954",
+    "lokasi": "KAB. BANYUMAS",
+    "lat": -7.45,
+    "lon": 109.16667
+  },
+  {
+    "id": "539fd53b59e3bb12d203f45a912eeaf2",
+    "lokasi": "KAB. BANYUWANGI",
+    "lat": -8.33333,
+    "lon": 114.2
+  },
+  {
+    "id": "6da37dd3139aa4d9aa55b8d237ec5d4a",
+    "lokasi": "KAB. BARITO KUALA",
+    "lat": -3.08333,
+    "lon": 114.61667
+  },
+  {
+    "id": "58238e9ae2dd305d79c2ebc8c1883422",
+    "lokasi": "KAB. BARITO SELATAN",
+    "lat": -1.86667,
+    "lon": 114.73333
+  },
+  {
+    "id": "3ad7c2ebb96fcba7cda0cf54a2e802f5",
+    "lokasi": "KAB. BARITO TIMUR",
+    "lat": -1.93333,
+    "lon": 115.1
+  },
+  {
+    "id": "b3967a0e938dc2a6340e258630febd5a",
+    "lokasi": "KAB. BARITO UTARA",
+    "lat": -0.98333,
+    "lon": 115.1
+  },
+  {
+    "id": "8bf1211fd4b7b94528899de0a43b9fb3",
+    "lokasi": "KAB. BARRU",
+    "lat": -4.43333,
+    "lon": 119.68333
+  },
+  {
+    "id": "0e65972dce68dad4d52d063967f0a705",
+    "lokasi": "KAB. BATANG",
+    "lat": -7.03333,
+    "lon": 109.88333
+  },
+  {
+    "id": "812b4ba287f5ee0bc9d43bbf5bbe87fb",
+    "lokasi": "KAB. BATANGHARI",
+    "lat": -1.75,
+    "lon": 103.11667
+  },
+  {
+    "id": "8e296a067a37563370ded05f5a3bf3ec",
+    "lokasi": "KAB. BATU BARA",
+    "lat": 3.16166,
+    "lon": 99.52652
+  },
+  {
+    "id": "9766527f2b5d3e95d4a733fcfb77bd7e",
+    "lokasi": "KAB. BEKASI",
+    "lat": -6.24667,
+    "lon": 107.10833
+  },
+  {
+    "id": "3988c7f88ebcb58c6ce932b957b6f332",
+    "lokasi": "KAB. BELITUNG",
+    "lat": -2.86667,
+    "lon": 107.7
+  },
+  {
+    "id": "013d407166ec4fa56eb1e1f8cbe183b9",
+    "lokasi": "KAB. BELITUNG TIMUR",
+    "lat": -2.9627,
+    "lon": 108.15216
+  },
+  {
+    "id": "6883966fd8f918a4aa29be29d2c386fb",
+    "lokasi": "KAB. BELU",
+    "lat": -9.41258,
+    "lon": 124.95066
+  },
+  {
+    "id": "c20ad4d76fe97759aa27a0c99bff6710",
+    "lokasi": "KAB. BENER MERIAH",
+    "lat": 4.73015,
+    "lon": 96.86156
+  },
+  {
+    "id": "fbd7939d674997cdb4692d34de8633c4",
+    "lokasi": "KAB. BENGKALIS",
+    "lat": 0.9838,
+    "lon": 102.5096
+  },
+  {
+    "id": "ad13a2a07ca4b7642959dc0c4c740ab6",
+    "lokasi": "KAB. BENGKAYANG",
+    "lat": 1.06911,
+    "lon": 109.66393
+  },
+  {
+    "id": "f0935e4cd5920aa6c7c996a5ee53a70f",
+    "lokasi": "KAB. BENGKULU SELATAN",
+    "lat": -4.35,
+    "lon": 103.03333
+  },
+  {
+    "id": "a97da629b098b75c294dffdc3e463904",
+    "lokasi": "KAB. BENGKULU TENGAH",
+    "lat": -3.20679,
+    "lon": 102.12616
+  },
+  {
+    "id": "a3c65c2974270fd093ee8a9bf8ae7d0b",
+    "lokasi": "KAB. BENGKULU UTARA",
+    "lat": -3.33333,
+    "lon": 102.05
+  },
+  {
+    "id": "6c524f9d5d7027454a783c841250ba71",
+    "lokasi": "KAB. BERAU",
+    "lat": 2,
+    "lon": 117.3
+  },
+  {
+    "id": "25ddc0f8c9d3e22e03d3076f98d83cb2",
+    "lokasi": "KAB. BIAK NUMFOR",
+    "lat": -1.03333,
+    "lon": 136
+  },
+  {
+    "id": "0f49c89d1e7298bb9930789c8ed59d48",
+    "lokasi": "KAB. BIMA",
+    "lat": -8.6,
+    "lon": 118.61667
+  },
+  {
+    "id": "2a38a4a9316c49e5a833517c45d31070",
+    "lokasi": "KAB. BINTAN",
+    "lat": 0.95,
+    "lon": 104.61944
+  },
+  {
+    "id": "c51ce410c124a10e0db5e4b97fc2af39",
+    "lokasi": "KAB. BIREUEN",
+    "lat": 5.08333,
+    "lon": 96.58333
+  },
+  {
+    "id": "ac1dd209cbcc5e5d1c6e28598e8cbbe8",
+    "lokasi": "KAB. BLITAR",
+    "lat": -8.13333,
+    "lon": 112.25
+  },
+  {
+    "id": "84d9ee44e457ddef7f2c4f25dc8fa865",
+    "lokasi": "KAB. BLORA",
+    "lat": -7.06667,
+    "lon": 111.38333
+  },
+  {
+    "id": "41f1f19176d383480afa65d325c06ed0",
+    "lokasi": "KAB. BOALEMO",
+    "lat": 0.62689,
+    "lon": 122.3568
+  },
+  {
+    "id": "7e7757b1e12abcb736ab9a754ffb617a",
+    "lokasi": "KAB. BOGOR",
+    "lat": -6.58333,
+    "lon": 106.71667
+  },
+  {
+    "id": "555d6702c950ecb729a966504af0a635",
+    "lokasi": "KAB. BOJONEGORO",
+    "lat": -7.25,
+    "lon": 111.8
+  },
+  {
+    "id": "66368270ffd51418ec58bd793f2d9b1b",
+    "lokasi": "KAB. BOLAANG MONGONDOW",
+    "lat": 0.75,
+    "lon": 124.08333
+  },
+  {
+    "id": "248e844336797ec98478f85e7626de4a",
+    "lokasi": "KAB. BOLAANG MONGONDOW SELATAN",
+    "lat": 0.40912,
+    "lon": 123.75961
+  },
+  {
+    "id": "019d385eb67632a7e958e23f24bd07d7",
+    "lokasi": "KAB. BOLAANG MONGONDOW TIMUR",
+    "lat": 0.72073,
+    "lon": 124.50256
+  },
+  {
+    "id": "a49e9411d64ff53eccfdd09ad10a15b3",
+    "lokasi": "KAB. BOLAANG MONGONDOW UTARA",
+    "lat": 0.78527,
+    "lon": 123.41766
+  },
+  {
+    "id": "816b112c6105b3ebd537828a39af4818",
+    "lokasi": "KAB. BOMBANA",
+    "lat": -4.6257,
+    "lon": 121.81641
+  },
+  {
+    "id": "335f5352088d7d9bf74191e006d8e24c",
+    "lokasi": "KAB. BONDOWOSO",
+    "lat": -7.9404,
+    "lon": 113.9834
+  },
+  {
+    "id": "a02ffd91ece5e7efeb46db8f10a74059",
+    "lokasi": "KAB. BONE",
+    "lat": -4.7,
+    "lon": 120.13333
+  },
+  {
+    "id": "24b16fede9a67c9251d3e7c7161c83ac",
+    "lokasi": "KAB. BONE BOLANGO",
+    "lat": 0.50296,
+    "lon": 123.27501
+  },
+  {
+    "id": "5ef0b4eba35ab2d6180b0bca7e46b6f9",
+    "lokasi": "KAB. BOVEN DIGOEL",
+    "lat": -5.70519,
+    "lon": 140.36349
+  },
+  {
+    "id": "3644a684f98ea8fe223c713b77189a77",
+    "lokasi": "KAB. BOYOLALI",
+    "lat": -7.5,
+    "lon": 110.7
+  },
+  {
+    "id": "757b505cfd34c64c85ca5b5690ee5293",
+    "lokasi": "KAB. BREBES",
+    "lat": -7.05,
+    "lon": 108.9
+  },
+  {
+    "id": "db8e1af0cb3aca1ae2d0018624204529",
+    "lokasi": "KAB. BULELENG",
+    "lat": -8.25,
+    "lon": 114.96667
+  },
+  {
+    "id": "bca82e41ee7b0833588399b1fcd177c7",
+    "lokasi": "KAB. BULUKUMBA",
+    "lat": -5.41667,
+    "lon": 120.23333
+  },
+  {
+    "id": "5ef698cd9fe650923ea331c15af3b160",
+    "lokasi": "KAB. BULUNGAN",
+    "lat": 3,
+    "lon": 117.16667
+  },
+  {
+    "id": "26657d5ff9020d2abefe558796b99584",
+    "lokasi": "KAB. BUNGO",
+    "lat": -1.50222,
+    "lon": 101.96
+  },
+  {
+    "id": "e0c641195b27425bb056ac56f8953d24",
+    "lokasi": "KAB. BUOL",
+    "lat": 0.75,
+    "lon": 120.75
+  },
+  {
+    "id": "9431c87f273e507e6040fcb07dcb4509",
+    "lokasi": "KAB. BURU",
+    "lat": -3.32767,
+    "lon": 126.68413
+  },
+  {
+    "id": "49ae49a23f67c759bf4fc791ba842aa2",
+    "lokasi": "KAB. BURU SELATAN",
+    "lat": -3.52187,
+    "lon": 126.59271
+  },
+  {
+    "id": "69cb3ea317a32c4e6143e665fdb20b14",
+    "lokasi": "KAB. BUTON",
+    "lat": -5.31667,
+    "lon": 122.58333
+  },
+  {
+    "id": "bbf94b34eb32268ada57a3be5062fe7d",
+    "lokasi": "KAB. BUTON SELATAN",
+    "lat": -5.56667,
+    "lon": 122.7
+  },
+  {
+    "id": "4f4adcbf8c6f66dcfc8a3282ac2bf10a",
+    "lokasi": "KAB. BUTON TENGAH",
+    "lat": -5.31667,
+    "lon": 122.33333
+  },
+  {
+    "id": "bbcbff5c1f1ded46c25d28119a85c6c2",
+    "lokasi": "KAB. BUTON UTARA",
+    "lat": -5.01457,
+    "lon": 122.93015
+  },
+  {
+    "id": "5878a7ab84fb43402106c575658472fa",
+    "lokasi": "KAB. CIAMIS",
+    "lat": -7.28333,
+    "lon": 108.41667
+  },
+  {
+    "id": "006f52e9102a8d3be2fe5614f42ba989",
+    "lokasi": "KAB. CIANJUR",
+    "lat": -6.7725,
+    "lon": 107.08306
+  },
+  {
+    "id": "854d6fae5ee42911677c739ee1734486",
+    "lokasi": "KAB. CILACAP",
+    "lat": -7.57417,
+    "lon": 108.98861
+  },
+  {
+    "id": "3636638817772e42b59d74cff571fbb3",
+    "lokasi": "KAB. CIREBON",
+    "lat": -6.8,
+    "lon": 108.56667
+  },
+  {
+    "id": "4e732ced3463d06de0ca9a15b6153677",
+    "lokasi": "KAB. DAIRI",
+    "lat": 2.86667,
+    "lon": 98.23333
+  },
+  {
+    "id": "598b3e71ec378bd83e0a727608b5db01",
+    "lokasi": "KAB. DEIYAI",
+    "lat": -3.94737,
+    "lon": 135.95032
+  },
+  {
+    "id": "02e74f10e0327ad868d138f2b4fdd6f0",
+    "lokasi": "KAB. DELI SERDANG",
+    "lat": 3.41667,
+    "lon": 98.66667
+  },
+  {
+    "id": "e2c0be24560d78c5e599c2a9c9d0bbd2",
+    "lokasi": "KAB. DEMAK",
+    "lat": -6.8993,
+    "lon": 110.6122
+  },
+  {
+    "id": "66f041e16a60928b05a7e228a89c3799",
+    "lokasi": "KAB. DHARMASRAYA",
+    "lat": -1.05,
+    "lon": 101.367
+  },
+  {
+    "id": "74071a673307ca7459bcf75fbd024e09",
+    "lokasi": "KAB. DOGIYAI",
+    "lat": -4.03186,
+    "lon": 135.43945
+  },
+  {
+    "id": "46ba9f2a6976570b0353203ec4474217",
+    "lokasi": "KAB. DOMPU",
+    "lat": -8.5094,
+    "lon": 118.4816
+  },
+  {
+    "id": "f85454e8279be180185cac7d243c5eb3",
+    "lokasi": "KAB. DONGGALA",
+    "lat": -0.58333,
+    "lon": 119.85
+  },
+  {
+    "id": "eb160de1de89d9058fcb0b968dbbbd68",
+    "lokasi": "KAB. EMPAT LAWANG",
+    "lat": 3.22667,
+    "lon": 99.09256
+  },
+  {
+    "id": "49182f81e6a13cf5eaa496d51fea6406",
+    "lokasi": "KAB. ENDE",
+    "lat": -8.84056,
+    "lon": 121.66389
+  },
+  {
+    "id": "00ec53c4682d36f5c4359f4ae7bd7ba1",
+    "lokasi": "KAB. ENREKANG",
+    "lat": -3.5,
+    "lon": 119.86667
+  },
+  {
+    "id": "b5b41fac0361d157d9673ecb926af5ae",
+    "lokasi": "KAB. FAKFAK",
+    "lat": -2.92641,
+    "lon": 132.29608
+  },
+  {
+    "id": "d296c101daa88a51f6ca8cfc1ac79b50",
+    "lokasi": "KAB. FLORES TIMUR",
+    "lat": -8.24224,
+    "lon": 122.96817
+  },
+  {
+    "id": "149e9677a5989fd342ae44213df68868",
+    "lokasi": "KAB. GARUT",
+    "lat": -7.38333,
+    "lon": 107.76667
+  },
+  {
+    "id": "aab3238922bcc25a6f606eb525ffdc56",
+    "lokasi": "KAB. GAYO LUES",
+    "lat": 3.95,
+    "lon": 97.39
+  },
+  {
+    "id": "20f07591c6fcb220ffe637cda29bb3f6",
+    "lokasi": "KAB. GIANYAR",
+    "lat": -8.46667,
+    "lon": 115.28333
+  },
+  {
+    "id": "ffd52f3c7e12435a724a8f30fddadd9c",
+    "lokasi": "KAB. GORONTALO",
+    "lat": 0.5728,
+    "lon": 122.2337
+  },
+  {
+    "id": "ad972f10e0800b49d76fed33a21f6698",
+    "lokasi": "KAB. GORONTALO UTARA",
+    "lat": 0.77,
+    "lon": 122.31667
+  },
+  {
+    "id": "4f6ffe13a5d75b2d6a3923922b3922e5",
+    "lokasi": "KAB. GOWA",
+    "lat": -5.31667,
+    "lon": 119.75
+  },
+  {
+    "id": "f340f1b1f65b6df5b5e3f94d95b11daf",
+    "lokasi": "KAB. GRESIK",
+    "lat": -7.1933,
+    "lon": 112.553
+  },
+  {
+    "id": "274ad4786c3abca69fa097b85867d9a4",
+    "lokasi": "KAB. GROBOGAN",
+    "lat": -7.11667,
+    "lon": 110.91667
+  },
+  {
+    "id": "d81f9c1be2e08964bf9f24b15f0e4900",
+    "lokasi": "KAB. GUNUNG MAS",
+    "lat": -0.95,
+    "lon": 113.5
+  },
+  {
+    "id": "be83ab3ecd0db773eb2dc1b0a17836a1",
+    "lokasi": "KAB. GUNUNGKIDUL",
+    "lat": -7.98333,
+    "lon": 110.61667
+  },
+  {
+    "id": "428fca9bc1921c25c5121f9da7815cde",
+    "lokasi": "KAB. HALMAHERA BARAT",
+    "lat": 1.41709,
+    "lon": 127.55264
+  },
+  {
+    "id": "e836d813fd184325132fca8edcdfb40e",
+    "lokasi": "KAB. HALMAHERA SELATAN",
+    "lat": -0.3955,
+    "lon": 127.90833
+  },
+  {
+    "id": "f1b6f2857fb6d44dd73c7041e0aa0f19",
+    "lokasi": "KAB. HALMAHERA TENGAH",
+    "lat": 0.48056,
+    "lon": 128.25
+  },
+  {
+    "id": "877a9ba7a98f75b90a9d49f53f15a858",
+    "lokasi": "KAB. HALMAHERA TIMUR",
+    "lat": 1.33517,
+    "lon": 128.48627
+  },
+  {
+    "id": "68ce199ec2c5517597ce0a4d89620f55",
+    "lokasi": "KAB. HALMAHERA UTARA",
+    "lat": 1.73194,
+    "lon": 128.00778
+  },
+  {
+    "id": "c042f4db68f23406c6cecf84a7ebb0fe",
+    "lokasi": "KAB. HULU SUNGAI SELATAN",
+    "lat": -2.75,
+    "lon": 115.2
+  },
+  {
+    "id": "310dcbbf4cce62f762a2aaa148d556bd",
+    "lokasi": "KAB. HULU SUNGAI TENGAH",
+    "lat": -2.61667,
+    "lon": 115.41667
+  },
+  {
+    "id": "2f2b265625d76a6704b08093c652fd79",
+    "lokasi": "KAB. HULU SUNGAI UTARA",
+    "lat": -2.45,
+    "lon": 115.13333
+  },
+  {
+    "id": "33e75ff09dd601bbe69f351039152189",
+    "lokasi": "KAB. HUMBANG HASUNDUTAN",
+    "lat": 2.26551,
+    "lon": 98.50376
+  },
+  {
+    "id": "28dd2c7955ce926456240b2ff0100bde",
+    "lokasi": "KAB. INDRAGIRI HILIR",
+    "lat": -0.33333,
+    "lon": 103.16667
+  },
+  {
+    "id": "35f4a8d465e6e1edc05f3d8ab658c551",
+    "lokasi": "KAB. INDRAGIRI HULU",
+    "lat": -0.55,
+    "lon": 102.31667
+  },
+  {
+    "id": "a4a042cf4fd6bfb47701cbc8a1653ada",
+    "lokasi": "KAB. INDRAMAYU",
+    "lat": -6.45,
+    "lon": 108.16667
+  },
+  {
+    "id": "cfee398643cbc3dc5eefc89334cacdc1",
+    "lokasi": "KAB. INTAN JAYA",
+    "lat": -3.41016,
+    "lon": 136.70837
+  },
+  {
+    "id": "d18f655c3fce66ca401d5f38b48c89af",
+    "lokasi": "KAB. JAYAPURA",
+    "lat": -3,
+    "lon": 139.95
+  },
+  {
+    "id": "6ea2ef7311b482724a9b7b0bc0dd85c6",
+    "lokasi": "KAB. JAYAWIJAYA",
+    "lat": -4.08333,
+    "lon": 139.08333
+  },
+  {
+    "id": "e4a6222cdb5b34375400904f03d8e6a5",
+    "lokasi": "KAB. JEMBER",
+    "lat": -8.25,
+    "lon": 113.65
+  },
+  {
+    "id": "07cdfd23373b17c6b337251c22b7ea57",
+    "lokasi": "KAB. JEMBRANA",
+    "lat": -8.3,
+    "lon": 114.66667
+  },
+  {
+    "id": "beed13602b9b0e6ecb5b568ff5058f07",
+    "lokasi": "KAB. JENEPONTO",
+    "lat": -5.63333,
+    "lon": 119.73333
+  },
+  {
+    "id": "eae27d77ca20db309e056e3d2dcd7d69",
+    "lokasi": "KAB. JEPARA",
+    "lat": -6.58333,
+    "lon": 110.76667
+  },
+  {
+    "id": "cb70ab375662576bd1ac5aaf16b3fca4",
+    "lokasi": "KAB. JOMBANG",
+    "lat": -7.55,
+    "lon": 112.25
+  },
+  {
+    "id": "285e19f20beded7d215102b49d5c09a0",
+    "lokasi": "KAB. KAIMANA",
+    "lat": -3.66093,
+    "lon": 133.77451
+  },
+  {
+    "id": "d1fe173d08e959397adf34b1d77e88d7",
+    "lokasi": "KAB. KAMPAR",
+    "lat": 0.2344,
+    "lon": 101.2131
+  },
+  {
+    "id": "13f9896df61279c928f19721878fac41",
+    "lokasi": "KAB. KAPUAS",
+    "lat": -2.01667,
+    "lon": 114.38333
+  },
+  {
+    "id": "3fe94a002317b5f9259f82690aeea4cd",
+    "lokasi": "KAB. KAPUAS HULU",
+    "lat": 0.81667,
+    "lon": 112.76667
+  },
+  {
+    "id": "7eabe3a1649ffa2b3ff8c02ebfd5659f",
+    "lokasi": "KAB. KARANGANYAR",
+    "lat": -7.62806,
+    "lon": 111.0625
+  },
+  {
+    "id": "d395771085aab05244a4fb8fd91bf4ee",
+    "lokasi": "KAB. KARANGASEM",
+    "lat": -8.3891,
+    "lon": 115.5393
+  },
+  {
+    "id": "1ff8a7b5dc7a7d1f0ed65aaa29c04b1e",
+    "lokasi": "KAB. KARAWANG",
+    "lat": -6.26667,
+    "lon": 107.41667
+  },
+  {
+    "id": "7647966b7343c29048673252e490f736",
+    "lokasi": "KAB. KARIMUN",
+    "lat": 0.80764,
+    "lon": 103.41911
+  },
+  {
+    "id": "6ea9ab1baa0efb9e19094440c317e21b",
+    "lokasi": "KAB. KARO",
+    "lat": 3.11667,
+    "lon": 98.3
+  },
+  {
+    "id": "c5ff2543b53f4cc0ad3819a36752467b",
+    "lokasi": "KAB. KATINGAN",
+    "lat": -2.06667,
+    "lon": 113.4
+  },
+  {
+    "id": "2723d092b63885e0d7c260cc007e8b9d",
+    "lokasi": "KAB. KAUR",
+    "lat": -4.78179,
+    "lon": 103.36109
+  },
+  {
+    "id": "5b8add2a5d98b1a652ea7fd72d942dac",
+    "lokasi": "KAB. KAYONG UTARA",
+    "lat": -1.43711,
+    "lon": 110.79781
+  },
+  {
+    "id": "69adc1e107f7f7d035d7baf04342e1ca",
+    "lokasi": "KAB. KEBUMEN",
+    "lat": -7.63917,
+    "lon": 109.66056
+  },
+  {
+    "id": "9188905e74c28e489b44e954ec0b9bca",
+    "lokasi": "KAB. KEDIRI",
+    "lat": -7.83333,
+    "lon": 112.16667
+  },
+  {
+    "id": "9461cce28ebe3e76fb4b931c35a169b0",
+    "lokasi": "KAB. KEEROM",
+    "lat": -3.3,
+    "lon": 140.61667
+  },
+  {
+    "id": "091d584fced301b442654dd8c23b3fc9",
+    "lokasi": "KAB. KENDAL",
+    "lat": -7.0256,
+    "lon": 110.1685
+  },
+  {
+    "id": "5f93f983524def3dca464469d2cf9f3e",
+    "lokasi": "KAB. KEPAHIANG",
+    "lat": -3.60194,
+    "lon": 102.56424
+  },
+  {
+    "id": "8613985ec49eb8f757ae6439e879bb2a",
+    "lokasi": "KAB. KEPULAUAN ANAMBAS",
+    "lat": 3,
+    "lon": 106
+  },
+  {
+    "id": "e44fea3bec53bcea3b7513ccef5857ac",
+    "lokasi": "KAB. KEPULAUAN ARU",
+    "lat": -6.17059,
+    "lon": 134.46991
+  },
+  {
+    "id": "093f65e080a295f8076b1c5722a46aa2",
+    "lokasi": "KAB. KEPULAUAN MENTAWAI",
+    "lat": 1.98917,
+    "lon": 99.51889
+  },
+  {
+    "id": "f033ab37c30201f73f142449d037028d",
+    "lokasi": "KAB. KEPULAUAN MERANTI",
+    "lat": 0.97488,
+    "lon": 102.69539
+  },
+  {
+    "id": "ddb30680a691d157187ee1cf9e896d03",
+    "lokasi": "KAB. KEPULAUAN SANGIHE",
+    "lat": 3.5,
+    "lon": 125.55
+  },
+  {
+    "id": "0584ce565c824b7b7f50282d9a19945b",
+    "lokasi": "KAB. KEPULAUAN SELAYAR",
+    "lat": -6.81667,
+    "lon": 120.8
+  },
+  {
+    "id": "cfecdb276f634854f3ef915e2e980c31",
+    "lokasi": "KAB. KEPULAUAN SERIBU",
+    "lat": -5.5985,
+    "lon": 106.55271
+  },
+  {
+    "id": "2421fcb1263b9530df88f7f002e78ea5",
+    "lokasi": "KAB. KEPULAUAN SIAU TAGULANDANG BIARO",
+    "lat": 2.35,
+    "lon": 125.42
+  },
+  {
+    "id": "ab817c9349cf9c4f6877e1894a1faa00",
+    "lokasi": "KAB. KEPULAUAN SULA",
+    "lat": -1.8646,
+    "lon": 125.69046
+  },
+  {
+    "id": "fccb60fb512d13df5083790d64c4d5dd",
+    "lokasi": "KAB. KEPULAUAN TALAUD",
+    "lat": 4.31178,
+    "lon": 126.78085
+  },
+  {
+    "id": "f770b62bc8f42a0b66751fe636fc6eb0",
+    "lokasi": "KAB. KEPULAUAN YAPEN",
+    "lat": -1.78773,
+    "lon": 136.27716
+  },
+  {
+    "id": "e2ef524fbf3d9fe611d5a8e90fefdc9c",
+    "lokasi": "KAB. KERINCI",
+    "lat": -2.03333,
+    "lon": 101.53333
+  },
+  {
+    "id": "432aca3a1e345e339f35a30c8f65edce",
+    "lokasi": "KAB. KETAPANG",
+    "lat": -1.58333,
+    "lon": 110.5
+  },
+  {
+    "id": "b1d10e7bafa4421218a51b1e1f1b0ba2",
+    "lokasi": "KAB. KLATEN",
+    "lat": -7.68333,
+    "lon": 110.61667
+  },
+  {
+    "id": "92c8c96e4c37100777c7190b76d28233",
+    "lokasi": "KAB. KLUNGKUNG",
+    "lat": -8.55,
+    "lon": 115.4
+  },
+  {
+    "id": "8cb22bdd0b7ba1ab13d742e22eed8da2",
+    "lokasi": "KAB. KOLAKA",
+    "lat": -4.08333,
+    "lon": 121.66667
+  },
+  {
+    "id": "f4f6dce2f3a0f9dada0c2b5b66452017",
+    "lokasi": "KAB. KOLAKA TIMUR",
+    "lat": -4.01807,
+    "lon": 121.86172
+  },
+  {
+    "id": "0d0fd7c6e093f7b804fa0150b875b868",
+    "lokasi": "KAB. KOLAKA UTARA",
+    "lat": -3.10452,
+    "lon": 121.12427
+  },
+  {
+    "id": "a96b65a721e561e1e3de768ac819ffbb",
+    "lokasi": "KAB. KONAWE",
+    "lat": -3.91717,
+    "lon": 122.08823
+  },
+  {
+    "id": "1068c6e4c8051cfd4e9ea8072e3189e2",
+    "lokasi": "KAB. KONAWE KEPULAUAN",
+    "lat": -4.11656,
+    "lon": 123.10181
+  },
+  {
+    "id": "17d63b1625c816c22647a73e1482372b",
+    "lokasi": "KAB. KONAWE SELATAN",
+    "lat": -4.19191,
+    "lon": 122.44854
+  },
+  {
+    "id": "b9228e0962a78b84f3d5d92f4faa000b",
+    "lokasi": "KAB. KONAWE UTARA",
+    "lat": -3.41552,
+    "lon": 121.99081
+  },
+  {
+    "id": "f9b902fc3289af4dd08de5d1de54f68f",
+    "lokasi": "KAB. KOTABARU",
+    "lat": -3,
+    "lon": 116
+  },
+  {
+    "id": "01386bd6d8e091c2ab4c7c7de644d37b",
+    "lokasi": "KAB. KOTAWARINGIN BARAT",
+    "lat": -2.4,
+    "lon": 111.73333
+  },
+  {
+    "id": "0bb4aec1710521c12ee76289d9440817",
+    "lokasi": "KAB. KOTAWARINGIN TIMUR",
+    "lat": -2.08333,
+    "lon": 112.75
+  },
+  {
+    "id": "43ec517d68b6edd3015b3edc9a11367b",
+    "lokasi": "KAB. KUANTAN SINGINGI",
+    "lat": -0.47532,
+    "lon": 101.45857
+  },
+  {
+    "id": "8d3bba7425e7c98c50f52ca1b52d3735",
+    "lokasi": "KAB. KUBU RAYA",
+    "lat": 0.01637,
+    "lon": 109.33731
+  },
+  {
+    "id": "6f3ef77ac0e3619e98159e9b6febf557",
+    "lokasi": "KAB. KUDUS",
+    "lat": -6.8,
+    "lon": 110.86667
+  },
+  {
+    "id": "e165421110ba03099a1c0393373c5b43",
+    "lokasi": "KAB. KULON PROGO",
+    "lat": -7.645,
+    "lon": 110.02694
+  },
+  {
+    "id": "f7e6c85504ce6e82442c770f7c8606f0",
+    "lokasi": "KAB. KUNINGAN",
+    "lat": -7,
+    "lon": 108.55
+  },
+  {
+    "id": "9fd81843ad7f202f26c1a174c7357585",
+    "lokasi": "KAB. KUPANG",
+    "lat": -9.91667,
+    "lon": 123.83333
+  },
+  {
+    "id": "fb7b9ffa5462084c5f4e7e85a093e6d7",
+    "lokasi": "KAB. KUTAI BARAT",
+    "lat": -0.59417,
+    "lon": 115.51575
+  },
+  {
+    "id": "aa942ab2bfa6ebda4840e7360ce6e7ef",
+    "lokasi": "KAB. KUTAI KARTANEGARA",
+    "lat": -0.44019,
+    "lon": 116.98139
+  },
+  {
+    "id": "c058f544c737782deacefa532d9add4c",
+    "lokasi": "KAB. KUTAI TIMUR",
+    "lat": 1.03769,
+    "lon": 117.83112
+  },
+  {
+    "id": "34173cb38f07f89ddbebc2ac9128303f",
+    "lokasi": "KAB. LABUHANBATU",
+    "lat": 2.26667,
+    "lon": 100.1
+  },
+  {
+    "id": "c16a5320fa475530d9583c34fd356ef5",
+    "lokasi": "KAB. LABUHANBATU SELATAN",
+    "lat": 1.983,
+    "lon": 100.0976
+  },
+  {
+    "id": "6364d3f0f495b6ab9dcf8d3b5c6e0b01",
+    "lokasi": "KAB. LABUHANBATU UTARA",
+    "lat": 2.33349,
+    "lon": 99.63776
+  },
+  {
+    "id": "5ef059938ba799aaa845e1c2e8a762bd",
+    "lokasi": "KAB. LAHAT",
+    "lat": -3.7864,
+    "lon": 103.5428
+  },
+  {
+    "id": "9de6d14fff9806d4bcd1ef555be766cd",
+    "lokasi": "KAB. LAMANDAU",
+    "lat": -1.83828,
+    "lon": 111.2869
+  },
+  {
+    "id": "0266e33d3f546cb5436a10798e657d97",
+    "lokasi": "KAB. LAMONGAN",
+    "lat": -7.13333,
+    "lon": 112.31667
+  },
+  {
+    "id": "903ce9225fca3e988c2af215d4e544d3",
+    "lokasi": "KAB. LAMPUNG BARAT",
+    "lat": -5.14904,
+    "lon": 104.19309
+  },
+  {
+    "id": "a8baa56554f96369ab93e4f3bb068c22",
+    "lokasi": "KAB. LAMPUNG SELATAN",
+    "lat": -5.4531,
+    "lon": 104.9877
+  },
+  {
+    "id": "1385974ed5904a438616ff7bdb3f7439",
+    "lokasi": "KAB. LAMPUNG TENGAH",
+    "lat": -4.86667,
+    "lon": 105.26667
+  },
+  {
+    "id": "0a09c8844ba8f0936c20bd791130d6b6",
+    "lokasi": "KAB. LAMPUNG TIMUR",
+    "lat": -5.10273,
+    "lon": 105.68003
+  },
+  {
+    "id": "0f28b5d49b3020afeecd95b4009adf4c",
+    "lokasi": "KAB. LAMPUNG UTARA",
+    "lat": -4.81667,
+    "lon": 104.8
+  },
+  {
+    "id": "320722549d1751cf3f247855f937b982",
+    "lokasi": "KAB. LANDAK",
+    "lat": 0.42373,
+    "lon": 109.75917
+  },
+  {
+    "id": "182be0c5cdcd5072bb1864cdee4d3d6e",
+    "lokasi": "KAB. LANGKAT",
+    "lat": 3.71667,
+    "lon": 98.21667
+  },
+  {
+    "id": "e1e32e235eee1f970470a3a6658dfdd5",
+    "lokasi": "KAB. LANNY JAYA",
+    "lat": -3.91244,
+    "lon": 138.28766
+  },
+  {
+    "id": "2a79ea27c279e471f4d180b08d62b00a",
+    "lokasi": "KAB. LEBAK",
+    "lat": -6.65,
+    "lon": 106.21667
+  },
+  {
+    "id": "698d51a19d8a121ce581499d7b701668",
+    "lokasi": "KAB. LEBONG",
+    "lat": -3.24278,
+    "lon": 102.3349
+  },
+  {
+    "id": "26e359e83860db1d11b6acca57d8ea88",
+    "lokasi": "KAB. LEMBATA",
+    "lat": -8.41396,
+    "lon": 123.55225
+  },
+  {
+    "id": "072b030ba126b2f4b2374f342be9ed44",
+    "lokasi": "KAB. LIMA PULUH KOTA",
+    "lat": -0.0168,
+    "lon": 100.5872
+  },
+  {
+    "id": "54229abfcfa5649e7003b83dd4755294",
+    "lokasi": "KAB. LINGGA",
+    "lat": 0.2,
+    "lon": 104.61667
+  },
+  {
+    "id": "0e01938fc48a2cfb5f2217fbfb00722d",
+    "lokasi": "KAB. LOMBOK BARAT",
+    "lat": -8.69583,
+    "lon": 116.11667
+  },
+  {
+    "id": "16a5cdae362b8d27a1d8f8c7b78b4330",
+    "lokasi": "KAB. LOMBOK TENGAH",
+    "lat": -8.7,
+    "lon": 116.3
+  },
+  {
+    "id": "918317b57931b6b7a7d29490fe5ec9f9",
+    "lokasi": "KAB. LOMBOK TIMUR",
+    "lat": -8.53333,
+    "lon": 116.53333
+  },
+  {
+    "id": "48aedb8880cab8c45637abc7493ecddd",
+    "lokasi": "KAB. LOMBOK UTARA",
+    "lat": -8.35214,
+    "lon": 116.40152
+  },
+  {
+    "id": "38db3aed920cf82ab059bfccbd02be6a",
+    "lokasi": "KAB. LUMAJANG",
+    "lat": -8.11667,
+    "lon": 113.15
+  },
+  {
+    "id": "dc912a253d1e9ba40e2c597ed2376640",
+    "lokasi": "KAB. LUWU",
+    "lat": -2.5577,
+    "lon": 121.3242
+  },
+  {
+    "id": "39461a19e9eddfb385ea76b26521ea48",
+    "lokasi": "KAB. LUWU TIMUR",
+    "lat": -2.50957,
+    "lon": 120.3978
+  },
+  {
+    "id": "8efb100a295c0c690931222ff4467bb8",
+    "lokasi": "KAB. LUWU UTARA",
+    "lat": -2.6,
+    "lon": 120.25
+  },
+  {
+    "id": "3cec07e9ba5f5bb252d13f5f431e4bbb",
+    "lokasi": "KAB. MADIUN",
+    "lat": -7.61667,
+    "lon": 111.65
+  },
+  {
+    "id": "eb163727917cbba1eea208541a643e74",
+    "lokasi": "KAB. MAGELANG",
+    "lat": -7.4275,
+    "lon": 110.16194
+  },
+  {
+    "id": "621bf66ddb7c962aa0d22ac97d69b793",
+    "lokasi": "KAB. MAGETAN",
+    "lat": -7.64472,
+    "lon": 111.35917
+  },
+  {
+    "id": "e7b24b112a44fdd9ee93bdf998c6ca0e",
+    "lokasi": "KAB. MAHAKAM ULU",
+    "lat": 0.5,
+    "lon": 115.28
+  },
+  {
+    "id": "bf8229696f7a3bb4700cfddef19fa23f",
+    "lokasi": "KAB. MAJALENGKA",
+    "lat": -6.81667,
+    "lon": 108.28333
+  },
+  {
+    "id": "1a5b1e4daae265b790965a275b53ae50",
+    "lokasi": "KAB. MAJENE",
+    "lat": -3.15,
+    "lon": 118.86667
+  },
+  {
+    "id": "ef0d3930a7b6c95bd2b32ed45989c61f",
+    "lokasi": "KAB. MALAKA",
+    "lat": -9.5632,
+    "lon": 124.89481
+  },
+  {
+    "id": "077e29b11be80ab57e1a2ecabb7da330",
+    "lokasi": "KAB. MALANG",
+    "lat": -8.16667,
+    "lon": 112.66667
+  },
+  {
+    "id": "05049e90fa4f5039a8cadc6acbb4b2cc",
+    "lokasi": "KAB. MALINAU",
+    "lat": 2.45,
+    "lon": 115.68333
+  },
+  {
+    "id": "821fa74b50ba3f7cba1e6c53e8fa6845",
+    "lokasi": "KAB. MALUKU BARAT DAYA",
+    "lat": -7.8296,
+    "lon": 126.17386
+  },
+  {
+    "id": "250cf8b51c773f3f8dc8b4be867a9a02",
+    "lokasi": "KAB. MALUKU TENGAH",
+    "lat": -3.29167,
+    "lon": 128.9675
+  },
+  {
+    "id": "42998cf32d552343bc8e460416382dca",
+    "lokasi": "KAB. MALUKU TENGGARA",
+    "lat": -5.75,
+    "lon": 132.73334
+  },
+  {
+    "id": "d07e70efcfab08731a97e7b91be644de",
+    "lokasi": "KAB. MALUKU TENGGARA BARAT",
+    "lat": -7.61186,
+    "lon": 131.38
+  },
+  {
+    "id": "9a96876e2f8f3dc4f3cf45f02c61c0c1",
+    "lokasi": "KAB. MAMASA",
+    "lat": -2.96492,
+    "lon": 119.30631
+  },
+  {
+    "id": "eba0dc302bcd9a273f8bbb72be3a687b",
+    "lokasi": "KAB. MAMBERAMO RAYA",
+    "lat": -2.23561,
+    "lon": 137.78229
+  },
+  {
+    "id": "218a0aefd1d1a4be65601cc6ddc1520e",
+    "lokasi": "KAB. MAMBERAMO TENGAH",
+    "lat": -2.46064,
+    "lon": 138.45245
+  },
+  {
+    "id": "9b70e8fe62e40c570a322f1b0b659098",
+    "lokasi": "KAB. MAMUJU",
+    "lat": -2.5,
+    "lon": 119.41667
+  },
+  {
+    "id": "d61e4bbd6393c9111e6526ea173a7c8b",
+    "lokasi": "KAB. MAMUJU TENGAH",
+    "lat": -2.8212,
+    "lon": 119.2662
+  },
+  {
+    "id": "f5f8590cd58a54e94377e6ae2eded4d9",
+    "lokasi": "KAB. MAMUJU UTARA",
+    "lat": -1.51639,
+    "lon": 119.42139
+  },
+  {
+    "id": "e369853df766fa44e1ed0ff613f563bd",
+    "lokasi": "KAB. MANDAILING NATAL",
+    "lat": 0.78378,
+    "lon": 99.25495
+  },
+  {
+    "id": "94f6d7e04a4d452035300f18b984988c",
+    "lokasi": "KAB. MANGGARAI",
+    "lat": -8.56667,
+    "lon": 120.41667
+  },
+  {
+    "id": "34ed066df378efacc9b924ec161e7639",
+    "lokasi": "KAB. MANGGARAI BARAT",
+    "lat": -8.64484,
+    "lon": 119.88281
+  },
+  {
+    "id": "577bcc914f9e55d5e4e4f82f9f00e7d4",
+    "lokasi": "KAB. MANGGARAI TIMUR",
+    "lat": -8.55533,
+    "lon": 120.59761
+  },
+  {
+    "id": "b337e84de8752b27eda3a12363109e80",
+    "lokasi": "KAB. MANOKWARI",
+    "lat": -0.9,
+    "lon": 133.75
+  },
+  {
+    "id": "e8c0653fea13f91bf3c48159f7c24f78",
+    "lokasi": "KAB. MANOKWARI SELATAN",
+    "lat": -1.0798,
+    "lon": 133.96729
+  },
+  {
+    "id": "7d04bbbe5494ae9d2f5a76aa1c00fa2f",
+    "lokasi": "KAB. MAPPI",
+    "lat": -6.49971,
+    "lon": 139.34441
+  },
+  {
+    "id": "d9fc5b73a8d78fad3d6dffe419384e70",
+    "lokasi": "KAB. MAROS",
+    "lat": -5.05,
+    "lon": 119.71667
+  },
+  {
+    "id": "ff4d5fbbafdf976cfdc032e3bde78de5",
+    "lokasi": "KAB. MAYBRAT",
+    "lat": -1.2155,
+    "lon": 132.35092
+  },
+  {
+    "id": "caf1a3dfb505ffed0d024130f58c5cfa",
+    "lokasi": "KAB. MELAWI",
+    "lat": -0.33617,
+    "lon": 111.698
+  },
+  {
+    "id": "5737c6ec2e0716f3d8a7a5c4e0de0d9a",
+    "lokasi": "KAB. MEMPAWAH",
+    "lat": 0.25,
+    "lon": 109.16667
+  },
+  {
+    "id": "ed3d2c21991e3bef5e069713af9fa6ca",
+    "lokasi": "KAB. MERANGIN",
+    "lat": -2.06933,
+    "lon": 102.13303
+  },
+  {
+    "id": "a516a87cfcaef229b342c437fe2b95f7",
+    "lokasi": "KAB. MERAUKE",
+    "lat": -7.66667,
+    "lon": 139.66667
+  },
+  {
+    "id": "2b24d495052a8ce66358eb576b8912c8",
+    "lokasi": "KAB. MESUJI",
+    "lat": -4.0439,
+    "lon": 105.4013
+  },
+  {
+    "id": "c3c59e5f8b3e9753913f4d435b53c308",
+    "lokasi": "KAB. MIMIKA",
+    "lat": -4.54357,
+    "lon": 136.56555
+  },
+  {
+    "id": "1651cf0d2f737d7adeab84d339dbabd3",
+    "lokasi": "KAB. MINAHASA",
+    "lat": 1.2537,
+    "lon": 124.83
+  },
+  {
+    "id": "eed5af6add95a9a6f1252739b1ad8c24",
+    "lokasi": "KAB. MINAHASA SELATAN",
+    "lat": 1.21291,
+    "lon": 124.59708
+  },
+  {
+    "id": "a8abb4bb284b5b27aa7cb790dc20f80b",
+    "lokasi": "KAB. MINAHASA TENGGARA",
+    "lat": 1.05633,
+    "lon": 124.7925
+  },
+  {
+    "id": "15d4e891d784977cacbfcbb00c48f133",
+    "lokasi": "KAB. MINAHASA UTARA",
+    "lat": 1.4025,
+    "lon": 124.96
+  },
+  {
+    "id": "6c9882bbac1c7093bd25041881277658",
+    "lokasi": "KAB. MOJOKERTO",
+    "lat": -7.55,
+    "lon": 112.5
+  },
+  {
+    "id": "faa9afea49ef2ff029a833cccc778fd0",
+    "lokasi": "KAB. MOROWALI",
+    "lat": -1.89342,
+    "lon": 121.25473
+  },
+  {
+    "id": "3c7781a36bcd6cf08c11a970fbe0e2a6",
+    "lokasi": "KAB. MOROWALI UTARA",
+    "lat": -1.7207,
+    "lon": 121.24649
+  },
+  {
+    "id": "07e1cd7dca89a1678042477183b7ac3f",
+    "lokasi": "KAB. MUARA ENIM",
+    "lat": -4.2327,
+    "lon": 103.6141
+  },
+  {
+    "id": "ac627ab1ccbdb62ec96e702f07f6425b",
+    "lokasi": "KAB. MUARO JAMBI",
+    "lat": -1.55214,
+    "lon": 103.82163
+  },
+  {
+    "id": "7f6ffaa6bb0b408017b62254211691b5",
+    "lokasi": "KAB. MUKOMUKO",
+    "lat": -3.07438,
+    "lon": 101.54766
+  },
+  {
+    "id": "0deb1c54814305ca9ad266f53bc82511",
+    "lokasi": "KAB. MUNA",
+    "lat": -4.96667,
+    "lon": 122.66667
+  },
+  {
+    "id": "66808e327dc79d135ba18e051673d906",
+    "lokasi": "KAB. MUNA BARAT",
+    "lat": -4.83333,
+    "lon": 122.48333
+  },
+  {
+    "id": "efe937780e95574250dabe07151bdc23",
+    "lokasi": "KAB. MURUNG RAYA",
+    "lat": -0.01667,
+    "lon": 114.26667
+  },
+  {
+    "id": "da4fb5c6e93e74d3df8527599fa62642",
+    "lokasi": "KAB. MUSI BANYUASIN",
+    "lat": -2.41667,
+    "lon": 103.75
+  },
+  {
+    "id": "4c56ff4ce4aaf9573aa5dff913df997a",
+    "lokasi": "KAB. MUSI RAWAS",
+    "lat": -3.08333,
+    "lon": 103.2
+  },
+  {
+    "id": "a0a080f42e6f13b3a2df133f073095dd",
+    "lokasi": "KAB. MUSI RAWAS UTARA",
+    "lat": -2.48533,
+    "lon": 103.29346
+  },
+  {
+    "id": "854d9fca60b4bd07f9bb215d59ef5561",
+    "lokasi": "KAB. NABIRE",
+    "lat": -3.54016,
+    "lon": 135.55511
+  },
+  {
+    "id": "9bf31c7ff062936a96d3c8bd1f8f2ff3",
+    "lokasi": "KAB. NAGAN RAYA",
+    "lat": 4.16667,
+    "lon": 96.51667
+  },
+  {
+    "id": "37bc2f75bf1bcfe8450a1a41c200364c",
+    "lokasi": "KAB. NAGEKEO",
+    "lat": -8.8721,
+    "lon": 121.20963
+  },
+  {
+    "id": "92cc227532d17e56e07902b254dfad10",
+    "lokasi": "KAB. NATUNA",
+    "lat": 4.71417,
+    "lon": 107.97639
+  },
+  {
+    "id": "c410003ef13d451727aeff9082c29a5c",
+    "lokasi": "KAB. NDUGA",
+    "lat": -4.45093,
+    "lon": 138.10089
+  },
+  {
+    "id": "11b9842e0a271ff252c1903e7132cd68",
+    "lokasi": "KAB. NGADA",
+    "lat": -8.66667,
+    "lon": 121
+  },
+  {
+    "id": "19f3cd308f1455b3fa09a282e0d496f4",
+    "lokasi": "KAB. NGANJUK",
+    "lat": -7.6,
+    "lon": 111.93333
+  },
+  {
+    "id": "03c6b06952c750899bb03d998e631860",
+    "lokasi": "KAB. NGAWI",
+    "lat": -7.47444,
+    "lon": 111.33444
+  },
+  {
+    "id": "1c383cd30b7c298ab50293adfecb7b18",
+    "lokasi": "KAB. NIAS",
+    "lat": 1.03333,
+    "lon": 97.76667
+  },
+  {
+    "id": "19ca14e7ea6328a42e0eb13d585e4c22",
+    "lokasi": "KAB. NIAS BARAT",
+    "lat": 1.05966,
+    "lon": 97.58606
+  },
+  {
+    "id": "a5bfc9e07964f8dddeb95fc584cd965d",
+    "lokasi": "KAB. NIAS SELATAN",
+    "lat": 0.77,
+    "lon": 97.75
+  },
+  {
+    "id": "a5771bce93e200c36f7cd9dfd0e5deaa",
+    "lokasi": "KAB. NIAS UTARA",
+    "lat": 1.33037,
+    "lon": 97.31964
+  },
+  {
+    "id": "cf004fdc76fa1a4f25f62e0eb5261ca3",
+    "lokasi": "KAB. NUNUKAN",
+    "lat": 4.13333,
+    "lon": 116.7
+  },
+  {
+    "id": "202cb962ac59075b964b07152d234b70",
+    "lokasi": "KAB. OGAN ILIR",
+    "lat": -3.43186,
+    "lon": 104.62727
+  },
+  {
+    "id": "c8ffe9a587b126f152ed3d89a146b445",
+    "lokasi": "KAB. OGAN KOMERING ILIR",
+    "lat": -3.36667,
+    "lon": 105.36667
+  },
+  {
+    "id": "3def184ad8f4755ff269862ea77393dd",
+    "lokasi": "KAB. OGAN KOMERING ULU",
+    "lat": -4.13333,
+    "lon": 104.03333
+  },
+  {
+    "id": "069059b7ef840f0c74a814ec9237b6ec",
+    "lokasi": "KAB. OGAN KOMERING ULU SELATAN",
+    "lat": -4.65728,
+    "lon": 104.00659
+  },
+  {
+    "id": "ec5decca5ed3d6b8079e2e7e7bacc9f2",
+    "lokasi": "KAB. OGAN KOMERING ULU TIMUR",
+    "lat": -3.85679,
+    "lon": 104.75209
+  },
+  {
+    "id": "c24cd76e1ce41366a4bbe8a49b02a028",
+    "lokasi": "KAB. PACITAN",
+    "lat": -8.13333,
+    "lon": 111.16667
+  },
+  {
+    "id": "d67d8ab4f4c10bf22aa353e27879133c",
+    "lokasi": "KAB. PADANG LAWAS",
+    "lat": 1.44684,
+    "lon": 99.99207
+  },
+  {
+    "id": "d645920e395fedad7bbbed0eca3fe2e0",
+    "lokasi": "KAB. PADANG LAWAS UTARA",
+    "lat": 1.46011,
+    "lon": 99.67346
+  },
+  {
+    "id": "7f39f8317fbdb1988ef4c628eba02591",
+    "lokasi": "KAB. PADANG PARIAMAN",
+    "lat": -0.6,
+    "lon": 100.28333
+  },
+  {
+    "id": "f61d6947467ccd3aa5af24db320235dd",
+    "lokasi": "KAB. PAHUWATO",
+    "lat": 0.7098,
+    "lon": 121.59582
+  },
+  {
+    "id": "3416a75f4cea9109507cacd8e2f2aefc",
+    "lokasi": "KAB. PAKPAK BHARAT",
+    "lat": 2.56667,
+    "lon": 98.28333
+  },
+  {
+    "id": "c52f1bd66cc19d05628bd8bf27af3ad6",
+    "lokasi": "KAB. PAMEKASAN",
+    "lat": -7.06667,
+    "lon": 113.5
+  },
+  {
+    "id": "1c9ac0159c94d8d0cbedc973445af2da",
+    "lokasi": "KAB. PANDEGLANG",
+    "lat": -6.63333,
+    "lon": 105.75
+  },
+  {
+    "id": "82161242827b703e6acf9c726942a1e4",
+    "lokasi": "KAB. PANGANDARAN",
+    "lat": -7.6673,
+    "lon": 108.64037
+  },
+  {
+    "id": "c86a7ee3d8ef0b551ed58e354a836f2b",
+    "lokasi": "KAB. PANGKAJENE DAN KEPULAUAN",
+    "lat": -4.7827,
+    "lon": 119.5506
+  },
+  {
+    "id": "559cb990c9dffd8675f6bc2186971dc2",
+    "lokasi": "KAB. PANIAI",
+    "lat": -3.9,
+    "lon": 136.60001
+  },
+  {
+    "id": "25b2822c2f5a3230abfadd476e8b04c9",
+    "lokasi": "KAB. PARIGI MOUTONG",
+    "lat": 0.3368,
+    "lon": 120.17841
+  },
+  {
+    "id": "44f683a84163b3523afe57c2e008bc8c",
+    "lokasi": "KAB. PASAMAN",
+    "lat": 0.42503,
+    "lon": 99.94606
+  },
+  {
+    "id": "03afdbd66e7929b125f8597834fa83a4",
+    "lokasi": "KAB. PASAMAN BARAT",
+    "lat": 0.28152,
+    "lon": 99.51965
+  },
+  {
+    "id": "52720e003547c70561bf5e03b95aa99f",
+    "lokasi": "KAB. PASER",
+    "lat": -1.43517,
+    "lon": 116.23535
+  },
+  {
+    "id": "fe131d7f5a6b38b23cc967316c13dae2",
+    "lokasi": "KAB. PASURUAN",
+    "lat": -7.73333,
+    "lon": 112.83333
+  },
+  {
+    "id": "1534b76d325a8f591b52d302e7181331",
+    "lokasi": "KAB. PATI",
+    "lat": -6.76667,
+    "lon": 111.1
+  },
+  {
+    "id": "2d6cc4b2d139a53512fb8cbb3086ae2e",
+    "lokasi": "KAB. PEGUNUNGAN ARFAK",
+    "lat": -0.93523,
+    "lon": 133.89587
+  },
+  {
+    "id": "55a7cf9c71f1c9c495413f934dd1a158",
+    "lokasi": "KAB. PEGUNUNGAN BINTANG",
+    "lat": -4.52167,
+    "lon": 140.29541
+  },
+  {
+    "id": "979d472a84804b9f647bc185a877a8b5",
+    "lokasi": "KAB. PEKALONGAN",
+    "lat": -7.0319,
+    "lon": 109.624
+  },
+  {
+    "id": "9778d5d219c5080b9a6a17bef029331c",
+    "lokasi": "KAB. PELALAWAN",
+    "lat": 0.20822,
+    "lon": 102.18607
+  },
+  {
+    "id": "ca46c1b9512a7a8315fa3c5a946e8265",
+    "lokasi": "KAB. PEMALANG",
+    "lat": -7.03333,
+    "lon": 109.4
+  },
+  {
+    "id": "c3e878e27f52e2a57ace4d9a76fd9acf",
+    "lokasi": "KAB. PENAJAM PASER UTARA",
+    "lat": -1.25,
+    "lon": 116.83333
+  },
+  {
+    "id": "76dc611d6ebaafc66cc0879c71b5db5c",
+    "lokasi": "KAB. PENUKAL ABAB LEMATANG ILIR",
+    "lat": -3.21342,
+    "lon": 104.08722
+  },
+  {
+    "id": "a5e00132373a7031000fd987a3c9f87b",
+    "lokasi": "KAB. PESAWARAN",
+    "lat": -5.4298,
+    "lon": 105.17899
+  },
+  {
+    "id": "8d5e957f297893487bd98fa830fa6413",
+    "lokasi": "KAB. PESISIR BARAT",
+    "lat": -5.19323,
+    "lon": 103.93976
+  },
+  {
+    "id": "ea5d2f1c4608232e07d3aa3d998e5135",
+    "lokasi": "KAB. PESISIR SELATAN",
+    "lat": -1.58333,
+    "lon": 100.85
+  },
+  {
+    "id": "c74d97b01eae257e44aa9d5bade97baf",
+    "lokasi": "KAB. PIDIE",
+    "lat": 5.08,
+    "lon": 96.11
+  },
+  {
+    "id": "70efdf2ec9b086079795c442636b55fb",
+    "lokasi": "KAB. PIDIE JAYA",
+    "lat": 5.15,
+    "lon": 96.21667
+  },
+  {
+    "id": "a01a0380ca3c61428c26a231f0e49a09",
+    "lokasi": "KAB. PINRANG",
+    "lat": -3.61667,
+    "lon": 119.6
+  },
+  {
+    "id": "941e1aaaba585b952b62c14a3a175a61",
+    "lokasi": "KAB. POLEWALI MANDAR",
+    "lat": -3.3,
+    "lon": 119.16667
+  },
+  {
+    "id": "f718499c1c8cef6730f9fd03c8125cab",
+    "lokasi": "KAB. PONOROGO",
+    "lat": -7.93333,
+    "lon": 111.5
+  },
+  {
+    "id": "6ecbdd6ec859d284dc13885a37ce8d81",
+    "lokasi": "KAB. POSO",
+    "lat": -1.65,
+    "lon": 120.5
+  },
+  {
+    "id": "47d1e990583c9c67424d369f3414728e",
+    "lokasi": "KAB. PRINGSEWU",
+    "lat": -5.42211,
+    "lon": 104.93454
+  },
+  {
+    "id": "d96409bf894217686ba124d7356686c9",
+    "lokasi": "KAB. PROBOLINGGO",
+    "lat": -7.86667,
+    "lon": 113.31667
+  },
+  {
+    "id": "371bce7dc83817b7893bcdeed13799b5",
+    "lokasi": "KAB. PULANG PISAU",
+    "lat": -3.11858,
+    "lon": 113.8623
+  },
+  {
+    "id": "dc6a6489640ca02b0d42dabeb8e46bb7",
+    "lokasi": "KAB. PULAU MOROTAI",
+    "lat": 2.19924,
+    "lon": 128.40546
+  },
+  {
+    "id": "26337353b7962f533d78c762373b3318",
+    "lokasi": "KAB. PULAU TALIABU",
+    "lat": -1.84578,
+    "lon": 124.78992
+  },
+  {
+    "id": "2f55707d4193dc27118a0f19a1985716",
+    "lokasi": "KAB. PUNCAK",
+    "lat": -4.14204,
+    "lon": 137.09702
+  },
+  {
+    "id": "1be3bc32e6564055d5ca3e5a354acbef",
+    "lokasi": "KAB. PUNCAK JAYA",
+    "lat": -3.67241,
+    "lon": 137.43896
+  },
+  {
+    "id": "3b8a614226a953a8cd9526fca6fe9ba5",
+    "lokasi": "KAB. PURBALINGGA",
+    "lat": -7.28417,
+    "lon": 109.35028
+  },
+  {
+    "id": "38af86134b65d0f10fe33d30dd76442e",
+    "lokasi": "KAB. PURWAKARTA",
+    "lat": -6.58333,
+    "lon": 107.45
+  },
+  {
+    "id": "45fbc6d3e05ebd93369ce542e8f2322d",
+    "lokasi": "KAB. PURWOREJO",
+    "lat": -7.7,
+    "lon": 109.96667
+  },
+  {
+    "id": "389bc7bb1e1c2a5e7e147703232a88f6",
+    "lokasi": "KAB. RAJA AMPAT",
+    "lat": -0.5,
+    "lon": 130
+  },
+  {
+    "id": "73278a4a86960eeb576a8fd4c9ec6997",
+    "lokasi": "KAB. REJANG LEBONG",
+    "lat": -3.43333,
+    "lon": 102.71667
+  },
+  {
+    "id": "63dc7ed1010d3c3b8269faf0ba7491d4",
+    "lokasi": "KAB. REMBANG",
+    "lat": -6.78333,
+    "lon": 111.46667
+  },
+  {
+    "id": "fe9fc289c3ff0af142b6d3bead98a923",
+    "lokasi": "KAB. ROKAN HILIR",
+    "lat": 2.16599,
+    "lon": 100.82514
+  },
+  {
+    "id": "68d30a9594728bc39aa24be94b319d21",
+    "lokasi": "KAB. ROKAN HULU",
+    "lat": 0.88333,
+    "lon": 100.48333
+  },
+  {
+    "id": "496e05e1aea0a9c4655800e8a7b9ea28",
+    "lokasi": "KAB. ROTE NDAO",
+    "lat": -10.73617,
+    "lon": 123.12054
+  },
+  {
+    "id": "b2eb7349035754953b57a32e2841bda5",
+    "lokasi": "KAB. SABU RAIJUA",
+    "lat": -10.56286,
+    "lon": 121.78894
+  },
+  {
+    "id": "bc6dc48b743dc5d013b1abaebd2faed2",
+    "lokasi": "KAB. SAMBAS",
+    "lat": 1.41667,
+    "lon": 109.33333
+  },
+  {
+    "id": "a1d0c6e83f027327d8461063f4ac58a6",
+    "lokasi": "KAB. SAMOSIR",
+    "lat": 2.64025,
+    "lon": 98.71525
+  },
+  {
+    "id": "502e4a16930e414107ee22b6198c578f",
+    "lokasi": "KAB. SAMPANG",
+    "lat": -7.05,
+    "lon": 113.25
+  },
+  {
+    "id": "f2fc990265c712c49d51a18a32b39f0c",
+    "lokasi": "KAB. SANGGAU",
+    "lat": 0.25472,
+    "lon": 110.45
+  },
+  {
+    "id": "35051070e572e47d2c26c241ab88307f",
+    "lokasi": "KAB. SARMI",
+    "lat": -2.41667,
+    "lon": 139.08333
+  },
+  {
+    "id": "f899139df5e1059396431415e770c6dd",
+    "lokasi": "KAB. SAROLANGUN",
+    "lat": -2.3,
+    "lon": 102.65
+  },
+  {
+    "id": "89f0fd5c927d466d6ec9a21b9ac34ffa",
+    "lokasi": "KAB. SEKADAU",
+    "lat": 0.03485,
+    "lon": 110.95066
+  },
+  {
+    "id": "5fd0b37cd7dbbb00f97ba6ce92bf5add",
+    "lokasi": "KAB. SELUMA",
+    "lat": -3.96644,
+    "lon": 102.47429
+  },
+  {
+    "id": "e96ed478dab8595a7dbda4cbcbee168f",
+    "lokasi": "KAB. SEMARANG",
+    "lat": -7.20667,
+    "lon": 110.44139
+  },
+  {
+    "id": "7fe1f8abaad094e0b5cb1b01d712f708",
+    "lokasi": "KAB. SERAM BAGIAN BARAT",
+    "lat": -3.1027,
+    "lon": 128.42996
+  },
+  {
+    "id": "98b297950041a42470269d56260243a1",
+    "lokasi": "KAB. SERAM BAGIAN TIMUR",
+    "lat": -3.39851,
+    "lon": 130.39166
+  },
+  {
+    "id": "6c4b761a28b734fe93831e3fb400ce87",
+    "lokasi": "KAB. SERANG",
+    "lat": -6.15,
+    "lon": 106
+  },
+  {
+    "id": "17e62166fc8586dfa4d1bc0e1742c08b",
+    "lokasi": "KAB. SERDANG BEDAGAI",
+    "lat": 3.36667,
+    "lon": 99.03333
+  },
+  {
+    "id": "8dd48d6a2e2cad213179a3992c0be53c",
+    "lokasi": "KAB. SERUYAN",
+    "lat": -2.33333,
+    "lon": 112.25
+  },
+  {
+    "id": "3ef815416f775098fe977004015c6193",
+    "lokasi": "KAB. SIAK",
+    "lat": 0.97453,
+    "lon": 102.01355
+  },
+  {
+    "id": "5a4b25aaed25c2ee1b74de72dc03c14e",
+    "lokasi": "KAB. SIDENRENG RAPPANG",
+    "lat": -3.85,
+    "lon": 119.96667
+  },
+  {
+    "id": "cfa0860e83a4c3a763a7e62d825349f7",
+    "lokasi": "KAB. SIDOARJO",
+    "lat": -7.45,
+    "lon": 112.7
+  },
+  {
+    "id": "18997733ec258a9fcaf239cc55d53363",
+    "lokasi": "KAB. SIGI",
+    "lat": -1.385,
+    "lon": 119.96694
+  },
+  {
+    "id": "fc490ca45c00b1249bbe3554a4fdf6fb",
+    "lokasi": "KAB. SIJUNJUNG",
+    "lat": -1.1827,
+    "lon": 101.6056
+  },
+  {
+    "id": "8e98d81f8217304975ccb23337bb5761",
+    "lokasi": "KAB. SIKKA",
+    "lat": -8.66667,
+    "lon": 122.36667
+  },
+  {
+    "id": "f7177163c833dff4b38fc8d2872f1ec6",
+    "lokasi": "KAB. SIMALUNGUN",
+    "lat": 2.9,
+    "lon": 99
+  },
+  {
+    "id": "6f4922f45568161a8cdf4ad2299f6d23",
+    "lokasi": "KAB. SIMEULUE",
+    "lat": 2.61667,
+    "lon": 96.08333
+  },
+  {
+    "id": "f73b76ce8949fe29bf2a537cfa420e8f",
+    "lokasi": "KAB. SINJAI",
+    "lat": -5.21667,
+    "lon": 120.15
+  },
+  {
+    "id": "a666587afda6e89aec274a3657558a27",
+    "lokasi": "KAB. SINTANG",
+    "lat": -0.08333,
+    "lon": 112.08333
+  },
+  {
+    "id": "a4f23670e1833f3fdb077ca70bbd5d66",
+    "lokasi": "KAB. SITUBONDO",
+    "lat": -7.71667,
+    "lon": 114.05
+  },
+  {
+    "id": "289dff07669d7a23de0ef88d2f7129e7",
+    "lokasi": "KAB. SLEMAN",
+    "lat": -7.68167,
+    "lon": 110.32333
+  },
+  {
+    "id": "3295c76acbf4caaed33c36b1b5fc2cb1",
+    "lokasi": "KAB. SOLOK",
+    "lat": -0.96667,
+    "lon": 100.81667
+  },
+  {
+    "id": "735b90b4568125ed6c3f678819b6e058",
+    "lokasi": "KAB. SOLOK SELATAN",
+    "lat": -1.23333,
+    "lon": 101.417
+  },
+  {
+    "id": "70c639df5e30bdee440e4cdf599fec2b",
+    "lokasi": "KAB. SOPPENG",
+    "lat": -4.3842,
+    "lon": 119.89
+  },
+  {
+    "id": "e2230b853516e7b05d79744fbd4c9c13",
+    "lokasi": "KAB. SORONG",
+    "lat": -1.16667,
+    "lon": 131.5
+  },
+  {
+    "id": "087408522c31eeb1f982bc0eaf81d35f",
+    "lokasi": "KAB. SORONG SELATAN",
+    "lat": -1.50495,
+    "lon": 132.28638
+  },
+  {
+    "id": "c0e190d8267e36708f955d7ab048990d",
+    "lokasi": "KAB. SRAGEN",
+    "lat": -7.41278,
+    "lon": 110.935
+  },
+  {
+    "id": "96da2f590cd7246bbde0051047b0d6f7",
+    "lokasi": "KAB. SUBANG",
+    "lat": -6.50833,
+    "lon": 107.7025
+  },
+  {
+    "id": "8f85517967795eeef66c225f7883bdcb",
+    "lokasi": "KAB. SUKABUMI",
+    "lat": -7.06667,
+    "lon": 106.7
+  },
+  {
+    "id": "138bb0696595b338afbab333c555292a",
+    "lokasi": "KAB. SUKAMARA",
+    "lat": -2.62675,
+    "lon": 111.23681
+  },
+  {
+    "id": "ec8ce6abb3e952a85b8551ba726a1227",
+    "lokasi": "KAB. SUKOHARJO",
+    "lat": -7.68333,
+    "lon": 110.83333
+  },
+  {
+    "id": "a8c88a0055f636e4a163a5e3d16adab7",
+    "lokasi": "KAB. SUMBA BARAT",
+    "lat": -9.56667,
+    "lon": 119.45
+  },
+  {
+    "id": "eddea82ad2755b24c4e168c5fc2ebd40",
+    "lokasi": "KAB. SUMBA BARAT DAYA",
+    "lat": -9.56216,
+    "lon": 119.08905
+  },
+  {
+    "id": "06eb61b839a0cefee4967c67ccb099dc",
+    "lokasi": "KAB. SUMBA TENGAH",
+    "lat": -9.62941,
+    "lon": 119.61914
+  },
+  {
+    "id": "9dfcd5e558dfa04aaf37f137a1d9d3e5",
+    "lokasi": "KAB. SUMBA TIMUR",
+    "lat": -9.88333,
+    "lon": 120.25
+  },
+  {
+    "id": "839ab46820b524afda05122893c2fe8e",
+    "lokasi": "KAB. SUMBAWA",
+    "lat": -8.7439,
+    "lon": 117.3324
+  },
+  {
+    "id": "f90f2aca5c640289d0a29417bcb63a37",
+    "lokasi": "KAB. SUMBAWA BARAT",
+    "lat": -8.75159,
+    "lon": 116.92132
+  },
+  {
+    "id": "8f53295a73878494e9bc8dd6c3c7104f",
+    "lokasi": "KAB. SUMEDANG",
+    "lat": -6.81667,
+    "lon": 107.98333
+  },
+  {
+    "id": "b1a59b315fc9a3002ce38bbe070ec3f5",
+    "lokasi": "KAB. SUMENEP",
+    "lat": -7.11667,
+    "lon": 114.33333
+  },
+  {
+    "id": "b534ba68236ba543ae44b22bd110a1d6",
+    "lokasi": "KAB. SUPIORI",
+    "lat": -0.73881,
+    "lon": 135.61111
+  },
+  {
+    "id": "6855456e2fe46a9d49d3d3af4f57443d",
+    "lokasi": "KAB. TABALONG",
+    "lat": -1.88333,
+    "lon": 115.5
+  },
+  {
+    "id": "e3796ae838835da0b6f6ea37bcf8bcb7",
+    "lokasi": "KAB. TABANAN",
+    "lat": -8.43333,
+    "lon": 115.06667
+  },
+  {
+    "id": "28f0b864598a1291557bed248a998d4e",
+    "lokasi": "KAB. TAKALAR",
+    "lat": -5.41667,
+    "lon": 119.51667
+  },
+  {
+    "id": "a760880003e7ddedfef56acb3b09697f",
+    "lokasi": "KAB. TAMBRAUW",
+    "lat": -0.60515,
+    "lon": 132.48962
+  },
+  {
+    "id": "0c74b7f78409a4022a2c4c5a5ca3ee19",
+    "lokasi": "KAB. TANA TIDUNG",
+    "lat": 3.55,
+    "lon": 117.25
+  },
+  {
+    "id": "1543843a4723ed2ab08e18053ae6dc5b",
+    "lokasi": "KAB. TANA TORAJA",
+    "lat": -3.0024,
+    "lon": 119.79655
+  },
+  {
+    "id": "357a6fdf7642bf815a88822c447d9dc4",
+    "lokasi": "KAB. TANAH BUMBU",
+    "lat": -3.45413,
+    "lon": 115.70372
+  },
+  {
+    "id": "a3f390d88e4c41f2747bfa2f1b5f87db",
+    "lokasi": "KAB. TANAH DATAR",
+    "lat": -0.4555,
+    "lon": 100.5771
+  },
+  {
+    "id": "819f46e52c25763a55cc642422644317",
+    "lokasi": "KAB. TANAH LAUT",
+    "lat": -3.88333,
+    "lon": 114.86667
+  },
+  {
+    "id": "06409663226af2f3114485aa4e0a23b4",
+    "lokasi": "KAB. TANGERANG",
+    "lat": -6.2,
+    "lon": 106.46667
+  },
+  {
+    "id": "a8f15eda80c50adb0e71943adc8015cf",
+    "lokasi": "KAB. TANGGAMUS",
+    "lat": -5.38508,
+    "lon": 104.62349
+  },
+  {
+    "id": "38b3eff8baf56627478ec76a704e9b52",
+    "lokasi": "KAB. TANJUNG JABUNG BARAT",
+    "lat": -1.1544,
+    "lon": 103.24402
+  },
+  {
+    "id": "ec8956637a99787bd197eacd77acce5e",
+    "lokasi": "KAB. TANJUNG JABUNG TIMUR",
+    "lat": -1.13198,
+    "lon": 103.61755
+  },
+  {
+    "id": "6c8349cc7260ae62e3b1396831a8398f",
+    "lokasi": "KAB. TAPANULI SELATAN",
+    "lat": 1.51667,
+    "lon": 99.25
+  },
+  {
+    "id": "d9d4f495e875a2e075a1a4a6e1b9770f",
+    "lokasi": "KAB. TAPANULI TENGAH",
+    "lat": 1.9,
+    "lon": 98.66667
+  },
+  {
+    "id": "67c6a1e7ce56d3d6fa748ab6d9af3fd7",
+    "lokasi": "KAB. TAPANULI UTARA",
+    "lat": 2.0028,
+    "lon": 99.0707
+  },
+  {
+    "id": "04025959b191f8f9de3f924f0940515f",
+    "lokasi": "KAB. TAPIN",
+    "lat": -2.91667,
+    "lon": 115.03333
+  },
+  {
+    "id": "045117b0e0a11a242b9765e79cbf113f",
+    "lokasi": "KAB. TASIKMALAYA",
+    "lat": -7.5,
+    "lon": 108.13333
+  },
+  {
+    "id": "6974ce5ac660610b44d9b9fed0ff9548",
+    "lokasi": "KAB. TEBO",
+    "lat": -1.45576,
+    "lon": 102.37473
+  },
+  {
+    "id": "060ad92489947d410d897474079c1477",
+    "lokasi": "KAB. TEGAL",
+    "lat": -7.03333,
+    "lon": 109.16667
+  },
+  {
+    "id": "10a7cdd970fe135cf4f7bb55c0e3b59f",
+    "lokasi": "KAB. TELUK BINTUNI",
+    "lat": -1.88037,
+    "lon": 133.33105
+  },
+  {
+    "id": "3dc4876f3f08201c7c76cb71fa1da439",
+    "lokasi": "KAB. TELUK WONDAMA",
+    "lat": -2.7,
+    "lon": 134.5
+  },
+  {
+    "id": "bcbe3365e6ac95ea2c0343a2395834dd",
+    "lokasi": "KAB. TEMANGGUNG",
+    "lat": -7.25,
+    "lon": 110.11667
+  },
+  {
+    "id": "950a4152c2b4aa3ad78bdd6b366cc179",
+    "lokasi": "KAB. TIMOR TENGAH SELATAN",
+    "lat": -9.83333,
+    "lon": 124.4
+  },
+  {
+    "id": "158f3069a435b314a80bdcb024f8e422",
+    "lokasi": "KAB. TIMOR TENGAH UTARA",
+    "lat": -9.33136,
+    "lon": 124.51904
+  },
+  {
+    "id": "642e92efb79421734881b53e1e1b18b6",
+    "lokasi": "KAB. TOBA SAMOSIR",
+    "lat": 2.39793,
+    "lon": 99.21678
+  },
+  {
+    "id": "8d7d8ee069cb0cbbf816bbb65d56947e",
+    "lokasi": "KAB. TOJO UNA-UNA",
+    "lat": -1.2036,
+    "lon": 121.48201
+  },
+  {
+    "id": "75fc093c0ee742f6dddaa13fff98f104",
+    "lokasi": "KAB. TOLI-TOLI",
+    "lat": 1.30862,
+    "lon": 120.88643
+  },
+  {
+    "id": "7380ad8a673226ae47fce7bff88e9c33",
+    "lokasi": "KAB. TOLIKARA",
+    "lat": -3.42661,
+    "lon": 137.41699
+  },
+  {
+    "id": "f8c1f23d6a8d8d7904fc0ea8e066b3bb",
+    "lokasi": "KAB. TORAJA UTARA",
+    "lat": -2.92738,
+    "lon": 119.79218
+  },
+  {
+    "id": "36660e59856b4de58a219bcf4e27eba3",
+    "lokasi": "KAB. TRENGGALEK",
+    "lat": -8.16667,
+    "lon": 111.61667
+  },
+  {
+    "id": "8c19f571e251e61cb8dd3612f26d5ecf",
+    "lokasi": "KAB. TUBAN",
+    "lat": -6.96667,
+    "lon": 111.9
+  },
+  {
+    "id": "f2217062e9a397a1dca429e7d70bc6ca",
+    "lokasi": "KAB. TULANG BAWANG",
+    "lat": -4.20604,
+    "lon": 105.57999
+  },
+  {
+    "id": "7ef605fc8dba5425d6965fbd4c8fbe1f",
+    "lokasi": "KAB. TULANG BAWANG BARAT",
+    "lat": -4.43975,
+    "lon": 105.0444
+  },
+  {
+    "id": "d6baf65e0b240ce177cf70da146c8dc8",
+    "lokasi": "KAB. TULUNGAGUNG",
+    "lat": -8.11667,
+    "lon": 111.91667
+  },
+  {
+    "id": "e46de7e1bcaaced9a54f1e9d0d2f800d",
+    "lokasi": "KAB. WAJO",
+    "lat": -4,
+    "lon": 120.16667
+  },
+  {
+    "id": "42e7aaa88b48137a16a1acd04ed91125",
+    "lokasi": "KAB. WAKATOBI",
+    "lat": -5.31934,
+    "lon": 123.5948
+  },
+  {
+    "id": "05f971b5ec196b8c65b75d2ef8267331",
+    "lokasi": "KAB. WAROPEN",
+    "lat": -2.286,
+    "lon": 137.01837
+  },
+  {
+    "id": "37a749d808e46495a8da1e5352d03cae",
+    "lokasi": "KAB. WAY KANAN",
+    "lat": -4.44705,
+    "lon": 104.52753
+  },
+  {
+    "id": "115f89503138416a242f40fb7d7f338e",
+    "lokasi": "KAB. WONOGIRI",
+    "lat": -7.91667,
+    "lon": 111
+  },
+  {
+    "id": "13fe9d84310e77f13a6d184dbf1232f3",
+    "lokasi": "KAB. WONOSOBO",
+    "lat": -7.36139,
+    "lon": 109.92667
+  },
+  {
+    "id": "3cf166c6b73f030b4f67eeaeba301103",
+    "lokasi": "KAB. YAHUKIMO",
+    "lat": -4.60403,
+    "lon": 139.58405
+  },
+  {
+    "id": "cee631121c2ec9232f3a2f028ad5c89b",
+    "lokasi": "KAB. YALIMO",
+    "lat": -3.86037,
+    "lon": 138.47305
+  },
+  {
+    "id": "2b8a61594b1f4c4db0902a8a395ced93",
+    "lokasi": "KAB. YAPEN WAROPEN",
+    "lat": -1.8785,
+    "lon": 136.2393
+  },
+  {
+    "id": "0353ab4cbed5beae847a7ff6e220b5cf",
+    "lokasi": "KOTA AMBON",
+    "lat": -3.7,
+    "lon": 128.18333
+  },
+  {
+    "id": "00411460f7c92d2124a67ea0f4cb5f85",
+    "lokasi": "KOTA BALIKPAPAN",
+    "lat": -1.16667,
+    "lon": 116.88333
+  },
+  {
+    "id": "1f0e3dad99908345f7439f8ffabdffc4",
+    "lokasi": "KOTA BANDA ACEH",
+    "lat": 5.54167,
+    "lon": 95.33333
+  },
+  {
+    "id": "b3e3e393c77e35a4a3f3cbd1e429b5dc",
+    "lokasi": "KOTA BANDAR LAMPUNG",
+    "lat": -5.41667,
+    "lon": 105.25
+  },
+  {
+    "id": "fc221309746013ac554571fbd180e1c8",
+    "lokasi": "KOTA BANDUNG",
+    "lat": -6.9175,
+    "lon": 107.62444
+  },
+  {
+    "id": "4c5bde74a8f110656874902f07378009",
+    "lokasi": "KOTA BANJAR",
+    "lat": -7.36996,
+    "lon": 108.53209
+  },
+  {
+    "id": "40008b9a5380fcacce3976bf7c08af5b",
+    "lokasi": "KOTA BANJARBARU",
+    "lat": -3.41667,
+    "lon": 114.83333
+  },
+  {
+    "id": "3dd48ab31d016ffcbf3314df2b3cb9ce",
+    "lokasi": "KOTA BANJARMASIN",
+    "lat": -3.32444,
+    "lon": 114.59102
+  },
+  {
+    "id": "98dce83da57b0395e163467c9dae521b",
+    "lokasi": "KOTA BATAM",
+    "lat": 1.05211,
+    "lon": 104.02851
+  },
+  {
+    "id": "e56954b4f6347e897f954495eab16a88",
+    "lokasi": "KOTA BATU",
+    "lat": -7.83272,
+    "lon": 112.53751
+  },
+  {
+    "id": "8fe0093bb30d6f8c31474bd0764e6ac0",
+    "lokasi": "KOTA BAU-BAU",
+    "lat": -5.477,
+    "lon": 122.6166
+  },
+  {
+    "id": "cedebb6e872f539bef8c3f919874e9d7",
+    "lokasi": "KOTA BEKASI",
+    "lat": -6.28333,
+    "lon": 106.98333
+  },
+  {
+    "id": "2b44928ae11fb9384c4cf38708677c48",
+    "lokasi": "KOTA BENGKULU",
+    "lat": -3.81667,
+    "lon": 102.31667
+  },
+  {
+    "id": "9c838d2e45b2ad1094d42f4ef36764f6",
+    "lokasi": "KOTA BIMA",
+    "lat": -8.46728,
+    "lon": 118.75259
+  },
+  {
+    "id": "f457c545a9ded88f18ecee47145a72c0",
+    "lokasi": "KOTA BINJAI",
+    "lat": 3.8,
+    "lon": 108.23333
+  },
+  {
+    "id": "c203d8a151612acf12457e4d67635a95",
+    "lokasi": "KOTA BITUNG",
+    "lat": 1.48333,
+    "lon": 125.15
+  },
+  {
+    "id": "f7664060cc52bc6f3d620bcedc94a4b6",
+    "lokasi": "KOTA BLITAR",
+    "lat": -8.1,
+    "lon": 112.16667
+  },
+  {
+    "id": "6cdd60ea0045eb7a6ec44c54d29ed402",
+    "lokasi": "KOTA BOGOR",
+    "lat": -6.59167,
+    "lon": 106.8
+  },
+  {
+    "id": "bac9162b47c56fc8a4d2a519803d51b3",
+    "lokasi": "KOTA BONTANG",
+    "lat": 0.12526,
+    "lon": 117.49603
+  },
+  {
+    "id": "14bfa6bb14875e45bba028a21ed38046",
+    "lokasi": "KOTA BUKITTINGGI",
+    "lat": -0.275,
+    "lon": 100.375
+  },
+  {
+    "id": "140f6969d5213fd0ece03148e62e461e",
+    "lokasi": "KOTA CILEGON",
+    "lat": -6.01667,
+    "lon": 106.01667
+  },
+  {
+    "id": "eecca5b6365d9607ee5a9d336962c534",
+    "lokasi": "KOTA CIMAHI",
+    "lat": -6.89167,
+    "lon": 107.55
+  },
+  {
+    "id": "9872ed9fc22fc182d371c3e9ed316094",
+    "lokasi": "KOTA CIREBON",
+    "lat": -6.75,
+    "lon": 108.55
+  },
+  {
+    "id": "6a9aeddfc689c1d0e3b9ccc3ab651bc5",
+    "lokasi": "KOTA DENPASAR",
+    "lat": -8.66667,
+    "lon": 115.21663
+  },
+  {
+    "id": "31fefc0e570cb3860f2a6d4b38c6490d",
+    "lokasi": "KOTA DEPOK",
+    "lat": -6.4,
+    "lon": 106.81667
+  },
+  {
+    "id": "93db85ed909c13838ff95ccfa94cebd9",
+    "lokasi": "KOTA DUMAI",
+    "lat": 1.61592,
+    "lon": 101.4917
+  },
+  {
+    "id": "142949df56ea8ae0be8b5306971900a4",
+    "lokasi": "KOTA GORONTALO",
+    "lat": 0.53333,
+    "lon": 123.1
+  },
+  {
+    "id": "c0c7c76d30bd3dcaefc96f40275bdc0a",
+    "lokasi": "KOTA GUNUNGSITOLI",
+    "lat": 1.32731,
+    "lon": 97.55018
+  },
+  {
+    "id": "58a2fc6ed39fd083f55d4182bf88826d",
+    "lokasi": "KOTA JAKARTA",
+    "lat": -6.20876,
+    "lon": 106.8456
+  },
+  {
+    "id": "c9e1074f5b3f9fc8ea15d152add07294",
+    "lokasi": "KOTA JAMBI",
+    "lat": -1.61667,
+    "lon": 103.65
+  },
+  {
+    "id": "5b69b9cb83065d403869739ae7f0995e",
+    "lokasi": "KOTA JAYAPURA",
+    "lat": -2.64647,
+    "lon": 140.77779
+  },
+  {
+    "id": "eda80a3d5b344bc40f3bc04f65b7a357",
+    "lokasi": "KOTA KEDIRI",
+    "lat": -7.83333,
+    "lon": 112.01667
+  },
+  {
+    "id": "41ae36ecb9b3eee609d05b90c14222fb",
+    "lokasi": "KOTA KENDARI",
+    "lat": -3.98333,
+    "lon": 122.5
+  },
+  {
+    "id": "13f3cf8c531952d72e5847c4183e6910",
+    "lokasi": "KOTA KOTAMOBAGU",
+    "lat": 0.68915,
+    "lon": 124.32678
+  },
+  {
+    "id": "758874998f5bd0c393da094e1967a72b",
+    "lokasi": "KOTA KUPANG",
+    "lat": -10.21667,
+    "lon": 123.6
+  },
+  {
+    "id": "98f13708210194c475687be6106a3b84",
+    "lokasi": "KOTA LANGSA",
+    "lat": 4.47,
+    "lon": 97.93
+  },
+  {
+    "id": "3c59dc048e8850243be8079a5c74d079",
+    "lokasi": "KOTA LHOKSEUMAWE",
+    "lat": 5.13333,
+    "lon": 97.06667
+  },
+  {
+    "id": "d1f491a404d6854880943e5c3cd9ca25",
+    "lokasi": "KOTA LUBUKLINGGAU",
+    "lat": -3.29308,
+    "lon": 102.85503
+  },
+  {
+    "id": "8f121ce07d74717e0b1f21d122e04521",
+    "lokasi": "KOTA MADIUN",
+    "lat": -7.63333,
+    "lon": 111.53333
+  },
+  {
+    "id": "d1c38a09acc34845c6be3a127a5aacaf",
+    "lokasi": "KOTA MAGELANG",
+    "lat": -7.5,
+    "lon": 110.225
+  },
+  {
+    "id": "b7b16ecf8ca53723593894116071700c",
+    "lokasi": "KOTA MAKASSAR",
+    "lat": -5.15,
+    "lon": 119.45
+  },
+  {
+    "id": "06138bc5af6023646ede0e1f7c1eac75",
+    "lokasi": "KOTA MALANG",
+    "lat": -7.975,
+    "lon": 112.63333
+  },
+  {
+    "id": "550a141f12de6341fba65b0ad0433500",
+    "lokasi": "KOTA MANADO",
+    "lat": 1.51667,
+    "lon": 124.88333
+  },
+  {
+    "id": "1700002963a49da13542e0726b7bb758",
+    "lokasi": "KOTA MATARAM",
+    "lat": -8.5833,
+    "lon": 116.1167
+  },
+  {
+    "id": "2838023a778dfaecdc212708f721b788",
+    "lokasi": "KOTA MEDAN",
+    "lat": 3.65,
+    "lon": 98.66667
+  },
+  {
+    "id": "1d7f7abc18fcb43975065399b0d1e48e",
+    "lokasi": "KOTA METRO",
+    "lat": -5.11856,
+    "lon": 105.29949
+  },
+  {
+    "id": "39059724f73a9969845dfe4146c5660e",
+    "lokasi": "KOTA MOJOKERTO",
+    "lat": -7.46667,
+    "lon": 112.43333
+  },
+  {
+    "id": "7cbbc409ec990f19c78c75bd1e06f215",
+    "lokasi": "KOTA PADANG",
+    "lat": -0.98333,
+    "lon": 100.45
+  },
+  {
+    "id": "e2c420d928d4bf8ce0ff2ec19b371514",
+    "lokasi": "KOTA PADANGPANJANG",
+    "lat": -0.45,
+    "lon": 100.43333
+  },
+  {
+    "id": "9a1158154dfa42caddbd0694a4e9bdc8",
+    "lokasi": "KOTA PADANGSIDEMPUAN",
+    "lat": 1.37375,
+    "lon": 99.26843
+  },
+  {
+    "id": "9b8619251a19057cff70779273e95aa6",
+    "lokasi": "KOTA PAGAR ALAM",
+    "lat": -4.13055,
+    "lon": 103.26822
+  },
+  {
+    "id": "82cec96096d4281b7c95cd7e74623496",
+    "lokasi": "KOTA PALANGKARAYA",
+    "lat": -1.76979,
+    "lon": 113.73126
+  },
+  {
+    "id": "1afa34a7f984eeabdbb0a7d494132ee5",
+    "lokasi": "KOTA PALEMBANG",
+    "lat": -3,
+    "lon": 104.71667
+  },
+  {
+    "id": "352fe25daf686bdb4edca223c921acea",
+    "lokasi": "KOTA PALOPO",
+    "lat": -2.97841,
+    "lon": 120.11078
+  },
+  {
+    "id": "f74909ace68e51891440e4da0b65a70c",
+    "lokasi": "KOTA PALU",
+    "lat": -0.86972,
+    "lon": 119.9
+  },
+  {
+    "id": "e00da03b685a0dd18fb6a08af0923de0",
+    "lokasi": "KOTA PANGKAL PINANG",
+    "lat": -2.13333,
+    "lon": 106.13333
+  },
+  {
+    "id": "18d8042386b79e2c279fd162df0205c8",
+    "lokasi": "KOTA PAREPARE",
+    "lat": -4.03333,
+    "lon": 119.65
+  },
+  {
+    "id": "32bb90e8976aab5298d5da10fe66f21d",
+    "lokasi": "KOTA PARIAMAN",
+    "lat": -0.62682,
+    "lon": 100.12047
+  },
+  {
+    "id": "7f100b7b36092fb9b06dfb4fac360931",
+    "lokasi": "KOTA PASURUAN",
+    "lat": -7.65,
+    "lon": 112.9
+  },
+  {
+    "id": "d2ddea18f00665ce8623e36bd4e3c7c5",
+    "lokasi": "KOTA PAYAKUMBUH",
+    "lat": -0.23333,
+    "lon": 100.63333
+  },
+  {
+    "id": "9cfdf10e8fc047a44b08ed031e1f0ed1",
+    "lokasi": "KOTA PEKALONGAN",
+    "lat": -6.9,
+    "lon": 109.68333
+  },
+  {
+    "id": "c7e1249ffc03eb9ded908c236bd1996d",
+    "lokasi": "KOTA PEKANBARU",
+    "lat": 0.53333,
+    "lon": 101.46667
+  },
+  {
+    "id": "d82c8d1619ad8176d665453cfb2e55f0",
+    "lokasi": "KOTA PEMATANGSIANTAR",
+    "lat": 2.96667,
+    "lon": 99.05
+  },
+  {
+    "id": "b83aac23b9528732c23cc7352950e880",
+    "lokasi": "KOTA PONTIANAK",
+    "lat": -0.08333,
+    "lon": 109.36667
+  },
+  {
+    "id": "65ded5353c5ee48d0b7d48c591b8f430",
+    "lokasi": "KOTA PRABUMULIH",
+    "lat": -3.46202,
+    "lon": 104.2229
+  },
+  {
+    "id": "7a614fd06c325499f1680b9896beedeb",
+    "lokasi": "KOTA PROBOLINGGO",
+    "lat": -7.78333,
+    "lon": 113.21667
+  },
+  {
+    "id": "b6d767d2f8ed5d21a44b0e5886680cb9",
+    "lokasi": "KOTA SABANG",
+    "lat": 5.82164,
+    "lon": 95.31086
+  },
+  {
+    "id": "705f2172834666788607efbfca35afb3",
+    "lokasi": "KOTA SALATIGA",
+    "lat": -7.33278,
+    "lon": 110.48333
+  },
+  {
+    "id": "9be40cee5b0eee1462c82c6964087ff9",
+    "lokasi": "KOTA SAMARINDA",
+    "lat": -0.43333,
+    "lon": 117.18333
+  },
+  {
+    "id": "ad61ab143223efbc24c7d2583be69251",
+    "lokasi": "KOTA SAWAHLUNTO",
+    "lat": -0.6,
+    "lon": 100.75
+  },
+  {
+    "id": "74db120f0a8e5646ef5a30154e9f6deb",
+    "lokasi": "KOTA SEMARANG",
+    "lat": -7.03333,
+    "lon": 110.38333
+  },
+  {
+    "id": "b73ce398c39f506af761d2277d853a92",
+    "lokasi": "KOTA SERANG",
+    "lat": -6.12563,
+    "lon": 106.14999
+  },
+  {
+    "id": "a684eceee76fc522773286a895bc8436",
+    "lokasi": "KOTA SIBOLGA",
+    "lat": 1.73333,
+    "lon": 98.8
+  },
+  {
+    "id": "cd00692c3bfe59267d5ecfac5310286c",
+    "lokasi": "KOTA SINGKAWANG",
+    "lat": 0.90734,
+    "lon": 109.00103
+  },
+  {
+    "id": "07563a3fe3bbe7e3ba84431ad9d055af",
+    "lokasi": "KOTA SOFIFI",
+    "lat": 0.72444,
+    "lon": 127.58056
+  },
+  {
+    "id": "d09bf41544a3365a46c9077ebb5e35c3",
+    "lokasi": "KOTA SOLOK",
+    "lat": -0.76667,
+    "lon": 100.61667
+  },
+  {
+    "id": "59b90e1005a220e2ebc542eb9d950b1e",
+    "lokasi": "KOTA SORONG",
+    "lat": -0.86507,
+    "lon": 131.25153
+  },
+  {
+    "id": "37693cfc748049e45d87b8c7d8b9aacd",
+    "lokasi": "KOTA SUBULUSSALAM",
+    "lat": 2.75,
+    "lon": 97.93333
+  },
+  {
+    "id": "9dcb88e0137649590b755372b040afad",
+    "lokasi": "KOTA SUKABUMI",
+    "lat": -6.95,
+    "lon": 106.93333
+  },
+  {
+    "id": "65b9eea6e1cc6bb9f0cd2a47751a186f",
+    "lokasi": "KOTA SUNGAI PENUH",
+    "lat": -2.10896,
+    "lon": 101.32175
+  },
+  {
+    "id": "4734ba6f3de83d861c3176a6273cac6d",
+    "lokasi": "KOTA SURABAYA",
+    "lat": -7.26667,
+    "lon": 112.71667
+  },
+  {
+    "id": "57aeee35c98205091e18d1140e9f38cf",
+    "lokasi": "KOTA SURAKARTA",
+    "lat": -7.55,
+    "lon": 110.81667
+  },
+  {
+    "id": "bd4c9ab730f5513206b999ec0d90d1fb",
+    "lokasi": "KOTA TANGERANG",
+    "lat": -6.17944,
+    "lon": 106.62991
+  },
+  {
+    "id": "82aa4b0af34c2313a562076992e50aa3",
+    "lokasi": "KOTA TANGERANG SELATAN",
+    "lat": -6.29373,
+    "lon": 106.71244
+  },
+  {
+    "id": "f4b9ec30ad9f68f89b29639786cb62ef",
+    "lokasi": "KOTA TANJUNG PINANG",
+    "lat": 0.91683,
+    "lon": 104.44329
+  },
+  {
+    "id": "b53b3a3d6ab90ce0268229151c9bde11",
+    "lokasi": "KOTA TANJUNGBALAI",
+    "lat": 2.95833,
+    "lon": 99.79167
+  },
+  {
+    "id": "d709f38ef758b5066ef31b18039b8ce5",
+    "lokasi": "KOTA TARAKAN",
+    "lat": 3.36667,
+    "lon": 117.6
+  },
+  {
+    "id": "a2557a7b2e94197ff767970b67041697",
+    "lokasi": "KOTA TASIKMALAYA",
+    "lat": -7.35,
+    "lon": 108.21667
+  },
+  {
+    "id": "9f61408e3afb633e50cdf1b20de6f466",
+    "lokasi": "KOTA TEBING TINGGI",
+    "lat": 3.325,
+    "lon": 99.14167
+  },
+  {
+    "id": "6da9003b743b65f4c0ccd295cc484e57",
+    "lokasi": "KOTA TEGAL",
+    "lat": -6.8686,
+    "lon": 109.1129
+  },
+  {
+    "id": "8e6b42f1644ecb1327dc03ab345e618b",
+    "lokasi": "KOTA TERNATE",
+    "lat": 0.89618,
+    "lon": 127.31016
+  },
+  {
+    "id": "ef575e8837d065a1683c022d2077d342",
+    "lokasi": "KOTA TIDORE KEPULAUAN",
+    "lat": 0.60962,
+    "lon": 127.56981
+  },
+  {
+    "id": "67f7fb873eaf29526a11a9b7ac33bfac",
+    "lokasi": "KOTA TOMOHON",
+    "lat": 1.31307,
+    "lon": 124.83404
+  },
+  {
+    "id": "51d92be1c60d1db1d2e5e7a07da55b26",
+    "lokasi": "KOTA TUAL",
+    "lat": -5.64301,
+    "lon": 132.74934
+  },
+  {
+    "id": "577ef1154f3240ad5b9b413aa7346a1e",
+    "lokasi": "KOTA YOGYAKARTA",
+    "lat": -7.8,
+    "lon": 110.375
+  },
+  {
+    "id": "38913e1d6a7b94cb0f55994f679f5956",
+    "lokasi": "PEKAJANG KAB. LINGGA",
+    "lat": -1.2,
+    "lon": 105.26667
+  },
+  {
+    "id": "cf67355a3333e6e143439161adc2d82e",
+    "lokasi": "PULAU LAUT KAB. NATUNA",
+    "lat": 4.68333,
+    "lon": 107.93333
+  },
+  {
+    "id": "63538fe6ef330c13a05a3ed7e599d5f7",
+    "lokasi": "PULAU MIDAI KAB. NATUNA",
+    "lat": 3,
+    "lon": 107.78333
+  },
+  {
+    "id": "ebd9629fc3ae5e9f6611e2ee05a31cef",
+    "lokasi": "PULAU SERASAN KAB. NATUNA",
+    "lat": 2.5,
+    "lon": 109.01667
+  },
+  {
+    "id": "f3f27a324736617f20abbf2ffd806f6d",
+    "lokasi": "PULAU TAMBELAN KAB. BINTAN",
+    "lat": 0.98333,
+    "lon": 107.55
+  }
+]
