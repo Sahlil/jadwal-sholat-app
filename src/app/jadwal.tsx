@@ -1,15 +1,13 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { Stack, Redirect, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { getJadwalPeriod } from "@/api/sholat";
 import { ErrorView } from "@/components/error-view";
 import { LoadingView } from "@/components/loading-view";
 import { PrayerCard } from "@/components/prayer-card";
 import { Colors } from "@/constants/theme";
-import { useApi } from "@/hooks/use-api";
-import { getCachedJadwalPeriod, saveCachedJadwalPeriod } from "@/storage/cache";
+import { useMonthSchedule } from "@/hooks/use-schedule";
 import type { JadwalSholat } from "@/types/sholat";
 import { monthLabel, shiftMonthKey, toMonthKey, todayDateKey } from "@/utils/date";
 
@@ -26,20 +24,7 @@ export default function JadwalBulananScreen() {
 
   const [month, setMonth] = useState(() => toMonthKey(new Date()));
 
-  const fetcher = useCallback(async () => {
-    if (!id) throw new Error("Kota belum dipilih.");
-
-    try {
-      const fresh = await getJadwalPeriod(id, month);
-      await saveCachedJadwalPeriod(id, month, fresh);
-      return fresh;
-    } catch (err) {
-      const cached = await getCachedJadwalPeriod(id, month);
-      if (cached) return cached.data;
-      throw err;
-    }
-  }, [id, month]);
-  const { data, loading, error, refetch } = useApi(fetcher);
+  const { data, loading, error, refetch } = useMonthSchedule(id, month);
 
   if (!id) {
     return <Redirect href="/" />;

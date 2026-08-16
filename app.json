@@ -18,7 +18,10 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.sahlilriz.jadwalsholat"
+      "package": "com.sahlilriz.jadwalsholat",
+      "permissions": [
+        "SCHEDULE_EXACT_ALARM"
+      ]
     },
     "web": {
       "output": "static",
@@ -26,6 +29,13 @@
     },
     "plugins": [
       "expo-router",
+      [
+        "expo-notifications",
+        {
+          "color": "#0F766E",
+          "defaultChannel": "reminders"
+        }
+      ],
       [
         "expo-location",
         {
@@ -57,7 +67,8 @@
             }
           ]
         }
-      ]
+      ],
+      "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true,

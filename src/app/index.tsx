@@ -1,17 +1,17 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Stack, router } from "expo-router";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { getJadwalToday } from "@/api/sholat";
 import { ErrorView } from "@/components/error-view";
 import { LoadingView } from "@/components/loading-view";
 import { PrayerCard } from "@/components/prayer-card";
 import { Colors } from "@/constants/theme";
-import { useApi } from "@/hooks/use-api";
 import { useSelectedCity } from "@/hooks/use-selected-city";
-import { getCachedJadwalToday, saveCachedJadwalToday } from "@/storage/cache";
+import { useTodaySchedule } from "@/hooks/use-schedule";
+import { getReminderSettings } from "@/storage/reminders";
+import { syncReminders } from "@/services/reminders";
 import type { KabKota } from "@/types/sholat";
 import { JadwalSholatWidget, WIDGET_NAME } from "@/widgets/jadwal-sholat-widget";
 
@@ -30,18 +30,7 @@ export default function HomeScreen() {
 }
 
 function HomeContent({ city }: { city: KabKota }) {
-  const fetcher = useCallback(async () => {
-    try {
-      const fresh = await getJadwalToday(city.id);
-      await saveCachedJadwalToday(city.id, fresh);
-      return fresh;
-    } catch (err) {
-      const cached = await getCachedJadwalToday(city.id);
-      if (cached) return cached.data;
-      throw err;
-    }
-  }, [city.id]);
-  const { data, loading, error, refetch } = useApi(fetcher);
+  const { data, loading, error, refetch } = useTodaySchedule(city.id);
 
   const jadwal = data?.jadwal;
   const jadwalToday = jadwal ? Object.values(jadwal)[0] : null;
@@ -67,6 +56,19 @@ function HomeContent({ city }: { city: KabKota }) {
   const openCityPicker = () => router.push("/kota");
   const openMonthlySchedule = () =>
     router.push({ pathname: "/jadwal", params: { id: city.id, lokasi: city.lokasi } });
+  const openReminders = () => router.push("/pengingat");
+  const openQibla = () => router.push("/kiblat");
+
+  // Sinkronkan pengingat dengan jadwal & kota terbaru bila pengingat aktif.
+  useEffect(() => {
+    if (!data) return;
+
+    getReminderSettings().then((settings) => {
+      syncReminders(settings, city.id).catch(() => {
+        // Gagal sinkron (mis. izin belum diberikan) — tidak menghentikan app.
+      });
+    });
+  }, [data, city.id]);
 
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
@@ -94,6 +96,14 @@ function HomeContent({ city }: { city: KabKota }) {
 
           <Pressable style={styles.monthlyButton} onPress={openMonthlySchedule}>
             <Text style={styles.monthlyButtonText}>Lihat Jadwal Bulanan</Text>
+          </Pressable>
+
+          <Pressable style={styles.reminderButton} onPress={openReminders}>
+            <Text style={styles.reminderButtonText}>Pengingat Sholat</Text>
+          </Pressable>
+
+          <Pressable style={styles.reminderButton} onPress={openQibla}>
+            <Text style={styles.reminderButtonText}>Arah Kiblat</Text>
           </Pressable>
         </ScrollView>
       )}
@@ -159,6 +169,18 @@ const styles = StyleSheet.create({
   },
   monthlyButtonText: {
     color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "700",
+  },
+  reminderButton: {
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: Colors.primary,
+    paddingVertical: 14,
+    alignItems: "center",
+  },
+  reminderButtonText: {
+    color: Colors.primary,
     fontSize: 15,
     fontWeight: "700",
   },

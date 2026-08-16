@@ -2,6 +2,12 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 import { Colors } from "@/constants/theme";
+import { setNotificationHandler, setupChannel } from "@/services/reminders";
+
+setNotificationHandler();
+setupChannel().catch(() => {
+  // Gagal menyiapkan channel — tidak menghentikan aplikasi.
+});
 
 export default function RootLayout() {
   return (
