@@ -54,12 +54,14 @@ export const REMINDER_PRAYERS: ReminderPrayerKey[] = [
 
 export interface ReminderSettings {
   enabled: boolean;
+  beforeEnabled: boolean;
   offsetMinutes: number;
   prayers: Record<ReminderPrayerKey, boolean>;
 }
 
 export const DEFAULT_REMINDER_SETTINGS: ReminderSettings = {
   enabled: false,
+  beforeEnabled: true,
   offsetMinutes: 5,
   prayers: {
     imsak: true,

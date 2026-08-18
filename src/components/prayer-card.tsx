@@ -1,6 +1,9 @@
+import { useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { PRAYER_ORDER, Colors } from "@/constants/theme";
+import { PRAYER_ORDER } from "@/constants/theme";
+import type { ThemeColors } from "@/constants/theme";
+import { useTheme } from "@/contexts/theme";
 import { getNextPrayerKey } from "@/utils/date";
 import type { JadwalSholat } from "@/types/sholat";
 
@@ -13,6 +16,8 @@ interface PrayerCardProps {
 }
 
 export function PrayerCard({ jadwal, highlightNext = false, dense = false }: PrayerCardProps) {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const nextKey = highlightNext ? getNextPrayerKey(jadwal, new Date()) : null;
 
   return (
@@ -39,57 +44,58 @@ export function PrayerCard({ jadwal, highlightNext = false, dense = false }: Pra
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: Colors.card,
-    borderRadius: 16,
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  cardDense: {
-    paddingHorizontal: 14,
-    paddingVertical: 4,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 12,
-  },
-  rowSpaced: {
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.background,
-  },
-  rowNext: {
-    backgroundColor: "#ECFDF5",
-    marginHorizontal: -20,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-  },
-  label: {
-    color: Colors.textSecondary,
-    fontSize: 15,
-    fontWeight: "500",
-  },
-  labelNext: {
-    color: Colors.primaryDark,
-    fontWeight: "600",
-  },
-  badge: {
-    color: Colors.accent,
-    fontSize: 11,
-    fontWeight: "700",
-    textTransform: "uppercase",
-    letterSpacing: 0.5,
-  },
-  time: {
-    color: Colors.text,
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  timeNext: {
-    color: Colors.primary,
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    card: {
+      backgroundColor: colors.card,
+      borderRadius: 16,
+      paddingHorizontal: 20,
+      paddingVertical: 8,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    cardDense: {
+      paddingHorizontal: 14,
+      paddingVertical: 4,
+    },
+    row: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      paddingVertical: 12,
+    },
+    rowSpaced: {
+      borderBottomWidth: 1,
+      borderBottomColor: colors.background,
+    },
+    rowNext: {
+      backgroundColor: colors.highlight,
+      marginHorizontal: -20,
+      paddingHorizontal: 20,
+      borderRadius: 12,
+    },
+    label: {
+      color: colors.textSecondary,
+      fontSize: 15,
+      fontWeight: "500",
+    },
+    labelNext: {
+      color: colors.accent,
+      fontWeight: "600",
+    },
+    badge: {
+      color: colors.accent,
+      fontSize: 11,
+      fontWeight: "700",
+      textTransform: "uppercase",
+      letterSpacing: 0.5,
+    },
+    time: {
+      color: colors.text,
+      fontSize: 16,
+      fontWeight: "700",
+    },
+    timeNext: {
+      color: colors.accent,
+    },
+  });

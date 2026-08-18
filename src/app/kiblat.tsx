@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Stack } from "expo-router";
 import Animated, {
+  runOnJS,
   useAnimatedReaction,
   useAnimatedStyle,
   useSharedValue,
@@ -11,7 +12,8 @@ import Animated, {
 
 import { LoadingView } from "@/components/loading-view";
 import { ErrorView } from "@/components/error-view";
-import { Colors } from "@/constants/theme";
+import { useTheme } from "@/contexts/theme";
+import type { ThemeColors } from "@/constants/theme";
 import { useQibla } from "@/hooks/use-qibla";
 
 const DIRECTION_NAMES = [
@@ -36,6 +38,8 @@ function CompassDial({
   needleRotation: ReturnType<typeof useQibla>["needleRotation"];
   calibrationLow: boolean;
 }) {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const blink = useSharedValue(1);
 
   useEffect(() => {
@@ -80,6 +84,8 @@ function CompassDial({
 }
 
 export default function KiblatScreen() {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const { status, error, qiblaBearing, heading, location, needleRotation, calibrationOk } =
     useQibla();
 
@@ -87,7 +93,9 @@ export default function KiblatScreen() {
 
   useAnimatedReaction(
     () => calibrationOk.value,
-    (ok) => setCalibrationLow(ok === 0),
+    (ok) => {
+      runOnJS(setCalibrationLow)(ok === 0);
+    },
     [calibrationOk],
   );
 
@@ -115,106 +123,107 @@ export default function KiblatScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 24,
-    gap: 24,
-  },
-  compassWrap: {
-    alignItems: "center",
-    gap: 16,
-  },
-  dial: {
-    width: 280,
-    height: 280,
-    borderRadius: 140,
-    borderWidth: 12,
-    borderColor: Colors.primary,
-    backgroundColor: Colors.card,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.12,
-    shadowRadius: 16,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 6,
-  },
-  cardinal: {
-    position: "absolute",
-    fontSize: 18,
-    fontWeight: "800",
-    color: Colors.text,
-  },
-  north: { top: 10 },
-  south: { bottom: 10 },
-  east: { right: 14 },
-  west: { left: 14 },
-  needle: {
-    width: 0,
-    height: 190,
-    alignItems: "center",
-  },
-  needleTip: {
-    width: 0,
-    height: 0,
-    borderLeftWidth: 10,
-    borderRightWidth: 10,
-    borderBottomWidth: 30,
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
-    borderBottomColor: Colors.accent,
-  },
-  needleShaft: {
-    width: 6,
-    flex: 1,
-    backgroundColor: Colors.primary,
-    borderRadius: 3,
-  },
-  centerDot: {
-    position: "absolute",
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    backgroundColor: Colors.accent,
-  },
-  warning: {
-    maxWidth: 260,
-    backgroundColor: "#FEF3C7",
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-  },
-  warningText: {
-    color: "#92400E",
-    fontSize: 12,
-    textAlign: "center",
-  },
-  info: {
-    alignItems: "center",
-    gap: 4,
-  },
-  bearing: {
-    fontSize: 48,
-    fontWeight: "800",
-    color: Colors.text,
-  },
-  direction: {
-    fontSize: 18,
-    fontWeight: "700",
-    color: Colors.primaryDark,
-  },
-  heading: {
-    fontSize: 13,
-    color: Colors.textSecondary,
-  },
-  location: {
-    fontSize: 12,
-    color: Colors.textSecondary,
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    content: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 24,
+      gap: 24,
+    },
+    compassWrap: {
+      alignItems: "center",
+      gap: 16,
+    },
+    dial: {
+      width: 280,
+      height: 280,
+      borderRadius: 140,
+      borderWidth: 12,
+      borderColor: colors.primary,
+      backgroundColor: colors.card,
+      alignItems: "center",
+      justifyContent: "center",
+      shadowColor: "#000",
+      shadowOpacity: 0.12,
+      shadowRadius: 16,
+      shadowOffset: { width: 0, height: 6 },
+      elevation: 6,
+    },
+    cardinal: {
+      position: "absolute",
+      fontSize: 18,
+      fontWeight: "800",
+      color: colors.text,
+    },
+    north: { top: 10 },
+    south: { bottom: 10 },
+    east: { right: 14 },
+    west: { left: 14 },
+    needle: {
+      width: 0,
+      height: 190,
+      alignItems: "center",
+    },
+    needleTip: {
+      width: 0,
+      height: 0,
+      borderLeftWidth: 10,
+      borderRightWidth: 10,
+      borderBottomWidth: 30,
+      borderLeftColor: "transparent",
+      borderRightColor: "transparent",
+      borderBottomColor: colors.accent,
+    },
+    needleShaft: {
+      width: 6,
+      flex: 1,
+      backgroundColor: colors.primary,
+      borderRadius: 3,
+    },
+    centerDot: {
+      position: "absolute",
+      width: 16,
+      height: 16,
+      borderRadius: 8,
+      backgroundColor: colors.accent,
+    },
+    warning: {
+      maxWidth: 260,
+      backgroundColor: colors.warningBg,
+      borderRadius: 10,
+      paddingHorizontal: 14,
+      paddingVertical: 10,
+    },
+    warningText: {
+      color: colors.warningText,
+      fontSize: 12,
+      textAlign: "center",
+    },
+    info: {
+      alignItems: "center",
+      gap: 4,
+    },
+    bearing: {
+      fontSize: 48,
+      fontWeight: "800",
+      color: colors.text,
+    },
+    direction: {
+      fontSize: 18,
+      fontWeight: "700",
+      color: colors.primaryDark,
+    },
+    heading: {
+      fontSize: 13,
+      color: colors.textSecondary,
+    },
+    location: {
+      fontSize: 12,
+      color: colors.textSecondary,
+    },
+  });

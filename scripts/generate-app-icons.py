@@ -8,6 +8,7 @@ Output (semua 1024x1024):
   - assets/images/android-icon-foreground.png    (transparan, art di safe zone)
   - assets/images/android-icon-background.png    (gradasi teal opaque)
   - assets/images/android-icon-monochrome.png    (solid putih untuk themed icon)
+  - assets/images/splash-icon.png                (transparan, logo brand utk splash screen)
 
 Jalankan: python3 scripts/generate-app-icons.py
 """
@@ -113,6 +114,12 @@ def main():
     mono = compose_art(SIZE, 0.72, WHITE)
     mono.save(os.path.join(OUT_DIR, "android-icon-monochrome.png"))
     print("android-icon-monochrome.png")
+
+    # 5. splash-icon.png — logo brand (bulan sabit + bintang putih) transparan,
+    #    ditampilkan di atas latar teal pada splash screen.
+    splash = compose_art(SIZE, 0.5, WHITE)
+    splash.save(os.path.join(OUT_DIR, "splash-icon.png"))
+    print("splash-icon.png")
 
 
 if __name__ == "__main__":

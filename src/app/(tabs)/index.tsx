@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { Stack, router } from "expo-router";
+import { router } from "expo-router";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ErrorView } from "@/components/error-view";
-import { LoadingView } from "@/components/loading-view";
 import { PrayerCard } from "@/components/prayer-card";
-import { Colors } from "@/constants/theme";
+import { HomeSkeleton } from "@/components/skeletons";
+import { CountdownTimer } from "@/components/countdown-timer";
+import { useTheme } from "@/contexts/theme";
+import type { ThemeColors } from "@/constants/theme";
 import { useSelectedCity } from "@/hooks/use-selected-city";
 import { useTodaySchedule } from "@/hooks/use-schedule";
 import { getReminderSettings } from "@/storage/reminders";
@@ -16,12 +18,14 @@ import type { KabKota } from "@/types/sholat";
 import { JadwalSholatWidget, WIDGET_NAME } from "@/widgets/jadwal-sholat-widget";
 
 export default function HomeScreen() {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const city = useSelectedCity();
 
   if (!city) {
     return (
       <SafeAreaView style={styles.safeArea} edges={["top"]}>
-        <LoadingView message="Memuat kota pilihan..." />
+        <HomeSkeleton />
       </SafeAreaView>
     );
   }
@@ -31,6 +35,8 @@ export default function HomeScreen() {
 
 function HomeContent({ city }: { city: KabKota }) {
   const { data, loading, error, refetch } = useTodaySchedule(city.id);
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const jadwal = data?.jadwal;
   const jadwalToday = jadwal ? Object.values(jadwal)[0] : null;
@@ -56,24 +62,20 @@ function HomeContent({ city }: { city: KabKota }) {
   const openCityPicker = () => router.push("/kota");
   const openMonthlySchedule = () =>
     router.push({ pathname: "/jadwal", params: { id: city.id, lokasi: city.lokasi } });
-  const openReminders = () => router.push("/pengingat");
-  const openQibla = () => router.push("/kiblat");
 
   // Sinkronkan pengingat dengan jadwal & kota terbaru bila pengingat aktif.
   useEffect(() => {
     if (!data) return;
 
     getReminderSettings().then((settings) => {
-      syncReminders(settings, city.id).catch(() => {
-        // Gagal sinkron (mis. izin belum diberikan) — tidak menghentikan app.
+      syncReminders(settings, city.id).catch((err) => {
+        console.error("[Reminders] sinkron gagal:", err);
       });
     });
   }, [data, city.id]);
 
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
-      <Stack.Screen options={{ headerShown: false }} />
-
       <View style={styles.header}>
         <Text style={styles.brand}>Jadwal Sholat</Text>
         <Pressable style={styles.cityButton} onPress={openCityPicker}>
@@ -84,7 +86,7 @@ function HomeContent({ city }: { city: KabKota }) {
       </View>
 
       {loading ? (
-        <LoadingView message="Menyelaraskan jadwal waktu setempat..." />
+        <HomeSkeleton />
       ) : error || !jadwalToday ? (
         <ErrorView message={error ?? "Jadwal tidak ditemukan."} onRetry={refetch} />
       ) : (
@@ -92,18 +94,12 @@ function HomeContent({ city }: { city: KabKota }) {
           <Text style={styles.date}>{jadwalToday.tanggal}</Text>
           {data?.prov ? <Text style={styles.prov}>{data.prov}</Text> : null}
 
+          <CountdownTimer jadwal={jadwalToday} />
+
           <PrayerCard jadwal={jadwalToday} highlightNext />
 
           <Pressable style={styles.monthlyButton} onPress={openMonthlySchedule}>
             <Text style={styles.monthlyButtonText}>Lihat Jadwal Bulanan</Text>
-          </Pressable>
-
-          <Pressable style={styles.reminderButton} onPress={openReminders}>
-            <Text style={styles.reminderButtonText}>Pengingat Sholat</Text>
-          </Pressable>
-
-          <Pressable style={styles.reminderButton} onPress={openQibla}>
-            <Text style={styles.reminderButtonText}>Arah Kiblat</Text>
           </Pressable>
         </ScrollView>
       )}
@@ -111,77 +107,66 @@ function HomeContent({ city }: { city: KabKota }) {
   );
 }
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: Colors.primary,
-  },
-  header: {
-    paddingHorizontal: 24,
-    paddingTop: 16,
-    paddingBottom: 24,
-    gap: 8,
-  },
-  brand: {
-    color: "#FFFFFF",
-    fontSize: 28,
-    fontWeight: "800",
-  },
-  cityButton: {
-    alignSelf: "flex-start",
-    maxWidth: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.18)",
-    borderRadius: 999,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-  },
-  cityButtonText: {
-    color: "#FFFFFF",
-    fontSize: 14,
-    fontWeight: "600",
-  },
-  content: {
-    flexGrow: 1,
-    backgroundColor: Colors.background,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    padding: 20,
-    gap: 12,
-  },
-  date: {
-    color: Colors.text,
-    fontSize: 18,
-    fontWeight: "700",
-    textAlign: "center",
-    marginTop: 8,
-  },
-  prov: {
-    color: Colors.textSecondary,
-    fontSize: 13,
-    textAlign: "center",
-    marginBottom: 8,
-  },
-  monthlyButton: {
-    backgroundColor: Colors.primary,
-    borderRadius: 14,
-    paddingVertical: 14,
-    alignItems: "center",
-  },
-  monthlyButtonText: {
-    color: "#FFFFFF",
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  reminderButton: {
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: Colors.primary,
-    paddingVertical: 14,
-    alignItems: "center",
-  },
-  reminderButtonText: {
-    color: Colors.primary,
-    fontSize: 15,
-    fontWeight: "700",
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    safeArea: {
+      flex: 1,
+      backgroundColor: colors.primary,
+    },
+    header: {
+      paddingHorizontal: 24,
+      paddingTop: 16,
+      paddingBottom: 24,
+      gap: 8,
+    },
+    brand: {
+      color: colors.onPrimary,
+      fontSize: 28,
+      fontWeight: "800",
+    },
+    cityButton: {
+      alignSelf: "flex-start",
+      maxWidth: "100%",
+      backgroundColor: "rgba(255, 255, 255, 0.18)",
+      borderRadius: 999,
+      paddingHorizontal: 16,
+      paddingVertical: 8,
+    },
+    cityButtonText: {
+      color: colors.onPrimary,
+      fontSize: 14,
+      fontWeight: "600",
+    },
+    content: {
+      flexGrow: 1,
+      backgroundColor: colors.background,
+      borderTopLeftRadius: 24,
+      borderTopRightRadius: 24,
+      padding: 20,
+      gap: 12,
+    },
+    date: {
+      color: colors.text,
+      fontSize: 18,
+      fontWeight: "700",
+      textAlign: "center",
+      marginTop: 8,
+    },
+    prov: {
+      color: colors.textSecondary,
+      fontSize: 13,
+      textAlign: "center",
+      marginBottom: 8,
+    },
+    monthlyButton: {
+      backgroundColor: colors.primary,
+      borderRadius: 14,
+      paddingVertical: 14,
+      alignItems: "center",
+    },
+    monthlyButtonText: {
+      color: colors.onPrimary,
+      fontSize: 15,
+      fontWeight: "700",
+    },
+  });

@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { Stack, router } from "expo-router";
 
 import { getAllKabKota, searchKabKota } from "@/api/sholat";
 import { ErrorView } from "@/components/error-view";
-import { LoadingView } from "@/components/loading-view";
-import { Colors } from "@/constants/theme";
+import { CityListSkeleton } from "@/components/skeletons";
+import { useTheme } from "@/contexts/theme";
+import type { ThemeColors } from "@/constants/theme";
 import { useApi } from "@/hooks/use-api";
 import { useLocationCity } from "@/hooks/use-location-city";
 import { syncCityData } from "@/services/offline";
@@ -14,6 +15,8 @@ import { saveSelectedCity } from "@/storage/city";
 import type { KabKota } from "@/types/sholat";
 
 export default function KotaScreen() {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const location = useLocationCity();
@@ -81,7 +84,7 @@ export default function KotaScreen() {
       <TextInput
         style={styles.searchInput}
         placeholder="Cari kota, mis. Jakarta..."
-        placeholderTextColor={Colors.textSecondary}
+        placeholderTextColor={colors.textSecondary}
         value={query}
         onChangeText={setQuery}
         autoCorrect={false}
@@ -98,7 +101,7 @@ export default function KotaScreen() {
 
         {locationStatus.state === "detecting" && (
           <View style={styles.locationBusy}>
-            <ActivityIndicator color={Colors.primary} />
+            <ActivityIndicator color={colors.primary} />
             <Text style={styles.locationInfoText}>Mendeteksi lokasi Anda...</Text>
           </View>
         )}
@@ -141,7 +144,7 @@ export default function KotaScreen() {
       </View>
 
       {loading ? (
-        <LoadingView message="Memuat daftar kota..." />
+        <CityListSkeleton />
       ) : error ? (
         <ErrorView message={error} onRetry={refetch} />
       ) : (
@@ -172,137 +175,138 @@ export default function KotaScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  searchInput: {
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 15,
-    color: Colors.text,
-    marginHorizontal: 16,
-    marginTop: 16,
-  },
-  locationSection: {
-    marginHorizontal: 16,
-    marginTop: 12,
-    marginBottom: 4,
-  },
-  locationButton: {
-    backgroundColor: Colors.primary,
-    borderRadius: 12,
-    paddingVertical: 13,
-    alignItems: "center",
-  },
-  locationButtonText: {
-    color: "#FFFFFF",
-    fontSize: 14,
-    fontWeight: "700",
-  },
-  locationBusy: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 12,
-    paddingVertical: 13,
-  },
-  locationResult: {
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 12,
-    padding: 14,
-    gap: 6,
-  },
-  locationCity: {
-    color: Colors.text,
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  locationInfoText: {
-    color: Colors.textSecondary,
-    fontSize: 12,
-  },
-  locationError: {
-    color: Colors.danger,
-    fontSize: 13,
-  },
-  locationActions: {
-    flexDirection: "row",
-    gap: 8,
-    marginTop: 4,
-  },
-  locationUseButton: {
-    flex: 1,
-    backgroundColor: Colors.primary,
-    borderRadius: 10,
-    paddingVertical: 10,
-    alignItems: "center",
-  },
-  locationUseButtonText: {
-    color: "#FFFFFF",
-    fontSize: 13,
-    fontWeight: "700",
-  },
-  locationDismiss: {
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  locationDismissText: {
-    color: Colors.textSecondary,
-    fontSize: 13,
-    fontWeight: "600",
-  },
-  listContent: {
-    paddingHorizontal: 16,
-    paddingBottom: 24,
-    gap: 8,
-  },
-  resultCount: {
-    color: Colors.textSecondary,
-    fontSize: 12,
-    marginBottom: 4,
-  },
-  item: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-  },
-  itemText: {
-    flex: 1,
-    color: Colors.text,
-    fontSize: 15,
-    fontWeight: "500",
-  },
-  itemArrow: {
-    color: Colors.textSecondary,
-    fontSize: 20,
-    marginLeft: 8,
-  },
-  emptyText: {
-    color: Colors.textSecondary,
-    textAlign: "center",
-    marginTop: 32,
-    fontSize: 14,
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    searchInput: {
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      borderColor: colors.border,
+      borderRadius: 12,
+      paddingHorizontal: 16,
+      paddingVertical: 12,
+      fontSize: 15,
+      color: colors.text,
+      marginHorizontal: 16,
+      marginTop: 16,
+    },
+    locationSection: {
+      marginHorizontal: 16,
+      marginTop: 12,
+      marginBottom: 4,
+    },
+    locationButton: {
+      backgroundColor: colors.primary,
+      borderRadius: 12,
+      paddingVertical: 13,
+      alignItems: "center",
+    },
+    locationButtonText: {
+      color: colors.onPrimary,
+      fontSize: 14,
+      fontWeight: "700",
+    },
+    locationBusy: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 10,
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      borderColor: colors.border,
+      borderRadius: 12,
+      paddingVertical: 13,
+    },
+    locationResult: {
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      borderColor: colors.border,
+      borderRadius: 12,
+      padding: 14,
+      gap: 6,
+    },
+    locationCity: {
+      color: colors.text,
+      fontSize: 16,
+      fontWeight: "700",
+    },
+    locationInfoText: {
+      color: colors.textSecondary,
+      fontSize: 12,
+    },
+    locationError: {
+      color: colors.danger,
+      fontSize: 13,
+    },
+    locationActions: {
+      flexDirection: "row",
+      gap: 8,
+      marginTop: 4,
+    },
+    locationUseButton: {
+      flex: 1,
+      backgroundColor: colors.primary,
+      borderRadius: 10,
+      paddingVertical: 10,
+      alignItems: "center",
+    },
+    locationUseButtonText: {
+      color: colors.onPrimary,
+      fontSize: 13,
+      fontWeight: "700",
+    },
+    locationDismiss: {
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: colors.border,
+      paddingVertical: 10,
+      paddingHorizontal: 16,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    locationDismissText: {
+      color: colors.textSecondary,
+      fontSize: 13,
+      fontWeight: "600",
+    },
+    listContent: {
+      paddingHorizontal: 16,
+      paddingBottom: 24,
+      gap: 8,
+    },
+    resultCount: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      marginBottom: 4,
+    },
+    item: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      borderColor: colors.border,
+      borderRadius: 12,
+      paddingHorizontal: 16,
+      paddingVertical: 14,
+    },
+    itemText: {
+      flex: 1,
+      color: colors.text,
+      fontSize: 15,
+      fontWeight: "500",
+    },
+    itemArrow: {
+      color: colors.textSecondary,
+      fontSize: 20,
+      marginLeft: 8,
+    },
+    emptyText: {
+      color: colors.textSecondary,
+      textAlign: "center",
+      marginTop: 32,
+      fontSize: 14,
+    },
+  });

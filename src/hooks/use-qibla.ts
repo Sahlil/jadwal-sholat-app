@@ -5,6 +5,7 @@ import {
   useAnimatedSensor,
   useDerivedValue,
   useSharedValue,
+  runOnJS,
   type SharedValue,
 } from "react-native-reanimated";
 import * as Location from "expo-location";
@@ -19,7 +20,10 @@ import {
   qiblaBearingFor,
 } from "@/utils/qibla";
 
-const normalize = (deg: number) => ((deg % 360) + 360) % 360;
+const normalize = (deg: number): number => {
+  "worklet";
+  return ((deg % 360) + 360) % 360;
+};
 
 export type QiblaStatus = "loading" | "ready" | "error";
 
@@ -133,7 +137,8 @@ export function useQibla(): UseQiblaResult {
   useAnimatedReaction(
     () => needleRotationValue.value,
     (rotation) => {
-      setHeading(normalize(qiblaBearing - rotation));
+      const newHeading = normalize(qiblaBearing - rotation);
+      runOnJS(setHeading)(newHeading);
     },
     [qiblaBearing],
   );

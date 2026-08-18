@@ -8,7 +8,8 @@
     "scheme": "jadwalsholat",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/images/icon.png"
+      "icon": "./assets/images/icon.png",
+      "bundleIdentifier": "com.sahlilriz.jadwalsholat"
     },
     "android": {
       "adaptiveIcon": {
@@ -20,7 +21,10 @@
       "predictiveBackGestureEnabled": false,
       "package": "com.sahlilriz.jadwalsholat",
       "permissions": [
-        "SCHEDULE_EXACT_ALARM"
+        "SCHEDULE_EXACT_ALARM",
+        "USE_EXACT_ALARM",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
       ]
     },
     "web": {
@@ -45,9 +49,12 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
+          "backgroundColor": "#0F766E",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "imageWidth": 200,
+          "dark": {
+            "backgroundColor": "#115E59"
+          }
         }
       ],
       [
@@ -77,8 +84,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "345a90a9-1999-4c52-9128-7f35213e908d"
+        "projectId": "4da8e09f-f4e7-4804-8492-7d806f53491a"
       }
-    }
+    },
+    "owner": "sahlil23"
   }
 }

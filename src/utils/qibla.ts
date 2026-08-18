@@ -6,9 +6,18 @@ export const KAABA_LON = 39.826181;
 export const MAGNETIC_SANE_MIN = 20;
 export const MAGNETIC_SANE_MAX = 70;
 
-const toRad = (deg: number) => (deg * Math.PI) / 180;
-const toDeg = (rad: number) => (rad * 180) / Math.PI;
-const normalize = (deg: number) => ((deg % 360) + 360) % 360;
+const toRad = (deg: number): number => {
+  "worklet";
+  return (deg * Math.PI) / 180;
+};
+const toDeg = (rad: number): number => {
+  "worklet";
+  return (rad * 180) / Math.PI;
+};
+const normalize = (deg: number): number => {
+  "worklet";
+  return ((deg % 360) + 360) % 360;
+};
 
 /** Initial bearing (derajat, 0–360) dari titik 1 menuju titik 2. */
 export function bearing(

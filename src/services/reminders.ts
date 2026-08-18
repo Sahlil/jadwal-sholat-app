@@ -9,9 +9,6 @@ import type {
 import { REMINDER_PRAYERS } from "@/types/sholat";
 import { getJadwalRange } from "@/storage/schedule-repo";
 
-/** Jumlah hari ke depan yang dijadwalkan dengan trigger DATE. */
-export const REMINDER_WINDOW_DAYS = 30;
-
 export const REMINDER_CHANNEL_ID = "reminders";
 
 const REMINDER_LABELS: Record<ReminderPrayerKey, string> = {
@@ -41,7 +38,6 @@ export async function setupChannel(): Promise<void> {
   await Notifications.setNotificationChannelAsync(REMINDER_CHANNEL_ID, {
     name: "Pengingat Sholat",
     importance: Notifications.AndroidImportance.HIGH,
-    sound: "default",
     vibrationPattern: [0, 250, 250, 250],
   });
 }
@@ -82,55 +78,110 @@ async function fetchWindowSchedule(
 }
 
 /**
- * Jadwalkan ulang pengingat untuk `REMINDER_WINDOW_DAYS` ke depan menggunakan
- * trigger DATE (bukan DAILY) agar akurat terhadap jadwal bulanan.
+ * Jadwalkan ulang pengingat harian. Membatalkan semua notifikasi terjadwal
+ * lebih dulu (mencegah penumpukan alarm) lalu menjadwalkan ulang notifikasi
+ * DAILY per waktu sholat aktif — maksimal 14 notifikasi.
+ *
+ * Setiap waktu aktif selalu mendapat notifikasi saat waktu tiba (wajib);
+ * notifikasi "sebelum" hanya bila `beforeEnabled` aktif (opsional).
  */
+interface DailyReminder {
+  hour: number;
+  minute: number;
+  body: string;
+}
+
 export async function scheduleReminders(
   settings: ReminderSettings,
   cityId: string,
 ): Promise<void> {
-  await Notifications.cancelAllScheduledNotificationsAsync();
-  if (!settings.enabled) return;
+  if (!settings.enabled) {
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    return;
+  }
 
-  const now = new Date();
-  const schedule = await fetchWindowSchedule(cityId, REMINDER_WINDOW_DAYS);
+  const schedule = await fetchWindowSchedule(cityId, 1);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const jadwal = schedule.get(toDateKey(today));
+  if (!jadwal) {
+    throw new Error("Jadwal hari ini tidak tersedia untuk menjadwalkan pengingat.");
+  }
 
-  for (let i = 0; i < REMINDER_WINDOW_DAYS; i++) {
-    const date = new Date(now);
-    date.setHours(0, 0, 0, 0);
-    date.setDate(date.getDate() + i);
+  const desired: DailyReminder[] = [];
+  for (const key of REMINDER_PRAYERS) {
+    if (!settings.prayers[key]) continue;
 
-    const jadwal = schedule.get(toDateKey(date));
-    if (!jadwal) continue;
+    const [hour, minute] = jadwal[key].split(":").map(Number);
+    const atTimeMinutes = hour * 60 + minute;
 
-    for (const key of REMINDER_PRAYERS) {
-      if (!settings.prayers[key]) continue;
+    // Wajib: notifikasi saat waktu tiba.
+    desired.push({
+      hour: Math.floor(atTimeMinutes / 60),
+      minute: atTimeMinutes % 60,
+      body: `Waktu ${REMINDER_LABELS[key]} telah tiba.`,
+    });
 
-      const [hour, minute] = jadwal[key].split(":").map(Number);
-      let totalMinutes = hour * 60 + minute - settings.offsetMinutes;
-      // Clamp ke rentang hari yang sama (preset 5–30 menit tidak menembus tengah malam).
-      if (totalMinutes < 0) totalMinutes += 24 * 60;
-      if (totalMinutes >= 24 * 60) totalMinutes -= 24 * 60;
-
-      const triggerDate = new Date(date);
-      triggerDate.setHours(Math.floor(totalMinutes / 60), totalMinutes % 60, 0, 0);
-
-      // Skip waktu yang sudah lewat hari ini (trigger DATE tidak auto-defer).
-      if (triggerDate.getTime() <= now.getTime()) continue;
-
-      await Notifications.scheduleNotificationAsync({
-        content: {
-          title: "Pengingat Sholat",
-          body: `${REMINDER_LABELS[key]} dalam ${settings.offsetMinutes} menit.`,
-          sound: "default",
-        },
-        trigger: {
-          type: Notifications.SchedulableTriggerInputTypes.DATE,
-          date: triggerDate,
-          channelId: REMINDER_CHANNEL_ID,
-        },
+    // Opsional: notifikasi sebelum waktu.
+    if (settings.beforeEnabled) {
+      const beforeMinutes = (atTimeMinutes - settings.offsetMinutes + 24 * 60) % (24 * 60);
+      desired.push({
+        hour: Math.floor(beforeMinutes / 60),
+        minute: beforeMinutes % 60,
+        body: `${REMINDER_LABELS[key]} dalam ${settings.offsetMinutes} menit.`,
       });
     }
+  }
+
+  // Hindari churn: jika jadwal terjadwal sudah identik, lewati batal+jadwal ulang.
+  const existing = await Notifications.getAllScheduledNotificationsAsync();
+  const existingSet = new Set(
+    existing
+      .map((n) => {
+        const t = n.trigger as
+          | { type?: unknown; hour?: number; minute?: number }
+          | undefined;
+        if (t?.type !== Notifications.SchedulableTriggerInputTypes.DAILY) return null;
+        return `${t.hour}:${t.minute}`;
+      })
+      .filter((v): v is string => v !== null),
+  );
+  const desiredSet = new Set(desired.map((d) => `${d.hour}:${d.minute}`));
+  if (
+    existingSet.size === desiredSet.size &&
+    [...desiredSet].every((v) => existingSet.has(v))
+  ) {
+    console.log(`[Reminders] penjadwalan sudah up-to-date (${desiredSet.size} notif) — dilewati.`);
+    return;
+  }
+
+  await Notifications.cancelAllScheduledNotificationsAsync();
+
+  const scheduleDaily = async (d: DailyReminder): Promise<string> => {
+    const trigger: Notifications.NotificationTriggerInput = {
+      type: Notifications.SchedulableTriggerInputTypes.DAILY,
+      hour: d.hour,
+      minute: d.minute,
+      channelId: REMINDER_CHANNEL_ID,
+    };
+    const expectedAt = await Notifications.getNextTriggerDateAsync(trigger) ?? Date.now();
+    const id = await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Pengingat Sholat",
+        body: d.body,
+        sound: true,
+        data: { expectedAt },
+      },
+      trigger,
+    });
+    console.log(
+      `[Reminders] terjadwal id=${id} body="${d.body}" expectedAt=${new Date(expectedAt).toISOString()}`,
+    );
+    return id;
+  };
+
+  for (const d of desired) {
+    await scheduleDaily(d);
   }
 }
 
@@ -141,16 +192,25 @@ export async function cancelReminders(): Promise<void> {
 
 /**
  * Sinkronkan pengingat dengan jadwal & kota terbaru.
- * Membatalkan yang lama lalu menjadwalkan ulang window 30 hari.
+ * Membatalkan yang lama lalu menjadwalkan ulang notifikasi harian.
+ *
+ * Serialized (single-flight): panggilan yang tumpang tindih diantrekan agar
+ * tidak saling menyeling dan menyebabkan notifikasi dobel/terduplikasi.
  */
-export async function syncReminders(
+let syncChain: Promise<unknown> = Promise.resolve();
+
+export function syncReminders(
   settings: ReminderSettings,
   cityId: string,
 ): Promise<{ scheduled: boolean }> {
-  if (!settings.enabled) {
-    await cancelReminders();
-    return { scheduled: false };
-  }
-  await scheduleReminders(settings, cityId);
-  return { scheduled: true };
+  const run = syncChain.then(async () => {
+    if (!settings.enabled) {
+      await cancelReminders();
+      return { scheduled: false };
+    }
+    await scheduleReminders(settings, cityId);
+    return { scheduled: true };
+  });
+  syncChain = run.catch(() => {});
+  return run;
 }

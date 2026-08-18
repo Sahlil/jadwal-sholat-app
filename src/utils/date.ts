@@ -58,3 +58,25 @@ export function getNextPrayerKey(
 
   return null;
 }
+
+/**
+ * Waktu sholat berikutnya beserta `Date` targetnya untuk hitung mundur.
+ * Bila semua sholat hari ini sudah lewat (termasuk isya), target beralih ke
+ * subuh besok hari agar hitung mundur tetap berjalan.
+ */
+export function getNextPrayerDate(
+  jadwal: JadwalSholat,
+  now: Date,
+): { key: PrayerKey; date: Date } {
+  const key = getNextPrayerKey(jadwal, now);
+  const [hour, minute] = (key ? jadwal[key] : jadwal.subuh).split(":").map(Number);
+  const date = new Date(now);
+  if (key) {
+    date.setHours(hour, minute, 0, 0);
+    return { key, date };
+  }
+  // Semua waktu hari ini sudah lewat → target subuh besok.
+  date.setDate(date.getDate() + 1);
+  date.setHours(hour, minute, 0, 0);
+  return { key: "subuh", date };
+}

@@ -15,6 +15,8 @@ export async function getReminderSettings(): Promise<ReminderSettings> {
     const parsed = JSON.parse(raw) as Partial<ReminderSettings>;
     return {
       enabled: parsed.enabled ?? DEFAULT_REMINDER_SETTINGS.enabled,
+      beforeEnabled:
+        parsed.beforeEnabled ?? DEFAULT_REMINDER_SETTINGS.beforeEnabled,
       offsetMinutes:
         parsed.offsetMinutes ?? DEFAULT_REMINDER_SETTINGS.offsetMinutes,
       prayers: {
