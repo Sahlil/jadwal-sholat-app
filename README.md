@@ -172,6 +172,61 @@ Kemudian buka aplikasi "jadwal-sholat" di perangkat Anda — perangkat akan otom
 
 **Selanjutnya:** tambahkan widget **"Jadwal Sholat"** dari launcher Android untuk menikmati fitur widget 5×1.
 
+## Build APK untuk GitHub Release
+
+Untuk mendistribusikan aplikasi melalui GitHub Release (bukan Play Store), gunakan profil build `github-release`. Profil ini menghasilkan **Universal APK** (bukan AAB) yang siap dipasang langsung di perangkat.
+
+```bash
+eas build --platform android --profile github-release --non-interactive
+```
+
+Setelah build selesai, unduh APK dari link yang diberikan EAS dan lampirkan ke Release GitHub Anda.
+
+### Mengapa profil `github-release`?
+
+- **`buildType: "apk"`** — menghasilkan Universal APK (Android App Bundle `aab` hanya berguna untuk distribusi via Google Play).
+- **`env: { NODE_ENV: "production" }`** — memastikan kode development / dev-only tidak ikut ter-bundle, sehingga ukuran APK minimal.
+- **`app.json`** menambahkan `jsEngine: "hermes"` (runtime Hermes, default di SDK 57) dan `enableProguardInReleaseBuilds: true` (ProGuard membuang kode yang tak terpakai) untuk menekan ukuran APK sekecil mungkin.
+
+> **Catatan:** Karena distribusi lewat GitHub Release, profil ini tidak di-set untuk submit ke Google Play. Pastikan Anda sudah login EAS (`npx eas login`) sebelum menjalankan perintah build di atas.
+
+### Build lokal dengan `--local`
+
+EAS Build bisa dijalankan di mesin Anda sendiri (bukan di cloud) dengan menambahkan opsi `--local`. Ini berguna bila Anda ingin membangun tanpa mengunggah ke server EAS, misalnya untuk menghemat kuota build atau membutuhkan kendali penuh atas proses Gradle.
+
+```bash
+eas build --platform android --profile github-release --local --non-interactive
+```
+
+Persyaratan untuk build lokal:
+
+- **JDK 17** terpasang (diperlukan oleh React Native / Gradle).
+- **Android SDK** terpasang (bisa lewat Android Studio) dengan variabel lingkungan `ANDROID_HOME` di-set.
+- **Kredensial keystore**: EAS menanganinya otomatis — bila belum ada keystore lokal, EAS akan menampilkan prompt untuk membuatnya (interaktif) atau memakai keystore yang tersimpan di server EAS. Gunakan `--non-interactive` hanya jika keystore sudah tersedia.
+
+> **Catatan:** `--local` juga berlaku untuk profil lain (mis. `eas build -p android --profile production --local`).
+
+### Profil `production`
+
+Profil `production` adalah profil build rilis standar. Perbedaan utamanya dengan `github-release`:
+
+| Aspek | `github-release` | `production` |
+| --- | --- | --- |
+| Output | Universal APK (`buildType: "apk"`) | AAB (`android.applicationBundle`) — format rilis Play Store |
+| `autoIncrement` | tidak | ya (versi naik otomatis tiap build) |
+| Tujuan | GitHub Release / instal manual | upload ke Google Play (`eas submit`) |
+| Ukuran | lebih kecil (NODE_ENV=production + ProGuard) | standar |
+
+Untuk membangun dengan profil `production`:
+
+```bash
+eas build --platform android --profile production
+```
+
+Hasilnya berupa file **AAB**, yang **tidak bisa langsung dipasang** di perangkat — file ini untuk di-upload ke Google Play Console. Gunakan profil `github-release` bila Anda butuh APK yang bisa diinstal langsung (mis. untuk GitHub Release).
+
+> **Tips optimasi:** karena `production` menghasilkan AAB, pastikan `jsEngine: "hermes"` dan `enableProguardInReleaseBuilds: true` di `app.json` tetap aktif — keduanya diterapkan untuk semua profil build rilis, tidak hanya `github-release`.
+
 ## Widget Android
 
 ### Cara kerja

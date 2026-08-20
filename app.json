@@ -3,6 +3,7 @@
     "name": "jadwal-sholat",
     "slug": "jadwal-sholat",
     "version": "1.0.0",
+    "jsEngine": "hermes",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "jadwalsholat",
@@ -25,7 +26,8 @@
         "USE_EXACT_ALARM",
         "android.permission.ACCESS_COARSE_LOCATION",
         "android.permission.ACCESS_FINE_LOCATION"
-      ]
+      ],
+      "enableProguardInReleaseBuilds": true
     },
     "web": {
       "output": "static",
