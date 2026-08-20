@@ -87,6 +87,18 @@ Fitur kompas diakses dari beranda melalui tombol **"Arah Kiblat"** (`src/app/kib
 - **Peringatan kalibrasi:** karena OS tidak mengekspos akurasi sensor, deteksi memakai heuristik kekuatan medan magnet (`|B|` di luar rentang wajar); saat terdeteksi gangguan, muncul teks berkedip yang menyarankan menggerakkan perangkat membentuk angka 8.
 - Utilitas matematika di `src/utils/qibla.ts` & `src/utils/declination.ts`; state/logika di `src/hooks/use-qibla.ts`.
 
+## Widget Android
+
+Fitur widget menampilkan jadwal **5 waktu wajib** hari ini (Subuh, Dzuhur, Ashar, Maghrib, Isya) di home screen sesuai kota yang dipilih. Tambahkan widget **"Jadwal Sholat"** (pita 5×1) dari launcher Android.
+
+- **Update instan:** setiap kali jadwal berhasil dimuat di aplikasi, `requestWidgetUpdate()` mengirim data terbaru ke widget.
+- **Update mandiri:** saat widget ditambahkan (`WIDGET_ADDED`) atau dipicu `updatePeriodMillis` (30 menit), task handler background membaca kota dari storage lalu fetch jadwal hari ini langsung ke API.
+- **Interaksi:** seluruh widget dapat diketuk (`clickAction="OPEN_APP"`) untuk membuka aplikasi.
+- **`'use no memo'`** di baris pertama komponen widget wajib dipasang karena project mengaktifkan React Compiler (lihat [dokumentasi library](https://saleksovski.github.io/react-native-android-widget/docs/tutorial/widget-design)).
+- Komponen widget di `src/widgets/jadwal-sholat-widget.tsx`; handler background di `src/widgets/widget-task-handler.tsx`.
+
+> Widget hanya tersedia di **development build / standalone build** — tidak berfungsi di Expo Go. Ikuti [Panduan Instalasi](#panduan-instalasi--menjalankan-aplikasi-penting) di atas.
+
 ## Struktur Proyek
 
 ```
@@ -226,43 +238,6 @@ eas build --platform android --profile production
 Hasilnya berupa file **AAB**, yang **tidak bisa langsung dipasang** di perangkat — file ini untuk di-upload ke Google Play Console. Gunakan profil `github-release` bila Anda butuh APK yang bisa diinstal langsung (mis. untuk GitHub Release).
 
 > **Tips optimasi:** karena `production` menghasilkan AAB, pastikan `jsEngine: "hermes"` dan `enableProguardInReleaseBuilds: true` di `app.json` tetap aktif — keduanya diterapkan untuk semua profil build rilis, tidak hanya `github-release`.
-
-## Widget Android
-
-### Cara kerja
-
-1. **Kota terpilih** disimpan ke `AsyncStorage` saat diganti di aplikasi (`src/storage/city.ts`).
-2. **Update instan:** setiap kali jadwal berhasil dimuat di aplikasi, `requestWidgetUpdate()` mengirim data terbaru ke widget.
-3. **Update mandiri:** saat widget ditambahkan (`WIDGET_ADDED`) atau dipicu `updatePeriodMillis` (30 menit), task handler background (`src/widgets/widget-task-handler.tsx`) membaca kota dari storage lalu fetch jadwal hari ini langsung ke API.
-4. **Interaksi:** seluruh widget dapat diketuk (`clickAction="OPEN_APP"`) untuk membuka aplikasi.
-
-`'use no memo'` di baris pertama komponen widget wajib dipasang karena project mengaktifkan React Compiler (lihat [dokumentasi library](https://saleksovski.github.io/react-native-android-widget/docs/tutorial/widget-design)).
-
-### Konfigurasi (`app.json`)
-
-Widget diregistrasikan lewat config plugin, termasuk ukuran pita horizontal:
-
-```json
-[
-  "react-native-android-widget",
-  { 
-    "widgets": [
-      {
-        "name": "JadwalSholat",
-        "label": "Jadwal Sholat",
-        "minWidth": "320dp",
-        "minHeight": "70dp",
-        "targetCellWidth": 5,
-        "targetCellHeight": 1,
-        "resizeMode": "horizontal",
-        "updatePeriodMillis": 1800000
-      }
-    ]
-  }
-]
-```
-
-> Widget hanya tersedia di **development build / standalone build** — tidak berfungsi di Expo Go. Ikuti [Panduan Instalasi](#panduan-instalasi--menjalankan-aplikasi-penting) di atas.
 
 ## Kontribusi
 
