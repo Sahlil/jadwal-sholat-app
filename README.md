@@ -104,6 +104,7 @@ Fitur widget menampilkan jadwal **5 waktu wajib** hari ini (Subuh, Dzuhur, Ashar
 ```
 ├── index.ts                      # Entry: expo-router + register widget task handler
 ├── app.json                      # Konfigurasi Expo + config plugin widget Android & expo-location
+├── app.config.js                 # Konfigurasi dinamis: optimasi ukuran arm64 untuk profil github-release/preview
 ├── scripts/
 │   ├── generate-city-coordinates.mjs  # Generator tabel koordinat kota (jalankan: node scripts/generate-city-coordinates.mjs)
 │   └── generate-declination-grid.mjs  # Generator grid deklinasi magnetik (jalankan: node scripts/generate-declination-grid.mjs)
@@ -186,7 +187,7 @@ Kemudian buka aplikasi "jadwal-sholat" di perangkat Anda — perangkat akan otom
 
 ## Build APK untuk GitHub Release
 
-Untuk mendistribusikan aplikasi melalui GitHub Release (bukan Play Store), gunakan profil build `github-release`. Profil ini menghasilkan **Universal APK** (bukan AAB) yang siap dipasang langsung di perangkat.
+Untuk mendistribusikan aplikasi melalui GitHub Release (bukan Play Store), gunakan profil build `github-release`. Profil ini menghasilkan **APK arm64-v8a** (bukan AAB) yang siap dipasang langsung di perangkat, dengan ukuran jauh lebih kecil karena hanya memuat native library satu arsitektur.
 
 ```bash
 eas build --platform android --profile github-release --non-interactive
@@ -196,9 +197,12 @@ Setelah build selesai, unduh APK dari link yang diberikan EAS dan lampirkan ke R
 
 ### Mengapa profil `github-release`?
 
-- **`buildType: "apk"`** — menghasilkan Universal APK (Android App Bundle `aab` hanya berguna untuk distribusi via Google Play).
+- **`buildType: "apk"`** — menghasilkan APK siap pasang langsung di perangkat (Android App Bundle `aab` hanya berguna untuk distribusi via Google Play).
+- **`app.config.js`** (via plugin `expo-build-properties`) men-set `buildArchs: ["arm64-v8a"]` — sehingga APK hanya memuat native library arsitektur **arm64-v8a** (bukan 4 ABI sekaligus) dan ukurannya turun drastis. Optimasi tambahan: `enableBundleCompression` (kompres bundle JS), `enableMinifyInReleaseBuilds` (R8), dan `enableShrinkResourcesInReleaseBuilds` (buang resource tak terpakai). Optimasi ini **hanya aktif untuk profil `github-release` & `preview`**; profil `development`/`production` tetap memuat semua ABI.
 - **`env: { NODE_ENV: "production" }`** — memastikan kode development / dev-only tidak ikut ter-bundle, sehingga ukuran APK minimal.
 - **`app.json`** menambahkan `jsEngine: "hermes"` (runtime Hermes, default di SDK 57) dan `enableProguardInReleaseBuilds: true` (ProGuard membuang kode yang tak terpakai) untuk menekan ukuran APK sekecil mungkin.
+
+> **Kompatibilitas:** APK `github-release` hanya berjalan di perangkat **arm64** (praktis semua ponsel 2017+). Perangkat 32-bit (armeabi-v7a) atau emulator x86 tidak dapat menginstalnya — konsekuensi wajar dari APK berukuran kecil untuk rilis GitHub.
 
 > **Catatan:** Karena distribusi lewat GitHub Release, profil ini tidak di-set untuk submit ke Google Play. Pastikan Anda sudah login EAS (`npx eas login`) sebelum menjalankan perintah build di atas.
 
@@ -224,10 +228,10 @@ Profil `production` adalah profil build rilis standar. Perbedaan utamanya dengan
 
 | Aspek | `github-release` | `production` |
 | --- | --- | --- |
-| Output | Universal APK (`buildType: "apk"`) | AAB (`android.applicationBundle`) — format rilis Play Store |
+| Output | APK arm64-v8a (`buildType: "apk"` + `buildArchs` di `app.config.js`) | AAB (`android.applicationBundle`) — format rilis Play Store |
 | `autoIncrement` | tidak | ya (versi naik otomatis tiap build) |
 | Tujuan | GitHub Release / instal manual | upload ke Google Play (`eas submit`) |
-| Ukuran | lebih kecil (NODE_ENV=production + ProGuard) | standar |
+| Ukuran | lebih kecil (NODE_ENV=production + ProGuard + arm64-only + bundle compression/shrink) | standar |
 
 Untuk membangun dengan profil `production`:
 
