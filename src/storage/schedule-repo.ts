@@ -3,6 +3,15 @@ import { openDb } from "@/storage/db";
 
 const nowIso = () => new Date().toISOString();
 
+// SQLite transactions must not overlap: expo-sqlite may otherwise report a locked database.
+let writeChain: Promise<unknown> = Promise.resolve();
+
+function enqueueWrite<T>(task: () => Promise<T>): Promise<T> {
+  const run = writeChain.then(task);
+  writeChain = run.catch(() => {});
+  return run;
+}
+
 interface JadwalRow {
   city_id: string;
   date_key: string;
@@ -40,75 +49,94 @@ function toJadwalSholat(row: JadwalRow): JadwalSholat {
 /** Catat akses kota (untuk strategi LRU) lalu simpan kabko/prov. */
 export async function upsertCity(city: KabKota, kabko: string, prov: string): Promise<void> {
   const db = await openDb();
-  await db.runAsync(
-    `INSERT INTO cities (city_id, kabko, prov, last_used_at)
-     VALUES (?, ?, ?, ?)
-     ON CONFLICT(city_id) DO UPDATE SET
-       kabko = excluded.kabko,
-       prov = excluded.prov,
-       last_used_at = excluded.last_used_at`,
-    city.id,
-    kabko,
-    prov,
-    nowIso(),
-  );
-}
-
-/** Tandai kota baru saja digunakan tanpa mengubah kabko/prov. */
-export async function touchCity(cityId: string): Promise<void> {
-  const db = await openDb();
-  await db.runAsync("UPDATE cities SET last_used_at = ? WHERE city_id = ?", nowIso(), cityId);
-}
-
-/** Tulis satu bulan jadwal + meta dalam satu transaksi. */
-export async function upsertMonth(cityId: string, res: JadwalResponse): Promise<void> {
-  const db = await openDb();
-  const monthKey = Object.keys(res.jadwal)[0]?.slice(0, 7) ?? "";
-
-  await db.withExclusiveTransactionAsync(async (txn) => {
-    await txn.runAsync(
+  await enqueueWrite(() =>
+    db.runAsync(
       `INSERT INTO cities (city_id, kabko, prov, last_used_at)
        VALUES (?, ?, ?, ?)
        ON CONFLICT(city_id) DO UPDATE SET
          kabko = excluded.kabko,
          prov = excluded.prov,
          last_used_at = excluded.last_used_at`,
-      cityId,
-      res.kabko,
-      res.prov,
+      city.id,
+      kabko,
+      prov,
       nowIso(),
-    );
+    ),
+  );
+}
 
-    for (const [dateKey, jadwal] of Object.entries(res.jadwal)) {
-      await txn.runAsync(
-        `INSERT OR REPLACE INTO jadwal
-           (city_id, date_key, tanggal, imsak, subuh, terbit, dhuha, dzuhur, ashar, maghrib, isya)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        cityId,
-        dateKey,
-        jadwal.tanggal,
-        jadwal.imsak,
-        jadwal.subuh,
-        jadwal.terbit,
-        jadwal.dhuha,
-        jadwal.dzuhur,
-        jadwal.ashar,
-        jadwal.maghrib,
-        jadwal.isya,
-      );
-    }
+/** Tandai kota baru saja digunakan tanpa mengubah kabko/prov. */
+export async function touchCity(cityId: string): Promise<void> {
+  const db = await openDb();
+  await enqueueWrite(() =>
+    db.runAsync("UPDATE cities SET last_used_at = ? WHERE city_id = ?", nowIso(), cityId),
+  );
+}
 
-    if (monthKey) {
-      await txn.runAsync(
-        `INSERT INTO month_meta (city_id, month_key, updated_at)
-         VALUES (?, ?, ?)
-         ON CONFLICT(city_id, month_key) DO UPDATE SET updated_at = excluded.updated_at`,
+async function persistSchedule(
+  cityId: string,
+  res: JadwalResponse,
+  monthKey?: string,
+): Promise<void> {
+  const db = await openDb();
+
+  await enqueueWrite(() =>
+    db.withTransactionAsync(async () => {
+      await db.runAsync(
+        `INSERT INTO cities (city_id, kabko, prov, last_used_at)
+         VALUES (?, ?, ?, ?)
+         ON CONFLICT(city_id) DO UPDATE SET
+           kabko = excluded.kabko,
+           prov = excluded.prov,
+           last_used_at = excluded.last_used_at`,
         cityId,
-        monthKey,
+        res.kabko,
+        res.prov,
         nowIso(),
       );
-    }
-  });
+
+      for (const [dateKey, jadwal] of Object.entries(res.jadwal)) {
+        await db.runAsync(
+          `INSERT OR REPLACE INTO jadwal
+             (city_id, date_key, tanggal, imsak, subuh, terbit, dhuha, dzuhur, ashar, maghrib, isya)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+          cityId,
+          dateKey,
+          jadwal.tanggal,
+          jadwal.imsak,
+          jadwal.subuh,
+          jadwal.terbit,
+          jadwal.dhuha,
+          jadwal.dzuhur,
+          jadwal.ashar,
+          jadwal.maghrib,
+          jadwal.isya,
+        );
+      }
+
+      if (monthKey) {
+        await db.runAsync(
+          `INSERT INTO month_meta (city_id, month_key, updated_at)
+           VALUES (?, ?, ?)
+           ON CONFLICT(city_id, month_key) DO UPDATE SET updated_at = excluded.updated_at`,
+          cityId,
+          monthKey,
+          nowIso(),
+        );
+      }
+    }),
+  );
+}
+
+/** Tulis satu hari tanpa menandai bulan lengkap. */
+export async function upsertDay(cityId: string, res: JadwalResponse): Promise<void> {
+  await persistSchedule(cityId, res);
+}
+
+/** Tulis satu bulan jadwal + meta dalam satu transaksi. */
+export async function upsertMonth(cityId: string, res: JadwalResponse): Promise<void> {
+  const monthKey = Object.keys(res.jadwal)[0]?.slice(0, 7);
+  await persistSchedule(cityId, res, monthKey);
 }
 
 /** Jadwal satu hari; null bila belum tersedia di DB. */
@@ -222,13 +250,15 @@ export async function evictCities(cap: number): Promise<string[]> {
   const toDelete = rows.map((r) => r.city_id);
   if (toDelete.length === 0) return toDelete;
 
-  await db.withExclusiveTransactionAsync(async (txn) => {
-    for (const cityId of toDelete) {
-      await txn.runAsync("DELETE FROM cities WHERE city_id = ?", cityId);
-      await txn.runAsync("DELETE FROM jadwal WHERE city_id = ?", cityId);
-      await txn.runAsync("DELETE FROM month_meta WHERE city_id = ?", cityId);
-    }
-  });
+  await enqueueWrite(() =>
+    db.withTransactionAsync(async () => {
+      for (const cityId of toDelete) {
+        await db.runAsync("DELETE FROM cities WHERE city_id = ?", cityId);
+        await db.runAsync("DELETE FROM jadwal WHERE city_id = ?", cityId);
+        await db.runAsync("DELETE FROM month_meta WHERE city_id = ?", cityId);
+      }
+    }),
+  );
 
   return toDelete;
 }
