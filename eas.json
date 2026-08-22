@@ -21,9 +21,6 @@
       "autoIncrement": true
     },
     "github-release": {
-      "env": {
-        "NODE_ENV": "production"
-      },
       "android": {
         "buildType": "apk"
       }
