@@ -12,7 +12,7 @@ import {
   type ReminderPermissionStatus,
 } from "@/services/reminders";
 import { getReminderSettings, saveReminderSettings } from "@/storage/reminders";
-import { logScheduled, scheduleTestNotification } from "@/services/reminder-diagnostics";
+import { logScheduled } from "@/services/reminder-diagnostics";
 import {
   DEFAULT_REMINDER_SETTINGS,
   REMINDER_PRAYERS,
