@@ -32,7 +32,7 @@ export function CountdownTimer({ jadwal }: { jadwal: JadwalSholat }) {
     return () => clearInterval(timer);
   }, []);
 
-  const { key, date } = getNextPrayerDate(jadwal, now);
+  const { key, date } = useMemo(() => getNextPrayerDate(jadwal, now), [jadwal, now]);
   const remaining = date.getTime() - now.getTime();
 
   return (
