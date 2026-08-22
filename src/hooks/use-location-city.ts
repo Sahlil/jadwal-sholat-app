@@ -16,10 +16,10 @@ export type LocationStatus =
   | { state: "error"; message: string };
 
 /** Radius toleransi jarak dari titik pusat kota agar deteksi dianggap akurat. */
-const MAX_DISTANCE_KM = 120;
+export const MAX_DISTANCE_KM = 120;
 
 /** Jarak haversine antara dua koordinat (km). */
-function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
+export function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const toRad = (deg: number) => (deg * Math.PI) / 180;
   const dLat = toRad(lat2 - lat1);
   const dLon = toRad(lon2 - lon1);
@@ -30,15 +30,29 @@ function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number): nu
 }
 
 /** Kota terdekat dari koordinat, dihitung dari tabel koordinat lokal. */
-function nearestCity(lat: number, lon: number): LocatedCity {
+export function nearestCity(lat: number, lon: number): LocatedCity | null {
   let best: LocatedCity | null = null;
   for (const city of CITY_COORDS) {
     const distanceKm = haversineKm(lat, lon, city.lat, city.lon);
     if (!best || distanceKm < best.distanceKm) {
-      best = { id: city.id, lokasi: city.lokasi, distanceKm };
+      best = { id: city.id, lokasi: city.lokasi, lat: city.lat, lon: city.lon, distanceKm };
     }
   }
-  return best!;
+  return best;
+}
+
+/** Deteksi kota tanpa mengubah state UI; kegagalan dianggap tidak ada hasil. */
+export async function detectCity(): Promise<LocatedCity | null> {
+  try {
+    const permission = await Location.requestForegroundPermissionsAsync();
+    if (!permission.granted) return null;
+
+    const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
+    const city = nearestCity(position.coords.latitude, position.coords.longitude);
+    return city && city.distanceKm <= MAX_DISTANCE_KM ? city : null;
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -53,23 +67,12 @@ export function useLocationCity() {
     setStatus({ state: "detecting" });
 
     try {
-      const permission = await Location.requestForegroundPermissionsAsync();
-      if (!permission.granted) {
-        setStatus({
-          state: "error",
-          message: "Izin lokasi ditolak. Aktifkan di pengaturan perangkat untuk mendeteksi kota.",
-        });
-        return;
-      }
-
-      const position = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
-      const city = nearestCity(position.coords.latitude, position.coords.longitude);
-
-      if (city.distanceKm > MAX_DISTANCE_KM) {
+      const city = await detectCity();
+      if (!city) {
         setStatus({
           state: "error",
           message:
-            "Lokasi Anda tidak dapat dipetakan ke kota mana pun (terlalu jauh dari kota terdekat). Pilih kota secara manual.",
+            "Lokasi tidak dapat dipetakan. Pastikan izin lokasi dan GPS aktif, lalu pilih kota secara manual bila perlu.",
         });
         return;
       }

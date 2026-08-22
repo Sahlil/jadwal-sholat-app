@@ -7,6 +7,8 @@ export interface ApiResponse<T> {
 export interface KabKota {
   id: string;
   lokasi: string;
+  lat?: number;
+  lon?: number;
 }
 
 export type PrayerKey =
