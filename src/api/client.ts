@@ -1,16 +1,18 @@
+import type { AladhanResponse } from "@/types/hijri";
 import type { ApiResponse } from "@/types/sholat";
 
-const BASE_URL = "https://api.myquran.com/v3";
+const MYQURAN_URL = "https://api.myquran.com/v3";
+const ALADHAN_URL = "https://api.aladhan.com/v1";
 const TIMEOUT_MS = 15000;
 
 export class ApiError extends Error {}
 
-export async function apiGet<T>(path: string): Promise<T> {
+async function fetchJson<T>(url: string, unwrap: (body: unknown) => T): Promise<T> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
   try {
-    const response = await fetch(`${BASE_URL}${path}`, {
+    const response = await fetch(url, {
       signal: controller.signal,
     });
 
@@ -18,13 +20,7 @@ export async function apiGet<T>(path: string): Promise<T> {
       throw new ApiError(`Server merespons dengan status ${response.status}`);
     }
 
-    const body = (await response.json()) as ApiResponse<T>;
-
-    if (!body.status) {
-      throw new ApiError(body.message || "Data tidak ditemukan.");
-    }
-
-    return body.data;
+    return unwrap(await response.json());
   } catch (error) {
     if (error instanceof ApiError) throw error;
 
@@ -36,4 +32,20 @@ export async function apiGet<T>(path: string): Promise<T> {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+export async function apiGet<T>(path: string): Promise<T> {
+  return fetchJson(`${MYQURAN_URL}${path}`, (body) => {
+    const { status, message, data } = body as ApiResponse<T>;
+    if (!status) throw new ApiError(message || "Data tidak ditemukan.");
+    return data;
+  });
+}
+
+export async function apiGetAladhan<T>(path: string): Promise<T> {
+  return fetchJson(`${ALADHAN_URL}${path}`, (body) => {
+    const { code, status, data } = body as AladhanResponse<T>;
+    if (code !== 200 || status !== "OK") throw new ApiError("Data tidak ditemukan.");
+    return data;
+  });
 }
