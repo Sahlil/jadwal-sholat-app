@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import type { HijriDate, HijriMonthMap } from "@/types/hijri";
 import type { JadwalResponse, KabKota } from "@/types/sholat";
 
 interface CacheEntry<T> {
@@ -39,3 +40,15 @@ export const getCachedJadwalPeriod = (cityId: string, period: string) =>
   readCache<JadwalResponse>(periodKey(cityId, period));
 export const saveCachedJadwalPeriod = (cityId: string, period: string, data: JadwalResponse) =>
   writeCache(periodKey(cityId, period), data);
+
+const hijriTodayKey = (dateKey: string) => `cache:hijri-today:${dateKey}`;
+const hijriMonthKey = (monthKey: string) => `cache:hijri-month:${monthKey}`;
+
+export const getCachedHijriToday = (dateKey: string) => readCache<HijriDate>(hijriTodayKey(dateKey));
+export const saveCachedHijriToday = (dateKey: string, data: HijriDate) =>
+  writeCache(hijriTodayKey(dateKey), data);
+
+export const getCachedHijriMonth = (monthKey: string) =>
+  readCache<HijriMonthMap>(hijriMonthKey(monthKey));
+export const saveCachedHijriMonth = (monthKey: string, data: HijriMonthMap) =>
+  writeCache(hijriMonthKey(monthKey), data);
