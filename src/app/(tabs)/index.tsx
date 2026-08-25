@@ -11,7 +11,9 @@ import { CountdownTimer } from "@/components/countdown-timer";
 import { useTheme } from "@/contexts/theme";
 import type { ThemeColors } from "@/constants/theme";
 import { useSelectedCity } from "@/hooks/use-selected-city";
+import { useHijriToday } from "@/hooks/use-hijri";
 import { useTodaySchedule } from "@/hooks/use-schedule";
+import { formatHijri } from "@/utils/hijri";
 import { getReminderSettings } from "@/storage/reminders";
 import { syncReminders } from "@/services/reminders";
 import type { KabKota } from "@/types/sholat";
@@ -35,11 +37,13 @@ export default function HomeScreen() {
 
 function HomeContent({ city }: { city: KabKota }) {
   const { data, loading, error, refetch } = useTodaySchedule(city.id);
+  const { data: hijri } = useHijriToday();
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   const jadwal = data?.jadwal;
   const jadwalToday = jadwal ? Object.values(jadwal)[0] : null;
+  const hijriLabel = hijri ? formatHijri(hijri) : "";
 
   // Sinkronkan jadwal terbaru ke widget Android setelah data berhasil dimuat.
   useEffect(() => {
@@ -52,6 +56,7 @@ function HomeContent({ city }: { city: KabKota }) {
           <JadwalSholatWidget
             cityName={city.lokasi}
             tanggal={jadwalToday.tanggal}
+            hijri={hijriLabel}
             times={jadwalToday}
           />
         ),
@@ -60,7 +65,7 @@ function HomeContent({ city }: { city: KabKota }) {
       });
     });
     return () => task.cancel();
-  }, [data, city.lokasi, jadwalToday]);
+  }, [data, city.lokasi, jadwalToday, hijriLabel]);
 
   const openCityPicker = () => router.push("/kota");
   const openMonthlySchedule = () =>
@@ -98,6 +103,7 @@ function HomeContent({ city }: { city: KabKota }) {
       ) : (
         <ScrollView contentContainerStyle={styles.content}>
           <Text style={styles.date}>{jadwalToday.tanggal}</Text>
+          {hijriLabel ? <Text style={styles.hijri}>{hijriLabel}</Text> : null}
           {data?.prov ? <Text style={styles.prov}>{data.prov}</Text> : null}
 
           <CountdownTimer jadwal={jadwalToday} />
@@ -209,6 +215,13 @@ const createStyles = (colors: ThemeColors) =>
       fontSize: 13,
       textAlign: "center",
       marginBottom: 8,
+    },
+    hijri: {
+      color: colors.textSecondary,
+      fontSize: 14,
+      fontWeight: "600",
+      textAlign: "center",
+      marginTop: -6,
     },
     monthlyButton: {
       backgroundColor: colors.primary,
