@@ -1,6 +1,6 @@
 # ayo sholat
 
-Aplikasi jadwal sholat untuk Indonesia berbasis [Expo](https://expo.dev) / React Native. Data diambil dari [API Muslim v3 (api.myquran.com)](https://api.myquran.com/v3/doc) — sumber data Kemenag Bimas Islam — dan dilengkapi **widget Android** jadwal sholat hari ini.
+Aplikasi jadwal sholat untuk Indonesia berbasis [Expo](https://expo.dev) / React Native. Data diambil dari [API Muslim v3 (api.myquran.com)](https://api.myquran.com/v3/doc) — sumber data Kemenag Bimas Islam — dan [Aladhan API](https://aladhan.com/prayer-times-api) untuk tanggal Hijriyah, dilengkapi **widget Android** jadwal sholat hari ini.
 
 Dikembangkan oleh [Sahlil](https://github.com/Sahlil).
 
@@ -10,7 +10,9 @@ Dikembangkan oleh [Sahlil](https://github.com/Sahlil).
 - **Deteksi lokasi otomatis (GPS)** — tombol "Gunakan Lokasi Saya" di layar Pilih Kota; posisi GPS dipetakan ke kabupaten/kota terdekat dari tabel koordinat lokal (517 kota), lalu tampil sebagai saran yang bisa dikonfirmasi sebelum dipakai
 - **Jadwal sholat hari ini** — 8 waktu (Imsak, Subuh, Terbit, Dhuha, Dzuhur, Ashar, Maghrib, Isya) dengan penanda otomatis waktu sholat berikutnya
 - **Jadwal bulanan** — navigasi antar bulan, highlight hari ini
-- **Widget Android 5×1** — pita horizontal berisi 5 waktu wajib (Subuh, Dzuhur, Ashar, Maghrib, Isya) sesuai kota yang dipilih; ketuk untuk membuka aplikasi
+- **Kalender Hijriyah** — tab Kalender menampilkan kalender bulanan (grid 7 kolom) dengan tanggal hijriyah + masehi berdampingan; sel awal bulan hijriyah diberi outline dan diberi label "Awal bulan {nama}" di legenda, hari ber-holiday ditandai dot amber, ketuk sel untuk melihat detail perayaan. Nama bulan hijriyah dalam bahasa Indonesia
+- **Tanggal Hijriyah di Beranda & Widget** — tanggal hijriyah hari ini (sumber Aladhan) tampil di bawah tanggal masehi di beranda dan di baris "12 Rabiulawal 1448 H | 25/08/2026" pada widget; cache AsyncStorage per-hari sehingga tetap tampil offline
+- **Widget Android 5×1** — tata letak vertikal: nama kota, baris tanggal "hijriyah | masehi", lalu pita 5 waktu wajib (Subuh, Dzuhur, Ashar, Maghrib, Isya) sesuai kota yang dipilih; ketuk untuk membuka aplikasi
 - Widget ter-update otomatis (periodik 30 menit) dan langsung saat kota diganti / aplikasi dibuka
 - **Pengingat Sholat (Notifikasi Lokal)** — notifikasi sebelum waktu sholat (7 waktu tanpa Terbit) dengan offset global (5/10/15/30 menit) dan toggle per-waktu; dijadwalkan presisi hingga 30 hari ke depan lalu disinkronkan ulang setiap aplikasi dibuka
 - **Dukungan Offline (SQLite)** — jadwal satu tahun penuh per kota diunduh ke database lokal (`expo-sqlite`); aplikasi berfungsi penuh tanpa internet, data dibaca instan dari DB lalu di-refresh di background. Retensi kota memakai strategi LRU (maks. 5 kota terakhir digunakan)
@@ -33,7 +35,7 @@ Dikembangkan oleh [Sahlil](https://github.com/Sahlil).
 
 ## API
 
-Semua data berasal dari [API Muslim v3](https://api.myquran.com/v3/doc) (`https://api.myquran.com/v3`):
+Data jadwal sholat berasal dari [API Muslim v3](https://api.myquran.com/v3/doc) (`https://api.myquran.com/v3`):
 
 | Endpoint | Kegunaan |
 | --- | --- |
@@ -42,7 +44,14 @@ Semua data berasal dari [API Muslim v3](https://api.myquran.com/v3/doc) (`https:
 | `GET /sholat/jadwal/{id}/today` | Jadwal sholat hari ini |
 | `GET /sholat/jadwal/{id}/{periode}` | Jadwal bulanan (`YYYY-MM`) atau harian (`YYYY-MM-DD`) |
 
-Dibungkus rapi di `src/api/` dengan penanganan error terpusat (timeout, status HTTP, respon `status: false`).
+Tanggal Hijriyah berasal dari [Aladhan API](https://aladhan.com/prayer-times-api) (`https://api.aladhan.com/v1`, metode HJCoSA):
+
+| Endpoint | Kegunaan |
+| --- | --- |
+| `GET /gToH/{DD-MM-YYYY}` | Tanggal hijriyah satu hari (+ holidays) |
+| `GET /gToHCalendar/{month}/{year}` | Kalender hijriyah satu bulan gregorian |
+
+Keduanya dibungkus rapi di `src/api/` dengan penanganan error terpusat (timeout, status HTTP, envelope respons masing-masing API).
 
 > Catatan: API tidak menyediakan koordinat per kota, jadi fitur deteksi lokasi memakai tabel koordinat lokal (`src/data/city-coordinates.json`) untuk memetakan GPS ke kabupaten/kota terdekat.
 
@@ -89,10 +98,12 @@ Fitur kompas diakses dari beranda melalui tombol **"Arah Kiblat"** (`src/app/kib
 
 ## Widget Android
 
-Fitur widget menampilkan jadwal **5 waktu wajib** hari ini (Subuh, Dzuhur, Ashar, Maghrib, Isya) di home screen sesuai kota yang dipilih. Tambahkan widget **"Jadwal Sholat"** (pita 5×1) dari launcher Android.
+Fitur widget menampilkan jadwal **5 waktu wajib** hari ini (Subuh, Dzuhur, Ashar, Maghrib, Isya) di home screen sesuai kota yang dipilih. Tambahkan widget **"Jadwal Sholat"** dari launcher Android.
 
+- **Tata letak vertikal:** nama kota di atas tengah, di bawahnya baris tanggal `12 Rabiulawal 1448 H | 25/08/2026` (hijriyah | masehi), lalu pita horizontal 5 waktu sholat.
+- **Tanggal hijriyah:** diambil dari Aladhan API oleh task handler (fallback cache AsyncStorage per hari) dan dikirim ulang dari beranda saat jadwal dimuat.
 - **Update instan:** setiap kali jadwal berhasil dimuat di aplikasi, `requestWidgetUpdate()` mengirim data terbaru ke widget.
-- **Update mandiri:** saat widget ditambahkan (`WIDGET_ADDED`) atau dipicu `updatePeriodMillis` (30 menit), task handler background membaca kota dari storage lalu fetch jadwal hari ini langsung ke API.
+- **Update mandiri:** saat widget ditambahkan (`WIDGET_ADDED`) atau dipicu `updatePeriodMillis` (30 menit), task handler background membaca kota dari storage lalu fetch jadwal & tanggal hijriyah hari ini langsung ke API.
 - **Interaksi:** seluruh widget dapat diketuk (`clickAction="OPEN_APP"`) untuk membuka aplikasi.
 - **`'use no memo'`** di baris pertama komponen widget wajib dipasang karena project mengaktifkan React Compiler (lihat [dokumentasi library](https://saleksovski.github.io/react-native-android-widget/docs/tutorial/widget-design)).
 - Komponen widget di `src/widgets/jadwal-sholat-widget.tsx`; handler background di `src/widgets/widget-task-handler.tsx`.
@@ -110,11 +121,12 @@ Fitur widget menampilkan jadwal **5 waktu wajib** hari ini (Subuh, Dzuhur, Ashar
 │   └── generate-declination-grid.mjs  # Generator grid deklinasi magnetik (jalankan: node scripts/generate-declination-grid.mjs)
 └── src/
     ├── api/
-    │   ├── client.ts             # Wrapper fetch (timeout, retry-friendly error)
-    │   └── sholat.ts             # Fungsi tipe-aman untuk endpoint myQuran
+    │   ├── client.ts             # Wrapper fetch (timeout, retry-friendly error) untuk myQuran & Aladhan
+    │   ├── sholat.ts             # Fungsi tipe-aman untuk endpoint myQuran
+    │   └── hijri.ts              # Fungsi tipe-aman untuk endpoint Aladhan (tanggal hijriyah)
     ├── app/                      # Screens (Expo Router)
     │   ├── _layout.tsx           # Root Stack + tema + handler notifikasi
-    │   ├── index.tsx             # Beranda: jadwal hari ini + sinkronisasi widget & pengingat
+    │   ├── index.tsx             # Beranda: jadwal hari ini + tanggal hijriyah + sinkronisasi widget & pengingat
     │   ├── kota.tsx              # Pilih kota (search + list + deteksi lokasi)
     │   ├── jadwal.tsx            # Jadwal bulanan
     │   ├── pengingat.tsx         # Pengaturan pengingat sholat
@@ -124,19 +136,22 @@ Fitur widget menampilkan jadwal **5 waktu wajib** hari ini (Subuh, Dzuhur, Ashar
     ├── data/
     │   ├── city-coordinates.json # Tabel koordinat 517 kabupaten/kota (untuk deteksi lokasi)
     │   └── declination-grid.json # Grid deklinasi magnetik (dihasilkan script)
-    ├── hooks/                    # use-api, use-selected-city, use-location-city, use-schedule, use-qibla
+    ├── hooks/                    # use-api, use-selected-city, use-location-city, use-schedule, use-qibla, use-hijri
     ├── services/
     │   ├── reminders.ts          # Notifikasi: handler, channel, izin, jadwal window 30 hari
     │   └── offline.ts            # Sinkronisasi jadwal tahunan ke SQLite (retensi LRU)
     ├── storage/
     │   ├── city.ts               # Persistensi kota terpilih (AsyncStorage)
     │   ├── reminders.ts          # Persistensi pengaturan pengingat (AsyncStorage)
-    │   ├── cache.ts              # Cache ringan AsyncStorage (daftar kota & widget)
+    │   ├── cache.ts              # Cache ringan AsyncStorage (daftar kota, widget, hijriyah)
     │   ├── db.ts                 # Buka & migrasi database SQLite
     │   └── schedule-repo.ts      # Repository jadwal (upsert/get/stale/evict) di SQLite
-    ├── types/sholat.ts           # Tipe respons API
+    ├── types/
+    │   ├── sholat.ts             # Tipe respons API myQuran
+    │   └── hijri.ts              # Tipe respons API Aladhan + tipe tanggal hijriyah
     ├── utils/
     │   ├── date.ts               # Helper bulan/tanggal & deteksi waktu berikutnya
+    │   ├── hijri.ts              # Nama bulan hijriyah ID + formatter tanggal hijriyah
     │   ├── qibla.ts              # Bearing Kiblat, heading magnetik, heuristik kalibrasi (worklet)
     │   └── declination.ts        # Interpolasi bilinear deklinasi magnetik
     └── widgets/
@@ -183,7 +198,7 @@ npx expo start --dev-client
 
 Kemudian buka aplikasi "jadwal-sholat" di perangkat Anda — perangkat akan otomatis terhubung ke server lokal (pastikan perangkat dan komputer berada di jaringan yang sama).
 
-**Selanjutnya:** tambahkan widget **"Jadwal Sholat"** dari launcher Android untuk menikmati fitur widget 5×1.
+**Selanjutnya:** tambahkan widget **"Jadwal Sholat"** dari launcher Android untuk menikmati fitur widget.
 
 ## Build APK untuk GitHub Release
 
