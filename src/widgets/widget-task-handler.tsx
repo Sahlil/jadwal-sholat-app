@@ -4,9 +4,17 @@ import React from 'react';
 import type { WidgetRepresentation, WidgetTaskHandlerProps } from 'react-native-android-widget';
 
 import { getJadwalToday } from '@/api/sholat';
+import { getHijriByDate } from '@/api/hijri';
 import { DEFAULT_CITY } from '@/hooks/use-selected-city';
-import { getCachedJadwalToday, saveCachedJadwalToday } from '@/storage/cache';
+import {
+  getCachedHijriToday,
+  getCachedJadwalToday,
+  saveCachedHijriToday,
+  saveCachedJadwalToday,
+} from '@/storage/cache';
 import { getSelectedCity } from '@/storage/city';
+import { toDateKey } from '@/utils/date';
+import { formatHijri } from '@/utils/hijri';
 import { JadwalSholatWidget, WIDGET_NAME } from '@/widgets/jadwal-sholat-widget';
 
 const nameToWidget = {
@@ -25,6 +33,22 @@ const EMPTY_TIMES = {
   maghrib: '--:--',
   isya: '--:--',
 };
+
+/**
+ * Mengambil tanggal hijriyah hari ini (network, fallback cache AsyncStorage).
+ * Gagal total → null; widget tetap render tanpa hijri.
+ */
+async function loadHijriToday(): Promise<string> {
+  const dateKey = toDateKey(new Date());
+  try {
+    const fresh = await getHijriByDate(new Date());
+    await saveCachedHijriToday(dateKey, fresh);
+    return formatHijri(fresh);
+  } catch {
+    const cached = await getCachedHijriToday(dateKey);
+    return cached?.data ? formatHijri(cached.data) : '';
+  }
+}
 
 /**
  * Mengambil kota terpilih + jadwal hari ini, lalu merender widget.
@@ -49,11 +73,13 @@ async function renderWithFreshData(
     }
 
     const jadwal = Object.values(response.jadwal)[0];
+    const hijri = await loadHijriToday();
 
     renderWidget(
       <JadwalSholatWidget
         cityName={cityName}
         tanggal={jadwal?.tanggal ?? ''}
+        hijri={hijri}
         times={jadwal ?? EMPTY_TIMES}
       />,
     );
