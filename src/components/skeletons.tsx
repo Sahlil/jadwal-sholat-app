@@ -7,6 +7,25 @@ import type { ThemeColors } from "@/constants/theme";
 
 const PRAYER_ROW_COUNT = 8;
 
+/** Kerangka konten beranda (tanpa header) untuk state loading. */
+export function HomeContentSkeleton() {
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
+
+  return (
+    <View style={styles.content}>
+      <Skeleton width={150} height={18} borderRadius={6} style={styles.centered} />
+      <Skeleton width={96} height={12} borderRadius={6} style={styles.centered} />
+      <View style={styles.countdown}>
+        <Skeleton width={210} height={16} borderRadius={6} style={styles.centered} />
+        <Skeleton width={130} height={13} borderRadius={6} style={styles.centered} />
+      </View>
+      <PrayerCardSkeleton />
+      <Skeleton width="100%" height={46} borderRadius={14} />
+    </View>
+  );
+}
+
 /** Kerangka daftar kota (mirip baris `kota.tsx`). */
 export function CityListSkeleton() {
   const { colors } = useTheme();

@@ -6,12 +6,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { ErrorView } from "@/components/error-view";
 import { PrayerCard } from "@/components/prayer-card";
-import { HomeSkeleton } from "@/components/skeletons";
+import { HomeSkeleton, HomeContentSkeleton } from "@/components/skeletons";
 import { CountdownTimer } from "@/components/countdown-timer";
 import { useTheme } from "@/contexts/theme";
 import type { ThemeColors } from "@/constants/theme";
 import { useSelectedCity } from "@/hooks/use-selected-city";
-import { useHijriToday } from "@/hooks/use-hijri";
+import { useHijriTodayAdjusted } from "@/hooks/use-hijri";
 import { useTodaySchedule } from "@/hooks/use-schedule";
 import { formatHijri } from "@/utils/hijri";
 import { getReminderSettings } from "@/storage/reminders";
@@ -37,7 +37,7 @@ export default function HomeScreen() {
 
 function HomeContent({ city }: { city: KabKota }) {
   const { data, loading, error, refetch } = useTodaySchedule(city.id);
-  const { data: hijri } = useHijriToday();
+  const { data: hijri } = useHijriTodayAdjusted(city.id);
   const { colors } = useTheme();
   const styles = useMemo(() => createStyles(colors), [colors]);
 
@@ -97,7 +97,7 @@ function HomeContent({ city }: { city: KabKota }) {
       </View>
 
       {loading ? (
-        <HomeSkeleton />
+        <HomeContentSkeleton />
       ) : error || !jadwalToday ? (
         <ErrorView message={error ?? "Jadwal tidak ditemukan."} onRetry={refetch} />
       ) : (

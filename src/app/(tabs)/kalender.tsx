@@ -156,6 +156,9 @@ export default function KalenderScreen() {
               <View style={styles.legendDot} />
               <Text style={styles.legendText}>Ada perayaan</Text>
             </View>
+            <View style={styles.legendNote}>
+              <Text style={styles.legendNoteText}>* Tanggal hijriyah berganti di Maghrib</Text>
+            </View>
           </View>
 
           {selectedCell ? (
@@ -310,6 +313,15 @@ const createStyles = (colors: ThemeColors) =>
     legendText: {
       color: colors.textSecondary,
       fontSize: 12,
+    },
+    legendNote: {
+      marginTop: 8,
+      paddingHorizontal: 4,
+    },
+    legendNoteText: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      fontStyle: "italic",
     },
     detailCard: {
       backgroundColor: colors.card,

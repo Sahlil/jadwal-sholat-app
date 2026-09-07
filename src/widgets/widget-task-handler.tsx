@@ -8,13 +8,16 @@ import { getHijriByDate } from '@/api/hijri';
 import { DEFAULT_CITY } from '@/hooks/use-selected-city';
 import {
   getCachedHijriToday,
+  getCachedHijriTodayAdjusted,
   getCachedJadwalToday,
   saveCachedHijriToday,
+  saveCachedHijriTodayAdjusted,
   saveCachedJadwalToday,
 } from '@/storage/cache';
 import { getSelectedCity } from '@/storage/city';
 import { toDateKey } from '@/utils/date';
-import { formatHijri } from '@/utils/hijri';
+import { adjustHijriByMaghrib, formatHijri } from '@/utils/hijri';
+import type { HijriDate } from '@/types/hijri';
 import { JadwalSholatWidget, WIDGET_NAME } from '@/widgets/jadwal-sholat-widget';
 
 const nameToWidget = {
@@ -35,19 +38,51 @@ const EMPTY_TIMES = {
 };
 
 /**
- * Mengambil tanggal hijriyah hari ini (network, fallback cache AsyncStorage).
- * Gagal total → null; widget tetap render tanpa hijri.
+ * Mengambil tanggal hijriyah hari ini yang sudah disesuaikan Maghrib.
+ * - Cache base hijri per tanggal (global)
+ * - Cache adjusted hijri per kota+tanggal (karena maghrib beda per lokasi)
+ * - Fallback ke cache adjusted, lalu base hijri + maghrib dari cache jadwal
  */
-async function loadHijriToday(): Promise<string> {
+async function loadHijriTodayAdjusted(cityId: string): Promise<string> {
   const dateKey = toDateKey(new Date());
-  try {
-    const fresh = await getHijriByDate(new Date());
-    await saveCachedHijriToday(dateKey, fresh);
-    return formatHijri(fresh);
-  } catch {
-    const cached = await getCachedHijriToday(dateKey);
-    return cached?.data ? formatHijri(cached.data) : '';
+
+  // 1) Coba ambil adjusted dari cache (per kota)
+  const cachedAdjusted = await getCachedHijriTodayAdjusted(cityId, dateKey);
+  if (cachedAdjusted?.data) {
+    return formatHijri(cachedAdjusted.data);
   }
+
+  // 2) Ambil base hijri (cache atau API)
+  let baseHijri: HijriDate | null = null;
+  const cachedBase = await getCachedHijriToday(dateKey);
+  if (cachedBase?.data) {
+    baseHijri = cachedBase.data;
+  } else {
+    try {
+      const fresh = await getHijriByDate(new Date());
+      await saveCachedHijriToday(dateKey, fresh);
+      baseHijri = fresh;
+    } catch {
+      // Base gagal, coba cache base
+      if (!cachedBase?.data) return '';
+      baseHijri = cachedBase.data;
+    }
+  }
+
+  if (!baseHijri) return '';
+
+  // 3) Ambil maghrib dari jadwal lokal (cache)
+  const cachedJadwal = await getCachedJadwalToday(cityId);
+  const maghribTime = cachedJadwal?.data?.jadwal
+    ? Object.values(cachedJadwal.data.jadwal)[0]?.maghrib
+    : undefined;
+
+  // 4) Adjust dan simpan adjusted cache
+  const adjusted = maghribTime
+    ? adjustHijriByMaghrib(baseHijri, maghribTime, new Date())
+    : baseHijri;
+  await saveCachedHijriTodayAdjusted(cityId, dateKey, adjusted);
+  return formatHijri(adjusted);
 }
 
 /**
@@ -73,7 +108,7 @@ async function renderWithFreshData(
     }
 
     const jadwal = Object.values(response.jadwal)[0];
-    const hijri = await loadHijriToday();
+    const hijri = await loadHijriTodayAdjusted(cityId);
 
     renderWidget(
       <JadwalSholatWidget
