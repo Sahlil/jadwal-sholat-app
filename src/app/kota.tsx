@@ -11,7 +11,7 @@ import { useApi } from "@/hooks/use-api";
 import { useLocationCity } from "@/hooks/use-location-city";
 import { syncCityData } from "@/services/offline";
 import { getCachedKabKota, saveCachedKabKota } from "@/storage/cache";
-import { saveSelectedCity } from "@/storage/city";
+import { useCity } from "@/contexts/city-context";
 import type { KabKota } from "@/types/sholat";
 
 export default function KotaScreen() {
@@ -65,14 +65,17 @@ export default function KotaScreen() {
   const error = isSearching ? search.error : all.error;
   const refetch = isSearching ? search.refetch : all.refetch;
 
+  const { setCity } = useCity();
+
   const selectCity = (city: KabKota) => {
-    saveSelectedCity(city);
+    // Update city in context (updates storage + state instantly)
+    setCity(city);
     // Unduh jadwal tahunan kota terpilih ke database lokal di background.
     syncCityData(city).catch(() => {
       // Gagal (mis. offline) — data akan diunduh saat app berikutnya dibuka.
     });
-    // Unwind ke beranda sekaligus mengirim kota terpilih via params.
-    router.navigate({ pathname: "/", params: { id: city.id, lokasi: city.lokasi } });
+    // Navigate back to home (context already updated, no params needed)
+    router.back();
   };
 
   const locationStatus = location.status;

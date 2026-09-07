@@ -4,6 +4,7 @@ import { Stack, type ErrorBoundaryProps } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 import { ThemeProvider, useTheme } from "@/contexts/theme";
+import { CityProvider } from "@/contexts/city-context";
 import { setNotificationHandler, setupChannel } from "@/services/reminders";
 import {
   getExactAlarmStatus,
@@ -47,7 +48,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider>
-      <RootNavigator />
+      <CityProvider>
+        <RootNavigator />
+      </CityProvider>
     </ThemeProvider>
   );
 }

@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useLocalSearchParams } from 'expo-router';
-
-import { getSelectedCity, saveSelectedCity } from '@/storage/city';
+import { useCity } from '@/contexts/city-context';
 import type { KabKota } from '@/types/sholat';
 
 export const DEFAULT_CITY: KabKota = {
@@ -10,24 +7,14 @@ export const DEFAULT_CITY: KabKota = {
 };
 
 /**
- * Kota aktif: prioritas dari URL params (hasil pemilihan di layar kota),
- * jika tidak ada, dibaca dari penyimpanan lokal (dipakai juga oleh widget).
+ * Kota aktif dari CityContext (single source of truth).
  * Mengembalikan null selama masih dimuat dari storage.
  */
 export function useSelectedCity(): KabKota | null {
-  const params = useLocalSearchParams<{ id?: string; lokasi?: string }>();
-  const paramCity = params.id && params.lokasi ? { id: params.id, lokasi: params.lokasi } : null;
-
-  const [savedCity, setSavedCity] = useState<KabKota | null>(null);
-
-  useEffect(() => {
-    if (params.id && params.lokasi) {
-      saveSelectedCity({ id: params.id, lokasi: params.lokasi });
-      return;
-    }
-
-    getSelectedCity().then((saved) => setSavedCity(saved ?? DEFAULT_CITY));
-  }, [params.id, params.lokasi]);
-
-  return paramCity ?? savedCity;
+  const { city, loading } = useCity();
+  if (loading) return null;
+  return city;
 }
+
+/** Helper untuk memicu refresh di layar lain. */
+export { useCity };
