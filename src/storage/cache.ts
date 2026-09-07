@@ -43,10 +43,17 @@ export const saveCachedJadwalPeriod = (cityId: string, period: string, data: Jad
 
 const hijriTodayKey = (dateKey: string) => `cache:hijri-today:${dateKey}`;
 const hijriMonthKey = (monthKey: string) => `cache:hijri-month:${monthKey}`;
+const hijriTodayAdjustedKey = (cityId: string, dateKey: string) =>
+  `cache:hijri-today-adjusted:${cityId}:${dateKey}`;
 
 export const getCachedHijriToday = (dateKey: string) => readCache<HijriDate>(hijriTodayKey(dateKey));
 export const saveCachedHijriToday = (dateKey: string, data: HijriDate) =>
   writeCache(hijriTodayKey(dateKey), data);
+
+export const getCachedHijriTodayAdjusted = (cityId: string, dateKey: string) =>
+  readCache<HijriDate>(hijriTodayAdjustedKey(cityId, dateKey));
+export const saveCachedHijriTodayAdjusted = (cityId: string, dateKey: string, data: HijriDate) =>
+  writeCache(hijriTodayAdjustedKey(cityId, dateKey), data);
 
 export const getCachedHijriMonth = (monthKey: string) =>
   readCache<HijriMonthMap>(hijriMonthKey(monthKey));
